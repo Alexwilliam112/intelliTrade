@@ -40,19 +40,54 @@ async function setup() {
         const dropStockHistories = `
         DROP TABLE IF EXISTS "StockHistories";`
 
+        const createPortfolios = `
+        CREATE TABLE IF NOT EXISTS "Portfolios" (
+            "id" SERIAL PRIMARY KEY,
+            "totalValue" INTEGER NOT NULL,
+            "estimateDividend" INTEGER NOT NULL,
+            "UserId" INTEGER NOT NULL,
+                FOREIGN KEY ("UserId")
+                REFERENCES "Users" ("id")
+        );`
+        const dropPortfolios = `
+        DROP TABLE IF EXISTS "Portfolios";`
+
+        const createBuyOrders = `
+        CREATE TABLE IF NOT EXISTS "BuyOrders" (
+            "id" SERIAL PRIMARY KEY,
+            "buyVolume" INTEGER NOT NULL,
+            "buyPrice" INTEGER NOT NULL,
+            "UserId" INTEGER NOT NULL,
+            "StockId" INTEGER NOT NULL,
+                FOREIGN KEY ("UserId")
+                REFERENCES "Users" ("id"),
+                FOREIGN KEY ("StockId")
+                REFERENCES "Stocks" ("id")
+        );`
+        const dropBuyOrders = `
+        DROP TABLE IF EXISTS "BuyOrders";`
+
+        await pool.query(dropBuyOrders)
+        console.log(`SUCCESS: DROPPED TABLE "BuyOrders"`);
         await pool.query(dropStockHistories)
         console.log(`SUCCESS: DROPPED TABLE "StockHistories"`);
         await pool.query(dropStocks)
         console.log(`SUCCESS: DROPPED TABLE "Stocks"`);
+        await pool.query(dropPortfolios)
+        console.log(`SUCCESS: DROPPED TABLE "Portfolios"`);
         await pool.query(dropUsers)
         console.log(`SUCCESS: DROPPED TABLE "Users"`);
 
         await pool.query(createUsers)
         console.log(`SUCCESS: CREATED TABLE "Users"`);
+        await pool.query(createPortfolios)
+        console.log(`SUCCESS: CREATED TABLE "Portfolios"`);
         await pool.query(createStocks)
         console.log(`SUCCESS: CREATED TABLE "Stocks"`);
         await pool.query(createStockHistories)
         console.log(`SUCCESS: CREATED TABLE "StockHistories"`);
+        await pool.query(createBuyOrders)
+        console.log(`SUCCESS: CREATED TABLE "BuyOrders"`);
 
     } catch (error) {
         console.log(error);
