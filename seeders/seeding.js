@@ -51,7 +51,9 @@ async function seeding() {
         await pool.query(insertStockHistories)
         console.log(`SUCCESS: SEEDED TABLE "StockHistories"`);
 
+        let totalData = 0
         const seedingData = (await pool.query(statsQuery)).rows.map((el) => {
+            totalData += Number(el.count)
             return {
                 "Stock Id": el.StockId,
                 "Emiten": el.stockCode,
@@ -59,7 +61,9 @@ async function seeding() {
                 "Data Count" : Number(el.count)
             }
         })
+
         console.table(seedingData)
+        console.log(`Stock Histories Total Data Seeded: ${totalData}`);
 
     } catch (error) {
         console.log(error);
