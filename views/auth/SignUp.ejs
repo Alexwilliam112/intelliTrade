@@ -11,22 +11,25 @@
     <div class="pageAlignCenter">
         <div class="signUpCard">
             SIGN UP <br>
-            <form class="formGroup">
+            <form action="/signup" class="formGroup">
                 <div class="formCard">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" class="inputField">
-                    <label for="Password">Create Password</label>
-                    <input type="password" id="Password" name="Password" class="inputField">
-                    <label for="rePassword">Confirm Password</label>
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" name="password" class="inputField">
+                    <label for="rePassword">Confirm password</label>
                     <input type="repassword" id="rePassword" name="rePassword" class="inputField">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" class="inputField">
                 </div>
                 <button type="submit" class="landingButton">CREATE ACCOUNT</button>
+                <a href="/" class="landingButton">
+                    CANCEL
+                </a>
             </form>
         </div>
         <video class="landingVideo" autoplay loop>
-            <source src="./assets/landingPage.MP4" type="video/mp4">
+            <source src="/assets/landingPage.MP4" type="video/mp4">
         </video>
     </div>
 </body>
