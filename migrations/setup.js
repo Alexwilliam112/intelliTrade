@@ -18,7 +18,7 @@ async function setup() {
             "id" SERIAL PRIMARY KEY,
             "stockName" VARCHAR NOT NULL,
             "stockCode" VARCHAR(4) NOT NULL,
-            "dividend" INTEGER NOT NULL,
+            "dividend" FLOAT NOT NULL,
             "createdAt" DATE NOT NULL
         )`
         const dropStocks = `
