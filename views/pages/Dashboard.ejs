@@ -52,7 +52,7 @@
 
 
                     <tbody>
-                        <% stocks.forEach(el => { %>
+                        <% stocks.forEach(el=> { %>
                             <tr>
                                 <th
                                     class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
@@ -68,20 +68,24 @@
                                 </td>
                                 <td
                                     class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                                    <%- el.volume %>
+                                    <% if (Math.random() > 0.4) { %>
+                                        <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
+                                        <% } else { %>
+                                            <i class="fas fa-arrow-down text-red-500 mr-4"></i>
+                                            <% } %>
+                                                <%- el.volume %>
                                 </td>
                                 <td
-                                class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                <a href="/dashboard/<%= el.id %>/details" class="viewButton">Historical</a>
-                                <a href="/dashboard/<%= el.id %>/buy" class="addButton">Create Buy</a>
-                            </td>
+                                    class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <a href="/dashboard/<%= el.id %>/details" class="viewButton">Historical</a>
+                                    <a href="/dashboard/<%= el.id %>/buy" class="addButton">Create Buy</a>
+                                </td>
                             </tr>
-                        <% }) %>
+                            <% }) %>
 
 
-                        <tr style="height: 20px;">
-                        </tr>
+                                <tr style="height: 20px;">
+                                </tr>
                     </tbody>
 
                 </table>
