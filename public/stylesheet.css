@@ -3,6 +3,7 @@
     margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
+    background-color: #EDEDED;
 }
 
 .landingHeader {
@@ -180,7 +181,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    top: 0;
 }
 
 .logoGroup {
@@ -189,6 +190,7 @@
     display: flex;
     flex-direction: row;
     padding-left: 50px;
+    gap: 10px;
 }
 
 .standardButton {
@@ -225,6 +227,7 @@
     padding-left: 70px;
     padding-right: 70px;
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
+    margin-bottom: 40px;
     overflow-x: auto;
 }
