@@ -54,6 +54,37 @@ class Stocks {
     }
 }
 
+class StockHistories {
+    constructor(id, date, high, low, open, close, volume, StockId) {
+        this.id = id
+        this.date = this.date(date)
+        this.high = high
+        this.low = low
+        this.open = open
+        this.close = close
+        this.volume = volume
+        this.StockId = StockId
+    }
+
+    date(date) {
+        const dateFormat = date;
+        const options = {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        };
+
+        const stringDate = dateFormat.toLocaleDateString('en-US', options).replace(/\//g, '-');
+
+        const parts = stringDate.split('-');
+
+        const formattedDate = parts[2] + '-' + parts[0] + '-' + parts[1];
+
+        return formattedDate;
+
+    }
+}
+
 class Factory {
 
     static createNews(imageUrl, date, title, description, publisherLogo,
@@ -64,6 +95,10 @@ class Factory {
 
     static createStocks(id, stockName, stockCode, dividend, volume, createdAt) {
         return new Stocks(id, stockName, stockCode, dividend, volume, createdAt)
+    }
+
+    static createStockHistories(id, date, high, low, open, close, volume, StockId) {
+        return new StockHistories(id, date, high, low, open, close, volume, StockId)
     }
 }
 

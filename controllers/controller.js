@@ -65,6 +65,19 @@ class Controller {
             res.send(error)
         }
     }
+
+    static async stockDetails(req, res) {
+        try {
+            const { id } = req.params
+            const historicalDatas = await Model.readHistorical(id)
+
+            res.render("./pages/Historicals", { historicalDatas: JSON.stringify(historicalDatas) })
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
 }
 
 module.exports = Controller

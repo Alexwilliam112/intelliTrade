@@ -35,13 +35,13 @@ class Model {
         } catch (error) {
             console.log(error);
             return [{
-                imageUrl : '',
-                date : '',
-                title : 'NOT FOUND',
-                description : `ERROR MESSAGE: ${error.message}`,
-                publisherLogo : '',
-                publisherName : '',
-                newsUrl : ''
+                imageUrl: '',
+                date: '',
+                title: 'NOT FOUND',
+                description: `ERROR MESSAGE: ${error.message}`,
+                publisherLogo: '',
+                publisherName: '',
+                newsUrl: ''
             }]
         }
     }
@@ -86,6 +86,31 @@ class Model {
             })
 
             return stocks
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async readHistorical(id) {
+        try {
+            const sql = `
+            SELECT 
+                *
+            FROM 
+                "StockHistories"
+            WHERE 
+                "StockId" = ${id}
+            ORDER BY
+                "date" ASC`
+
+            const data = (await pool.query(sql)).rows
+            const historicals = data.map((el) => {
+                return Factory.createStockHistories(el.id, el.date, el.high, el.low, el.open,
+                    el.close, el.volume, el.StockId)
+            })
+
+            return historicals
 
         } catch (error) {
             console.log(error);

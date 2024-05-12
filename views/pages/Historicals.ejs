@@ -1,0 +1,71 @@
+<%- include('../partials/Header.ejs', {title: 'Historical Details' }) %>
+
+    <div class="historicalContent">
+        <div style="font-size: 30px;">
+            MARKET TRADE DATA
+        </div>
+        <div id="candleChart" style="height: auto; width: 1400px;"></div>
+        <div style="font-size: 30px;">
+            TRADE VOLUME
+        </div>
+        <div id="lineChart" style="height: auto; width: 1400px;"></div>
+    </div>
+
+    <div id="dataContainer" data-chartData="<%= historicalDatas %>"></div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", function () {
+            const historicalDatasElement = document.getElementById('dataContainer');
+            if (historicalDatasElement) {
+                const historicalDatas = JSON.parse(historicalDatasElement.getAttribute('data-chartData'));
+                const dates = historicalDatas.map(el => el.date);
+                console.log(dates);
+                const close = historicalDatas.map(el => el.close);
+                const open = historicalDatas.map(el => el.open);
+                const high = historicalDatas.map(el => el.high);
+                const low = historicalDatas.map(el => el.low);
+                const volume = historicalDatas.map(el => el.volume);
+
+                const candleData = {
+                    x: dates,
+                    close: close,
+                    decreasing: { line: { color: '#FF0606' } },
+                    high: high,
+                    increasing: { line: { color: '#1AFF06' } },
+                    line: { color: 'rgba(31,119,180,1)', width: 1 },
+                    low: low,
+                    open: open,
+                    type: 'candlestick',
+                    xaxis: 'x',
+                    yaxis: 'y'
+                };
+
+                let layout = {
+                    dragmode: 'zoom',
+                    margin: {
+                        r: 10,
+                        t: 25,
+                        b: 40,
+                        l: 60
+                    },
+                    showlegend: false,
+                    xaxis: {
+                        autorange: true,
+                        domain: [0, 1],
+                        range: [dates[0], dates[dates.length - 1]],
+                        rangeslider: { range: [dates[0], dates[dates.length - 1]] }
+                    },
+                    yaxis: {
+                        autorange: true,
+                        domain: [0, 1],
+                        range: [Math.min(...low), Math.max(...high)],
+                        type: 'linear'
+                    }
+                };
+                Plotly.newPlot('candleChart', [candleData], layout);
+            }
+        });
+    </script>
+
+    <%- include('../partials/Footer.ejs') %>
