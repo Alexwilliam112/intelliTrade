@@ -36,10 +36,31 @@ class Controller {
 
     static async renderHome(req, res) {
         try {
-            
-            
+            let newsData = await Model.getNews()
+            res.render("./pages/Home", { newsData })
+
+        } catch (error) {
+            const newsData = [{
+                imageUrl : '',
+                date : '',
+                title : 'NOT FOUND',
+                description : `ERROR MESSAGE: ${error.message}`,
+                publisherLogo : '',
+                publisherName : '',
+                newsUrl : ''
+            }]
+            res.render("./pages/Home", { newsData })
+            console.log(error);
+        }
+    }
+
+    static async renderDashboard(req, res) {
+        try {
+            res.render("./pages/Dashboard")
+
         } catch (error) {
             console.log(error);
+            res.send(error)
         }
     }
 }

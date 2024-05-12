@@ -1,6 +1,6 @@
 {
   "name": "intellitrade",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "early alpha version. on integration",
   "main": "app.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "pg": "^8.11.5",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
