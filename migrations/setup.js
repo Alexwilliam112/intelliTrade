@@ -19,8 +19,17 @@ async function setup() {
             "stockName" VARCHAR NOT NULL,
             "stockCode" VARCHAR(4) NOT NULL,
             "dividend" FLOAT NOT NULL,
-            "createdAt" DATE NOT NULL
-        )`
+            "createdAt" DATE NOT NULL,
+            "about" TEXT NOT NULL,
+            "logo" VARCHAR NOT NULL,
+            "npwp" VARCHAR NOT NULL,
+            "address" VARCHAR NOT NULL,
+            "ipoFundRaised" NUMERIC NOT NULL,
+            "ipoListingDate" DATE NOT NULL,
+            "ipoOfferingShares" INTEGER NOT NULL,
+            "ipoPercentage" FLOAT NOT NULL,
+            "securitiesBureau" VARCHAR NOT NULL
+        );`
         const dropStocks = `
         DROP TABLE IF EXISTS "Stocks";`
 

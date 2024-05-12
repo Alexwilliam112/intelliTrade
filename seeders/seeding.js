@@ -7,14 +7,23 @@ async function seeding() {
     try {
         const stocks = JSON.parse(await readFile('./data/stocks.json', 'utf-8'))
             .map((el) => {
-                const { stockName, stockCode, dividend, createdAt } = el
-                return `('${stockName}', '${stockCode}', '${dividend}', '${createdAt}')`
+                const { stockName, stockCode, dividend, createdAt, about, logo, npwp,
+                    address, ipo_fund_raised, ipo_listing_date, ipo_offering_shares,
+                    ipo_percentage, ipo_securities_administration_bureau
+                } = el
+                return `('${stockName}', '${stockCode}', '${dividend}', '${createdAt}',
+                '${about}', '${logo}', '${npwp}', '${address}',
+                '${ipo_fund_raised}', '${ipo_listing_date}', '${ipo_offering_shares}',
+                '${ipo_percentage}', '${ipo_securities_administration_bureau}')`
             }).join(',\n')
 
         const insertStocks = `
-            INSERT INTO "Stocks" ("stockName", "stockCode", "dividend", "createdAt")
+            INSERT INTO "Stocks" ("stockName", "stockCode", "dividend", "createdAt",
+                "about", "logo", "npwp", "address", "ipoFundRaised", "ipoListingDate",
+                "ipoOfferingShares", "ipoPercentage", "securitiesBureau")
             VALUES
-            ${stocks};`
+            ${stocks};
+        `;
 
         const stockHistories = JSON.parse(await readFile('./data/stockHistories.json', 'utf-8'))
             .map((el) => {
@@ -58,7 +67,7 @@ async function seeding() {
                 "Stock Id": el.StockId,
                 "Emiten": el.stockCode,
                 "Company Name": el.stockName,
-                "Data Count" : Number(el.count)
+                "Data Count": Number(el.count)
             }
         })
 
