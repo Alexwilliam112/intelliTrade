@@ -4,41 +4,75 @@
         "stockName": "Bank Central Asia Tbk.",
         "stockCode": "BBCA",
         "createdAt": "2024-05-10",
-        "dividend": 2.88
+        "dividend": "2.88"
     },
     {
         "id": 2,
         "stockName": "PT Bukit Asam (Persero) Tbk",
         "stockCode": "PTBA",
         "createdAt": "2024-05-10",
-        "dividend": 19.29
+        "dividend": "19.29"
     },
     {
         "id": 3,
         "stockName": "PT Indo Tambangraya Megah Tbk",
         "stockCode": "ITMG",
         "createdAt": "2024-05-10",
-        "dividend": 17.38
+        "dividend": "17.38"
     },
     {
         "id": 4,
         "stockName": "PT Adaro Energy Indonesia Tbk",
         "stockCode": "ADRO",
         "createdAt": "2024-05-10",
-        "dividend": 15.36
+        "dividend": "15.36"
     },
     {
         "id": 5,
         "stockName": "PT Perusahaan Gas Negara (Persero) Tbk",
         "stockCode": "PGAS",
         "createdAt": "2024-05-10",
-        "dividend": 9.28
+        "dividend": "9.28"
     },
     {
         "id": 6,
         "stockName": "PT Hanjaya Mandala Sampoerna Tbk",
         "stockCode": "HMSP",
         "createdAt": "2024-05-10",
-        "dividend": 9.18
+        "dividend": "9.18"
+    },
+    {
+        "id": 7,
+        "stockName": "PT Bank Rakyat Indonesia Tbk.",
+        "stockCode": "BBRI",
+        "createdAt": "2024-05-10",
+        "dividend": "7.82"
+    },
+    {
+        "id": 8,
+        "stockName": "PT Bayan Resources Tbk.",
+        "stockCode": "BYAN",
+        "createdAt": "2024-05-10",
+        "dividend": "7.32"
+    },
+    {
+        "id": 9,
+        "stockName": "PT Bank Mandiri (Persero) Tbk.",
+        "stockCode": "BMRI",
+        "createdAt": "2024-05-10",
+        "dividend": "4.88"
+    },
+    {
+        "id": 10,
+        "stockName": "PT Telkom Indonesia (Persero) Tbk.",
+        "stockCode": "TLKM",
+        "createdAt": "2024-05-10",
+        "dividend": "4.30"
+    },    {
+        "id": 11,
+        "stockName": "PT Astra International Tbk.",
+        "stockCode": "ASII",
+        "createdAt": "2024-05-10",
+        "dividend": "2.79"
     }
 ]

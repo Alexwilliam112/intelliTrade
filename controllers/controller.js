@@ -40,23 +40,25 @@ class Controller {
             res.render("./pages/Home", { newsData })
 
         } catch (error) {
-            const newsData = [{
-                imageUrl : '',
-                date : '',
-                title : 'NOT FOUND',
-                description : `ERROR MESSAGE: ${error.message}`,
-                publisherLogo : '',
-                publisherName : '',
-                newsUrl : ''
-            }]
-            res.render("./pages/Home", { newsData })
             console.log(error);
+            res.send(error)
         }
     }
 
     static async renderDashboard(req, res) {
         try {
-            res.render("./pages/Dashboard")
+            const stocks = await Model.readStocks()
+            res.render("./pages/Dashboard", { stocks })
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async renderBuyOrders(req, res) {
+        try {
+            res.render("./pages/BuyOrders")
 
         } catch (error) {
             console.log(error);

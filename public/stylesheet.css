@@ -231,3 +231,83 @@
     margin-bottom: 40px;
     overflow-x: auto;
 }
+
+.viewButton {
+    color: #0074D0;
+    border: 2px solid #0074D0;
+    background-color: transparent;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    font-size: 12px;
+    padding: 8px 20px;
+    text-align: center;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.viewButton:hover {
+    color: #fff;
+    background-color: #0074D0;
+    border-color: #0074D0;
+}
+
+.addButton {
+    color: #229F0E;
+    border: 2px solid #229F0E;
+    background-color: transparent;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    font-size: 12px;
+    padding: 8px 20px;
+    text-align: center;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.addButton:hover {
+    color: #fff;
+    background-color: #229F0E;
+    border-color: #229F0E;
+}
+
+.cancelButton {
+    color: #E1A32A;
+    border: 2px solid #E1A32A;
+    background-color: transparent;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    font-size: 12px;
+    padding: 8px 20px;
+    text-align: center;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.cancelButton:hover {
+    color: #fff;
+    background-color: #E1A32A;
+    border-color: #E1A32A;
+}
+
+.deleteButton {
+    color: #E12A2A;
+    border: 2px solid #E12A2A;
+    background-color: transparent;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    font-size: 12px;
+    padding: 8px 20px;
+    text-align: center;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.deleteButton:hover {
+    color: #fff;
+    background-color: #E12A2A;
+    border-color: #E12A2A;
+}
