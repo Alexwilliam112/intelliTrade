@@ -1,14 +1,16 @@
 <%- include('../partials/Header.ejs', {title: 'Historical Details' }) %>
 
-    <div class="historicalContent">
-        <div style="font-size: 30px;">
-            MARKET TRADE DATA
+    <div style="background-color: #121A2C;">
+        <div class="historicalContent">
+            <div class="chartTitle">
+                MARKET TRADE DATA
+            </div>
+            <div id="candleChart" class="chartContainer"></div>
+            <div class="chartTitle" style="padding-top: 10px;">
+                TRADE VOLUME
+            </div>
+            <div id="barChart" class="chartContainer"></div>
         </div>
-        <div id="candleChart" style="height: auto; width: 1400px;"></div>
-        <div style="font-size: 30px;">
-            TRADE VOLUME
-        </div>
-        <div id="lineChart" style="height: auto; width: 1400px;"></div>
     </div>
 
     <div id="dataContainer" data-chartData="<%= historicalDatas %>"></div>
@@ -20,19 +22,35 @@
             if (historicalDatasElement) {
                 const historicalDatas = JSON.parse(historicalDatasElement.getAttribute('data-chartData'));
                 const dates = historicalDatas.map(el => el.date);
-                console.log(dates);
                 const close = historicalDatas.map(el => el.close);
                 const open = historicalDatas.map(el => el.open);
                 const high = historicalDatas.map(el => el.high);
                 const low = historicalDatas.map(el => el.low);
                 const volume = historicalDatas.map(el => el.volume);
 
+                const spreadMin = low.map((el) => {
+                    if (el !== 0) {
+                        return el
+                    }
+                })
+                const spreadMax = high.map((el) => {
+                    if (el !== 0) {
+                        return el
+                    }
+                })
+
                 const candleData = {
                     x: dates,
                     close: close,
-                    decreasing: { line: { color: '#FF0606' } },
+                    decreasing: {
+                        line: { color: '#FF0606' },
+                        width: 0.2
+                    },
                     high: high,
-                    increasing: { line: { color: '#1AFF06' } },
+                    increasing: {
+                        line: { color: '#1AFF06' },
+                        width: 0.2
+                    },
                     line: { color: 'rgba(31,119,180,1)', width: 1 },
                     low: low,
                     open: open,
@@ -41,7 +59,67 @@
                     yaxis: 'y'
                 };
 
-                let layout = {
+                const barData = [
+                    {
+                        x: dates,
+                        y: volume,
+                        type: 'bar',
+                        marker: {
+                            color: 'cyan'
+                        },
+                    }
+                ];
+
+                const layout1 = {
+                    dragmode: 'zoom',
+                    plot_bgcolor: "#202D4C",
+                    paper_bgcolor: "#121A2C",
+                    margin: {
+                        r: 10,
+                        t: 25,
+                        b: 40,
+                        l: 60
+                    },
+                    showlegend: false,
+                    xaxis: {
+                        autorange: true,
+                        domain: [0, 1],
+                        rangeselector: {
+                            x: 0,
+                            y: 1.2,
+                            xanchor: 'left',
+                            font: { size: 8 },
+                            buttons: [{
+                                step: 'month',
+                                stepmode: 'backward',
+                                count: 6,
+                                label: '1 Month'
+                            }, {
+                                step: 'month',
+                                stepmode: 'backward',
+                                count: 12,
+                                label: '1 Year'
+                            }, {
+                                step: 'all',
+                                label: 'All dates'
+                            }]
+                        },
+                        range: [dates[0], dates[dates.length - 1]],
+                        rangeslider: { range: [dates[0], dates[dates.length - 1]] },
+                        gridcolor: 'rgb(44, 57, 86)'
+                    },
+                    yaxis: {
+                        autorange: true,
+                        domain: [0, 1],
+                        range: [Math.min(...spreadMin), Math.max(...spreadMax)],
+                        type: 'linear',
+                        gridcolor: 'rgb(44, 57, 86)'
+                    }
+                };
+
+                const layout2 = {
+                    plot_bgcolor: "#202D4C",
+                    paper_bgcolor: "#121A2C",
                     dragmode: 'zoom',
                     margin: {
                         r: 10,
@@ -53,17 +131,45 @@
                     xaxis: {
                         autorange: true,
                         domain: [0, 1],
+                        rangeselector: {
+                            x: 0,
+                            y: 1.2,
+                            xanchor: 'left',
+                            font: { size: 8 },
+                            buttons: [{
+                                step: 'month',
+                                stepmode: 'backward',
+                                count: 6,
+                                label: '1 Month'
+                            }, {
+                                step: 'month',
+                                stepmode: 'backward',
+                                count: 12,
+                                label: '1 Year'
+                            }, {
+                                step: 'all',
+                                label: 'All dates'
+                            }]
+                        },
                         range: [dates[0], dates[dates.length - 1]],
-                        rangeslider: { range: [dates[0], dates[dates.length - 1]] }
+                        rangeslider: { range: [dates[0], dates[dates.length - 1]] },
+                        gridcolor: 'rgb(44, 57, 86)'
                     },
                     yaxis: {
-                        autorange: true,
-                        domain: [0, 1],
-                        range: [Math.min(...low), Math.max(...high)],
-                        type: 'linear'
+                        gridcolor: 'rgb(44, 57, 86)'
                     }
                 };
-                Plotly.newPlot('candleChart', [candleData], layout);
+
+                Plotly.newPlot('candleChart', [candleData], layout1), { displayModeBar: false };
+                Plotly.newPlot('barChart', barData, layout2)
+                    .then(gd => {
+                        gd.on('plotly_afterplot', () => {
+                            console.log('BAR GRAPH RENDERED');
+                        });
+                    })
+                    .catch(error => {
+                        console.error('BAR GRAPH ERROR:', error);
+                    })
             }
         });
     </script>
