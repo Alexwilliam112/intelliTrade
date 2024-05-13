@@ -2,27 +2,39 @@
 
     <div style="background-color: #121A2C; position: relative; padding-top: 120px; justify-content: center;">
 
-        <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md mx-10  "
-            style="width: auto">
+        <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md mx-10  " style="width: auto; padding-bottom: 0px; padding-top: 5px;">
             <div style="margin-left: 6px;">
-                <img style="height: 250px; width: auto;" src="<%= stockDetail.logo %>">
+                <img style="height: 280px; width: auto;" src="<%= stockDetail.logo %>">
             </div>
-            <div style="height: max-content; background-color: white; width: 1px; height: 250px; margin-left: 33px; margin-right: 13px;">
-                
+            <div
+                style="background-color: white; width: 1px; height: 280px; margin-left: 33px; margin-right: 13px;">
+
             </div>
             <div
                 class="bg-[#2C354C] rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal w-full">
                 <div class="mb-8">
                     <p class="text-sm text-gray-600 flex items-center">
-                    <p style="color: #F6F7FB;"><strong>IPO Listing Date:</strong> <%= stockDetail.ipoListingDate %></p>
+                    <p style="color: #F6F7FB;"><strong>IPO Listing Date:</strong>
+                        <%= stockDetail.ipoListingDate %>
                     </p>
-                    <div class="text-gray-900 font-bold text-xl mb-2" style="color: #F6F7FB;"><%= stockDetail.stockName %> (<%= stockDetail.stockCode %>)</div>
-                    <p style="color: #F6F7FB;"><strong>Address:</strong> <%= stockDetail.address %> </p><br>
-                    <p class="text-gray-700 text-base" style="color: #F6F7FB;"><%= stockDetail.about %></p>
+                    </p>
+                    <div class="text-gray-900 font-bold text-xl mb-2" style="color: #F6F7FB;">
+                        <%= stockDetail.stockName %> (<%= stockDetail.stockCode %>)
+                    </div>
+                    <p style="color: #F6F7FB;"><strong>Address:</strong>
+                        <%= stockDetail.address %>
+                    </p><br>
+                    <p class="text-gray-700 text-base" style="color: #F6F7FB;">
+                        <%= stockDetail.about %>
+                    </p>
                 </div>
                 <div class="text-gray-600 text-sm" style="color: #F6F7FB;">
                     <p style="color: #F6F7FB;"><strong>NPWP:</strong> 01.308.449.6-091.000</p>
-                    <p style="color: #F6F7FB;"><strong>IPO Securities Administration Bureau:</strong> PT. Raya Saham Registra</p>
+                    <p style="color: #F6F7FB;"><strong>IPO Securities Administration Bureau :</strong><%= stockDetail.securitiesBureau %></p>
+                </div>
+                <div style="width: 100%; height: auto; justify-content: right; display: flex; padding-top: 10px;">
+                    <button class="addButton">BUY ORDER</button>
+                    <button class="cancelButton">SELL ORDER</button>
                 </div>
             </div>
         </div>
@@ -30,7 +42,8 @@
         <div class="grid grid-cols-1 gap-6 p-10 mt-5 lg:grid-cols-2 xl:grid-cols-4">
             <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md">
                 <div>
-                    <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase" style="color: #F6F7FB;">
+                    <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase"
+                        style="color: #F6F7FB;">
                         IPO Fund Raised
                     </h6>
                     <span class="text-xl font-semibold" style="color: #F6F7FB;">
@@ -51,7 +64,8 @@
 
             <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md">
                 <div>
-                    <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase" style="color: #F6F7FB;">
+                    <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase"
+                        style="color: #F6F7FB;">
                         IPO Percentage
                     </h6>
                     <span class="text-xl font-semibold" style="color: #F6F7FB;">
@@ -72,10 +86,11 @@
 
             <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md">
                 <div>
-                    <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase" style="color: #F6F7FB;">
+                    <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase"
+                        style="color: #F6F7FB;">
                         Dividend Yield
                     </h6>
-                    <span class="text-xl font-semibold" style="color: #F6F7FB;"> 
+                    <span class="text-xl font-semibold" style="color: #F6F7FB;">
                         <%= stockDetail.dividend %>
                     </span>
                 </div>
@@ -92,7 +107,8 @@
 
             <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md">
                 <div>
-                    <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase" style="color: #F6F7FB;">
+                    <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase"
+                        style="color: #F6F7FB;">
                         IPO Offering Shares
                     </h6>
                     <span class="text-xl font-semibold" style="color: #F6F7FB;">
