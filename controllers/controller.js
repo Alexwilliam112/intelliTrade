@@ -79,6 +79,24 @@ class Controller {
             res.send(error)
         }
     }
+
+    static async buyPost(req, res) {
+        try {
+            
+
+        } catch (error) {
+            
+        }
+    }
+
+    static async sellPost(req, res) {
+        try {
+            
+
+        } catch (error) {
+            
+        }
+    }
 }
 
 module.exports = Controller

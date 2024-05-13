@@ -20,6 +20,8 @@ app.get('/signup', Controller.signupForm)
 app.get('/home', Controller.renderHome)
 app.get('/dashboard', Controller.renderDashboard)
 app.get('/dashboard/:id', Controller.stockDetails)
+app.post('/dashboard/:id/buyorder', Controller.buyPost)
+app.post('/dashboard/:id/sellorder', Controller.sellPost)
 app.get('/buyorders', Controller.renderBuyOrders)
 
 app.listen(PORT, () => {
