@@ -14,15 +14,8 @@ app.use(express.static('public'))
 app.use(favicon(path.join(__dirname, 'public', 'icons', 'logo.png')))
 
 //routing
-app.get('/', Controller.renderLandingPage)
-app.get('/login', Controller.loginForm)
-app.get('/signup', Controller.signupForm)
-app.get('/home', Controller.renderHome)
-app.get('/dashboard', Controller.renderDashboard)
-app.get('/dashboard/:id', Controller.stockDetails)
-app.post('/dashboard/:id/buyorder', Controller.buyPost)
-app.post('/dashboard/:id/sellorder', Controller.sellPost)
-app.get('/buyorders', Controller.renderBuyOrders)
+const router = require('./routers/index')
+app.use(router)
 
 app.listen(PORT, () => {
     console.log(`LOCALSERVER STARTED AT PORT ${PORT}`);

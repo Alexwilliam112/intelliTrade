@@ -56,7 +56,7 @@ class Controller {
         }
     }
 
-    static async renderBuyOrders(req, res) {
+    static async renderOrderSummary(req, res) {
         try {
             res.render("./pages/BuyOrders")
 
