@@ -17,17 +17,35 @@ class Stocks {
     #dividend
     #volume
     #createdAt
-    constructor(id, stockName, stockCode, dividend, volume, createdAt) {
+    #ipoListingDate
+    #ipoPercentage
+    #ipoFundRaised
+    constructor(id, stockName, stockCode, dividend, volume, createdAt, about, logo, npwp,
+        address, ipoFundRaised, ipoListingDate, ipoOfferingShares,
+        ipoPercentage, securitiesBureau) {
         this.id = id
         this.stockName = stockName
         this.stockCode = stockCode
         this.#dividend = dividend
         this.#volume = volume
         this.#createdAt = createdAt
+        this.about = about
+        this.logo = logo
+        this.npwp = npwp
+        this.address = address
+        this.#ipoFundRaised = ipoFundRaised
+        this.#ipoListingDate = ipoListingDate
+        this.ipoOfferingShares = ipoOfferingShares
+        this.#ipoPercentage = ipoPercentage
+        this.securitiesBureau = securitiesBureau
     }
 
     get dividend() {
         return `${this.#dividend}%`
+    }
+
+    get ipoPercentage() {
+        return `${this.#ipoPercentage}%`
     }
 
     get volume() {
@@ -42,6 +60,30 @@ class Stocks {
         return parts.join('');
     }
 
+    get ipoFundRaised() {
+        const rawInt = this.#ipoFundRaised.toString();
+        const parts = [];
+        for (let i = rawInt.length - 1; i >= 0; i--) {
+            parts.unshift(rawInt[i]);
+            if ((rawInt.length - i) % 3 === 0 && i !== 0) {
+                parts.unshift(',');
+            }
+        }
+        return "IDR   " + parts.join('');
+    }
+
+        get ipoFundRaised() {
+        const rawInt = this.#ipoFundRaised.toString();
+        const parts = [];
+        for (let i = rawInt.length - 1; i >= 0; i--) {
+            parts.unshift(rawInt[i]);
+            if ((rawInt.length - i) % 3 === 0 && i !== 0) {
+                parts.unshift(',');
+            }
+        }
+        return "IDR   " + parts.join('');
+    }
+
     get createdAt() {
         const date = this.#createdAt
         const options = {
@@ -49,7 +91,16 @@ class Stocks {
             month: 'numeric',
             day: 'numeric',
         }
+        return date.toLocaleDateString('id', options)
+    }
 
+    get ipoListingDate() {
+        const date = this.#ipoListingDate
+        const options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+        }
         return date.toLocaleDateString('id', options)
     }
 }
@@ -93,8 +144,12 @@ class Factory {
             publisherName, newsUrl)
     }
 
-    static createStocks(id, stockName, stockCode, dividend, volume, createdAt) {
-        return new Stocks(id, stockName, stockCode, dividend, volume, createdAt)
+    static createStocks(id, stockName, stockCode, dividend, volume, createdAt, about, logo, npwp,
+        address, ipoFundRaised, ipoListingDate, ipoOfferingShares,
+        ipoPercentage, securitiesBureau) {
+        return new Stocks(id, stockName, stockCode, dividend, volume, createdAt, about, logo, npwp,
+            address, ipoFundRaised, ipoListingDate, ipoOfferingShares,
+            ipoPercentage, securitiesBureau)
     }
 
     static createStockHistories(id, date, high, low, open, close, volume, StockId) {

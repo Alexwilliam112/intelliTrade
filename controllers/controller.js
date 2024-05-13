@@ -70,8 +70,9 @@ class Controller {
         try {
             const { id } = req.params
             const historicalDatas = await Model.readHistorical(id)
+            const stockDetail = await Model.findStock(id)
 
-            res.render("./pages/Historicals", { historicalDatas: JSON.stringify(historicalDatas) })
+            res.render("./pages/Historicals", { historicalDatas: JSON.stringify(historicalDatas), stockDetail: stockDetail })
 
         } catch (error) {
             console.log(error);

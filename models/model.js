@@ -55,6 +55,15 @@ class Model {
             "Stocks"."stockCode",
             "Stocks"."dividend",
             "Stocks"."createdAt",
+            "Stocks"."about",
+            "Stocks"."logo",
+            "Stocks"."npwp",
+            "Stocks"."address",
+            "Stocks"."ipoFundRaised",
+            "Stocks"."ipoListingDate",
+            "Stocks"."ipoOfferingShares",
+            "Stocks"."ipoPercentage",
+            "Stocks"."securitiesBureau",
             "recentVolume"."volume"
         FROM
             "Stocks"
@@ -82,7 +91,10 @@ class Model {
 
             const data = (await pool.query(sql)).rows
             const stocks = data.map((el) => {
-                return Factory.createStocks(el.id, el.stockName, el.stockCode, el.dividend, el.volume, el.createdAt)
+                return Factory.createStocks(el.id, el.stockName, el.stockCode, el.dividend, el.volume, el.createdAt,
+                    el.about, el.logo, el.npwp, el.address, el.ipoFundRaised, el.ipoListingDate, el.ipoOfferingShares,
+                    el.ipoPercentage, el.securitiesBureau
+                )
             })
 
             return stocks
@@ -111,6 +123,21 @@ class Model {
             })
 
             return historicals
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async findStock(id) {
+        try {
+            const stocks = await Model.readStocks()
+            const stockFound = stocks.find((el) => {
+
+                return el.id === Number(id)
+            })
+
+            return stockFound
 
         } catch (error) {
             console.log(error);
