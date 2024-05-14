@@ -7,22 +7,33 @@ async function seeding() {
     try {
         const stocks = JSON.parse(await readFile('./data/stocks.json', 'utf-8'))
             .map((el) => {
-                const { stockName, stockCode, dividend, createdAt, about, logo, npwp,
-                    address, ipo_fund_raised, ipo_listing_date, ipo_offering_shares,
-                    ipo_percentage, ipo_securities_administration_bureau
+                const { stockName, stockCode, dividend, createdAt
                 } = el
-                return `('${stockName}', '${stockCode}', '${dividend}', '${createdAt}',
-                '${about}', '${logo}', '${npwp}', '${address}',
-                '${ipo_fund_raised}', '${ipo_listing_date}', '${ipo_offering_shares}',
-                '${ipo_percentage}', '${ipo_securities_administration_bureau}')`
+                return `('${stockName}', '${stockCode}', '${dividend}', '${createdAt}')`
             }).join(',\n')
 
+        const companyProfiles = JSON.parse(await readFile('./data/stocks.json', 'utf-8'))
+        .map((el) => {
+            const {id, about, logo, npwp,
+                address, ipo_fund_raised, ipo_listing_date, ipo_offering_shares,
+                ipo_percentage, ipo_securities_administration_bureau
+            } = el
+            return `('${about}', '${logo}', '${npwp}', '${address}',
+            '${ipo_fund_raised}', '${ipo_listing_date}', '${ipo_offering_shares}',
+            '${ipo_percentage}', '${ipo_securities_administration_bureau}', '${id}')`
+        }).join(',\n')
+
         const insertStocks = `
-            INSERT INTO "Stocks" ("stockName", "stockCode", "dividend", "createdAt",
-                "about", "logo", "npwp", "address", "ipoFundRaised", "ipoListingDate",
-                "ipoOfferingShares", "ipoPercentage", "securitiesBureau")
+            INSERT INTO "Stocks" ("stockName", "stockCode", "dividend", "createdAt")
             VALUES
             ${stocks};
+        `;
+
+        const insertCompanyProfiles = `
+            INSERT INTO "CompanyProfiles" ("about", "logo", "npwp", "address", "ipoFundRaised", "ipoListingDate",
+                "ipoOfferingShares", "ipoPercentage", "securitiesBureau", "StockId")
+            VALUES
+            ${companyProfiles};
         `;
 
         const stockHistories = JSON.parse(await readFile('./data/stockHistories.json', 'utf-8'))
@@ -56,6 +67,9 @@ async function seeding() {
 
         await pool.query(insertStocks)
         console.log(`SUCCESS: SEEDED TABLE "Stocks"`);
+
+        await pool.query(insertCompanyProfiles)
+        console.log(`SUCCESS: SEEDED TABLE "CompanyProfiles"`);
 
         await pool.query(insertStockHistories)
         console.log(`SUCCESS: SEEDED TABLE "StockHistories"`);

@@ -55,15 +55,15 @@ class Model {
             "Stocks"."stockCode",
             "Stocks"."dividend",
             "Stocks"."createdAt",
-            "Stocks"."about",
-            "Stocks"."logo",
-            "Stocks"."npwp",
-            "Stocks"."address",
-            "Stocks"."ipoFundRaised",
-            "Stocks"."ipoListingDate",
-            "Stocks"."ipoOfferingShares",
-            "Stocks"."ipoPercentage",
-            "Stocks"."securitiesBureau",
+            "CompanyProfiles"."about",
+            "CompanyProfiles"."logo",
+            "CompanyProfiles"."npwp",
+            "CompanyProfiles"."address",
+            "CompanyProfiles"."ipoFundRaised",
+            "CompanyProfiles"."ipoListingDate",
+            "CompanyProfiles"."ipoOfferingShares",
+            "CompanyProfiles"."ipoPercentage",
+            "CompanyProfiles"."securitiesBureau",
             "recentVolume"."volume"
         FROM
             "Stocks"
@@ -87,7 +87,11 @@ class Model {
                     "volume"
             ) AS "recentVolume"
             ON 
-                "Stocks".id = "recentVolume"."StockId";`
+                "Stocks"."id" = "recentVolume"."StockId"
+            JOIN
+                "CompanyProfiles"
+            ON
+                "Stocks"."id" = "CompanyProfiles"."StockId"`
 
             const data = (await pool.query(sql)).rows
             const stocks = data.map((el) => {
