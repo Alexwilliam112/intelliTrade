@@ -13,7 +13,7 @@ async function buyOrder() {
         VALUES
         ('alex112', '12345678', 'admin')`
 
-        const insertBuy = `
+        const insertOrders = `
         INSERT INTO "MarketOrders" (
             "type",
             "quantity",
@@ -31,13 +31,25 @@ async function buyOrder() {
 
         const insertPortfolio = `
         INSERT INTO "Portfolios" (
-            
-        )`
+            "quantity",
+            "UserId",
+            "StockId"
+        )
+        VALUES
+        ('230', '1', '2'),
+        ('230', '1', '3'),
+        ('230', '1', '4'),
+        ('230', '1', '5'),
+        ('230', '1', '8'),
+        ('230', '1', '11')
+        `
 
         await pool.query(insertUser)
         console.log(`INSERTED ADMIN AS USER`);
-        await pool.query(insertBuy)
+        await pool.query(insertOrders)
         console.log(`INSERTED TRIAL DATA TO MARKET LISTING`);
+        await pool.query(insertPortfolio)
+        console.log(`INSERTED TRIAL DATA TO PORTFOLIO`);
 
     } catch (error) {
         console.log(error);

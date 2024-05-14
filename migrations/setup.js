@@ -77,7 +77,6 @@ async function setup() {
         const createPortfolios = `
         CREATE TABLE IF NOT EXISTS "Portfolios" (
             "id" SERIAL PRIMARY KEY,
-            "value" INTEGER NOT NULL,
             "quantity" INTEGER NOT NULL,
             "UserId" INTEGER NOT NULL,
             "StockId" INTEGER NOT NULL,

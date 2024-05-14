@@ -37,6 +37,26 @@ class MarketOrders {
     }
 }
 
+class Portfolio {
+    constructor(id, quantity, StockId, stockCode, stockName, dividend, currentPrice) {
+        this.id = id
+        this.quantity = quantity
+        this.StockId = StockId
+        this.stockCode = stockCode
+        this.stockName = stockName
+        this.dividend = dividend
+        this.currentPrice = currentPrice
+    }
+
+    get estimateDividend() {
+        return this.quantity * this.dividend
+    }
+
+    get estimateValue() {
+        return this.quantity * this.currentPrice
+    }
+}
+
 class Stocks {
     #dividend
     #volume
@@ -182,6 +202,10 @@ class Factory {
 
     static createMarketOrders(id, type, qty, price, expiration, StockId, stockCode, UserId, status) {
         return new MarketOrders(id, type, qty, price, expiration, StockId, stockCode, UserId, status)
+    }
+
+    static createPortfolios(id, quantity, StockId, stockCode, stockName, dividend, currentPrice) {
+        return new Portfolio(id, quantity, StockId, stockCode, stockName, dividend, currentPrice)
     }
 }
 

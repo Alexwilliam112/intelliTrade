@@ -91,7 +91,8 @@ class Model {
             JOIN
                 "CompanyProfiles"
             ON
-                "Stocks"."id" = "CompanyProfiles"."StockId"`
+                "Stocks"."id" = "CompanyProfiles"."StockId"
+            `
 
             const data = (await pool.query(sql)).rows
             const stocks = data.map((el) => {
@@ -204,6 +205,50 @@ class Model {
             })
 
             return orders
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async readPortfolio(UserId) {
+        try {
+            const sql = `
+            SELECT
+            "Portfolios"."id",
+            "Portfolios"."quantity",
+            "Portfolios"."StockId",
+            "Stocks"."stockCode",
+            "Stocks"."stockName",
+            "Stocks"."dividend",
+            (
+                SELECT
+                    "close"
+                FROM
+                    "StockHistories"
+                WHERE
+                    "StockHistories"."StockId" = "Portfolios"."StockId"
+                ORDER BY
+                    "date" DESC
+                LIMIT
+                    1
+            ) AS "currentPrice"
+            FROM
+                "Portfolios"
+            JOIN
+                "Stocks"
+            ON
+                "Stocks"."id" = "Portfolios"."StockId"
+            WHERE
+                "Portfolios"."UserId" = ${UserId}
+            `
+
+            const portfolioList = (await pool.query(sql)).rows.map((el) => {
+                return Factory.createPortfolios(el.id, el.quantity, el.StockId, el.stockCode,
+                    el.stockName, el.dividend, el.currentPrice)
+            })
+
+            return portfolioList
 
         } catch (error) {
             console.log(error);

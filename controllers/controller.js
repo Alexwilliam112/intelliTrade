@@ -60,6 +60,7 @@ class Controller {
         try {
             const orders = await Model.readOrders()
             const stocks = await Model.readStocks()
+            const portfolios = await Model.readPortfolio(1)
             res.render("./pages/Dashboard", { orders, stocks })
 
         } catch (error) {
@@ -73,8 +74,13 @@ class Controller {
             const { id } = req.params
             const historicalDatas = await Model.readHistorical(id)
             const stockDetail = await Model.findStock(id)
+            const stocks = await Model.readStocks()
 
-            res.render("./pages/Historicals", { historicalDatas: JSON.stringify(historicalDatas), stockDetail: stockDetail })
+            res.render("./pages/Historicals", {
+                historicalDatas: JSON.stringify(historicalDatas),
+                stockDetail: stockDetail,
+                stocks
+            })
 
         } catch (error) {
             console.log(error);
