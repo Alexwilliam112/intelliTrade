@@ -25,9 +25,13 @@ async function buyOrder() {
         )
         VALUES
         ('Buy_Order', '110', '5200', '2024-07-01', '1', '2', 'Open'),
-        ('Buy_Order', '170', '4310', '2024-07-01', '1', '2', 'Open'),
-        ('Sell_Order', '81', '7890', '2024-07-01', '1', '2', 'Open'),
-        ('Sell_Order', '74', '2210', '2024-07-01', '1', '2', 'Open')`
+        ('Buy_Order', '170', '4310', '2024-07-01', '1', '3', 'Open'),
+        ('Sell_Order', '81', '7890', '2024-07-01', '1', '11', 'Open'),
+        ('Sell_Order', '74', '2210', '2024-07-01', '1', '4', 'Open'),
+        ('Sell_Order', '81', '7890', '2024-07-01', '1', '1', 'Processed'),
+        ('Buy_Order', '74', '2210', '2024-07-01', '1', '1', 'Processed'),
+        ('Buy_Order', '81', '7890', '2024-07-01', '1', '3', 'Completed'),
+        ('Sell_Order', '74', '2210', '2024-07-01', '1', '7', 'Completed')`
 
         const insertPortfolio = `
         INSERT INTO "Portfolios" (

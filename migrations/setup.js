@@ -15,7 +15,7 @@ async function setup() {
         DROP TYPE IF EXISTS "OrderType"`
 
         const createEnum_OrderStatus = `
-        CREATE TYPE "OrderStatus" AS ENUM ('Open', 'Complete')`
+        CREATE TYPE "OrderStatus" AS ENUM ('Open', 'Processed', 'Completed')`
         const dropEnum_OrderStatus = `
         DROP TYPE IF EXISTS "OrderStatus"`
 

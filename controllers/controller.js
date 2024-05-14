@@ -58,10 +58,38 @@ class Controller {
 
     static async renderDashboard(req, res) {
         try {
+            let status_filter = req.query.status
+            if (!status_filter) {
+                status_filter = 'Open'
+            }
+
+            let tabState = {
+                open: '',
+                processed: '',
+                completed: ''
+            }
+
+            switch (status_filter) {
+                case 'Open': {
+                    tabState.open = 'Selected'
+                    break;
+                }
+
+                case 'Processed': {
+                    tabState.processed = 'Selected'
+                    break;
+                }
+
+                case 'Completed': {
+                    tabState.completed = 'Selected'
+                    break;
+                }
+            }
+
             const orders = await Model.readOrders()
             const stocks = await Model.readStocks()
             const portfolios = await Model.readPortfolio(1) //TODO
-            res.render("./pages/Dashboard", { orders, stocks, portfolios })
+            res.render("./pages/Dashboard", { orders, stocks, portfolios, status_filter, tabState })
 
         } catch (error) {
             console.log(error);
