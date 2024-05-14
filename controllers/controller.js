@@ -45,10 +45,10 @@ class Controller {
         }
     }
 
-    static async renderDashboard(req, res) {
+    static async renderMarket(req, res) {
         try {
             const stocks = await Model.readStocks()
-            res.render("./pages/Dashboard", { stocks })
+            res.render("./pages/Market", { stocks })
 
         } catch (error) {
             console.log(error);
@@ -56,9 +56,9 @@ class Controller {
         }
     }
 
-    static async renderOrderSummary(req, res) {
+    static async renderDashboard(req, res) {
         try {
-            res.render("./pages/BuyOrders")
+            res.render("./pages/Dashboard")
 
         } catch (error) {
             console.log(error);

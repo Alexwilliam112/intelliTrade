@@ -3,7 +3,7 @@
     <div id="overlayBuy" class="overlay">
         <div class="overlay-content">
             <h1 style="margin-top: 10px; font-size: 20px;">BUY ORDER</h1>
-            <form action="/dashboard/:id/buyorder" method="post">
+            <form action="/market/:id/buyorder" method="post">
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantityBuy" name="quantity" style="padding-left: 20px; margin-top: 5px;">
                 <label for="price" style=" margin-top: 15px;">Limit Price:</label>
@@ -21,7 +21,7 @@
     <div id="overlaySell" class="overlay">
         <div class="overlay-content">
             <h1 style="margin-top: 10px; font-size: 20px;">SELL ORDER</h1>
-            <form action="/dashboard/:id/sellorder" method="post">
+            <form action="/market/:id/sellorder" method="post">
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantitySell" name="quantity" style="padding-left: 20px; margin-top: 5px;">
                 <label for="price" style=" margin-top: 15px;">Limit Price:</label>

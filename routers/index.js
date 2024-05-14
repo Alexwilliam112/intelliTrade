@@ -2,13 +2,13 @@
 
 const router = require('express').Router()
 const Controller = require('../controllers/controller')
-const dashboardRouters = require('./dashboards')
+const marketRouters = require('./markets')
 const authenticationRouters = require('./authentications')
-const orderSummaries = require('./orderSummaries')
+const dashboardRouters = require('./Dashboard')
 
 router.get('/', Controller.renderLandingPage)
 router.get('/home', Controller.renderHome)
+router.use('/market', marketRouters)
 router.use('/dashboard', dashboardRouters)
-router.use('/ordersummary', orderSummaries)
 
 module.exports = router
