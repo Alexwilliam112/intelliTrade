@@ -137,15 +137,11 @@
                 <tr>
                   <th
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Order Type
+                    no.
                   </th>
                   <th
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Order No.
-                  </th>
-                  <th
-                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    userId
+                    Company Name
                   </th>
                   <th
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
@@ -157,60 +153,45 @@
                   </th>
                   <th
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Limit
+                    Est. Dividend
                   </th>
                   <th
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Status
+                    Est. Value
                   </th>
                   <th
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Expiration
-                  </th>
-                  <th
-                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    Action
+                    Current Price
                   </th>
                 </tr>
               </thead>
 
 
               <tbody>
-                <% orders.forEach(el=> { %>
+                <% portfolios.forEach(el=> { %>
                   <tr>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.type %>
+                      <%= el.id %>
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
-                      <%= el.orderNumber %>
+                      <%= el.stockName %>
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.UserId %>
+                      <%= el.stockCode %>
                     </td>
                     <td
                       class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                      <%= el.stockCode %>
+                      <%= el.quantity %>
                     </td>
 
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.qty %>
+                      <%= el.estimateDividend %>
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.price %>
+                      <%= el.estimateValue %>
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.status %>
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.expirationDate %>
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
-                      <a href="/dashboard/accept/<%= el.orderNumber %>" class="viewButton"
-                        style="font-size: 10px; padding-left: 10px; padding-right: 12px;">ACCEPT</a>
-                      <a href="/dashboard/edit/<%= el.orderNumber %>" class="cancelButton"
-                        style="font-size: 10px; padding-left: 10px; padding-right: 12px;">EDIT</a>
-                      <a href="/dashboard/delete/<%= el.orderNumber %>" class="deleteButton"
-                        style="font-size: 10px; padding-left: 10px; padding-right: 12px;">DELETE</a>
+                      <%= el.currentPrice %>
                     </td>
                   </tr>
                   <% }) %>

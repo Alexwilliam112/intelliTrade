@@ -60,8 +60,8 @@ class Controller {
         try {
             const orders = await Model.readOrders()
             const stocks = await Model.readStocks()
-            const portfolios = await Model.readPortfolio(1)
-            res.render("./pages/Dashboard", { orders, stocks })
+            const portfolios = await Model.readPortfolio(1) //TODO
+            res.render("./pages/Dashboard", { orders, stocks, portfolios })
 
         } catch (error) {
             console.log(error);
