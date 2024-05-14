@@ -8,7 +8,8 @@ async function setup() {
         CREATE TABLE IF NOT EXISTS "Users" (
             "id" SERIAL PRIMARY KEY,
             "username" VARCHAR NOT NULL,
-            "passHash" VARCHAR NOT NULL
+            "passHash" VARCHAR NOT NULL,
+            "role" VARCHAR NOT NULL
         );`
         const dropUsers = `
         DROP TABLE IF EXISTS "Users";`
@@ -61,11 +62,14 @@ async function setup() {
         const dropPortfolios = `
         DROP TABLE IF EXISTS "Portfolios";`
 
-        const createBuyOrders = `
-        CREATE TABLE IF NOT EXISTS "BuyOrders" (
+        const createMarketOrders = `
+        CREATE TABLE IF NOT EXISTS "MarketOrders" (
             "id" SERIAL PRIMARY KEY,
-            "buyVolume" INTEGER NOT NULL,
-            "buyPrice" INTEGER NOT NULL,
+            "type" VARCHAR NOT NULL,
+            "quantity" INTEGER NOT NULL,
+            "price" INTEGER NOT NULL,
+            "expiration" DATE NOT NULL,
+            "status" VARCHAR NOT NULL,
             "UserId" INTEGER NOT NULL,
             "StockId" INTEGER NOT NULL,
                 FOREIGN KEY ("UserId")
@@ -73,19 +77,19 @@ async function setup() {
                 FOREIGN KEY ("StockId")
                 REFERENCES "Stocks" ("id")
         );`
-        const dropBuyOrders = `
-        DROP TABLE IF EXISTS "BuyOrders";`
+        const dropMarketOrders = `
+        DROP TABLE IF EXISTS "MarketOrders";`
 
-        await pool.query(dropBuyOrders)
-        console.log(`SUCCESS: DROPPED TABLE "BuyOrders"`);
+        await pool.query(dropMarketOrders)
+        console.log(`SUCCESS: DROPPED TABLE "MarketOrders"`);
         await pool.query(dropStockHistories)
         console.log(`SUCCESS: DROPPED TABLE "StockHistories"`);
-        await pool.query(dropStocks)
-        console.log(`SUCCESS: DROPPED TABLE "Stocks"`);
         await pool.query(dropPortfolios)
         console.log(`SUCCESS: DROPPED TABLE "Portfolios"`);
         await pool.query(dropUsers)
         console.log(`SUCCESS: DROPPED TABLE "Users"`);
+        await pool.query(dropStocks)
+        console.log(`SUCCESS: DROPPED TABLE "Stocks"`);
 
         await pool.query(createUsers)
         console.log(`SUCCESS: CREATED TABLE "Users"`);
@@ -95,8 +99,8 @@ async function setup() {
         console.log(`SUCCESS: CREATED TABLE "Stocks"`);
         await pool.query(createStockHistories)
         console.log(`SUCCESS: CREATED TABLE "StockHistories"`);
-        await pool.query(createBuyOrders)
-        console.log(`SUCCESS: CREATED TABLE "BuyOrders"`);
+        await pool.query(createMarketOrders)
+        console.log(`SUCCESS: CREATED TABLE "MarketOrders"`);
 
     } catch (error) {
         console.log(error);

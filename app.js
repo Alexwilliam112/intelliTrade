@@ -1,6 +1,5 @@
 'use strict'
 
-const Controller = require("./controllers/controller")
 const favicon = require('serve-favicon')
 const path = require('path')
 const express = require('express')

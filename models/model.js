@@ -143,6 +143,68 @@ class Model {
             console.log(error);
         }
     }
+
+    static async readOrders(UserId) {
+        try {
+            let sql = ''
+            if (!UserId) {
+                sql = `
+                SELECT
+                    "MarketOrders"."id",
+                    "MarketOrders"."quantity",
+                    "MarketOrders"."price",
+                    "MarketOrders"."expiration",
+                    "MarketOrders"."type",
+                    "MarketOrders"."StockId",
+                    "Stocks"."stockCode",
+                    "Users"."id" AS "UserId",
+                    "MarketOrders"."status"
+                FROM
+                    "MarketOrders"
+                JOIN
+                    "Stocks"
+                ON
+                    "Stocks"."id" = "MarketOrders"."StockId"
+                JOIN
+                    "Users"
+                ON
+                    "Users"."id" = "MarketOrders"."UserId"`
+            } else {
+                sql = `
+                SELECT
+                    "MarketOrders"."id",
+                    "MarketOrders"."quantity",
+                    "MarketOrders"."price",
+                    "MarketOrders"."expiration",
+                    "MarketOrders"."type",
+                    "MarketOrders"."StockId",
+                    "Stocks"."stockCode",
+                    "Users"."id" AS "UserId",
+                    "MarketOrders"."status"
+                FROM
+                    "MarketOrders"
+                JOIN
+                    "Stocks"
+                ON
+                    "Stocks"."id" = "MarketOrders"."StockId"
+                JOIN
+                    "Users"
+                ON
+                    "Users"."id" = "MarketOrders"."UserId"
+                WHERE 
+                    "MarketOrders"."UserId" = ${id}`
+            }
+
+            const orders = (await pool.query(sql)).rows.map((el) => {
+                return Factory.createMarketOrders(el.id, el.type, el.quantity, el.price, el.expiration, el.StockId, el.stockCode, el.UserId, el.status)
+            })
+
+            return orders
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 module.exports = Model

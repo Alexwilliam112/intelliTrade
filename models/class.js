@@ -13,6 +13,30 @@ class News {
     }
 }
 
+class MarketOrders {
+    constructor(id, type, qty, price, expiration, StockId, stockCode, UserId, status) {
+        this.orderNumber = id
+        this.type = type
+        this.qty = qty
+        this.price = price
+        this.expiration = expiration
+        this.StockId = StockId
+        this.stockCode = stockCode
+        this.UserId = UserId
+        this.status = status
+    }
+
+    get expirationDate() {
+        const date = this.expiration
+        const options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+        }
+        return date.toLocaleDateString('id', options)
+    }
+}
+
 class Stocks {
     #dividend
     #volume
@@ -154,6 +178,10 @@ class Factory {
 
     static createStockHistories(id, date, high, low, open, close, volume, StockId) {
         return new StockHistories(id, date, high, low, open, close, volume, StockId)
+    }
+
+    static createMarketOrders(id, type, qty, price, expiration, StockId, stockCode, UserId, status) {
+        return new MarketOrders(id, type, qty, price, expiration, StockId, stockCode, UserId, status)
     }
 }
 
