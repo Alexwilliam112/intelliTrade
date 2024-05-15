@@ -22,4 +22,9 @@ module.exports = class ErrorValidation {
         this.error = true
         this[property] = `Maximum date chosen is today.`
     }
+
+    errorPassword(property) {
+        this.error = true
+        this[property] = `Password and retyped password are incorrect.`
+    }
 }

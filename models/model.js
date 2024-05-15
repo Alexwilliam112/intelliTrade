@@ -1,5 +1,6 @@
 'use strict'
 
+const ErrorValidation = require('./ErrorClass')
 const Factory = require('./class')
 const pool = require('../config/connection')
 const axios = require('axios')
@@ -10,7 +11,23 @@ class Model {
 
     static async handleSignup(username, password, rePassword, email) {
         try {
+            const signupValidation = new ErrorValidation([usernameVal, passwordVal, emailVal])
+
+            if(!username) signupValidation.errorEmpty('usernameVal')
+            if(!email) signupValidation.errorEmpty('emailVal')
+            if(!password || !rePassword) signupValidation.errorEmpty('passwordVal')
+            if(password !== rePassword) signupValidation.errorPassword('passwordVal')
+            if(username.length < 5) signupValidation.errorLength('usernameVal', 5)
+            if(password.length < 8 || password.length < 8) signupValidation.errorLength('passwordVal', 8)
+            //TODO EMAIL VALIDATION IS EMAIL
+            //TODO USERNAME isUnique VALIDATION
+
+            if(signupValidation.status) throw signupValidation
+
             
+
+            const query = `
+            INSERT INTO "Users"`
 
         } catch (error) {
             throw error
