@@ -1,10 +1,15 @@
 'use strict'
 
+const express = require('express')
+const session = require('express-session')
+
+const app = express()
+const router = require('./routers/index')
+const PORT = 3002
+
 const favicon = require('serve-favicon')
 const path = require('path')
-const express = require('express')
-const app = express()
-const PORT = 3002
+
 
 //config
 app.set('view engine', 'ejs')
@@ -12,8 +17,15 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(favicon(path.join(__dirname, 'public', 'icons', 'logo.png')))
 
+// session config
+app.use(session({
+    secret: 'IntelliTrade',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, sameSite: false },
+}))
+
 //routing
-const router = require('./routers/index')
 app.use(router)
 
 app.listen(PORT, () => {
