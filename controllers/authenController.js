@@ -26,7 +26,14 @@ module.exports = class AuthenController {
 
     static async handleLogin(req, res) {
         try {
+            const {username, password} = req.body
+            const user = await Model.handleLogin(username, password)
 
+            delete user.passHash
+            req.session.user = user
+            console.log(req.session);
+
+            res.redirect('/dashboard')
 
         } catch (error) {
             console.log(error);
@@ -71,6 +78,16 @@ module.exports = class AuthenController {
             let newsData = await Model.getNews()
             res.render("./pages/Home", { newsData })
 
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async renderAdmin(req, res) {
+        try {
+            
+            
         } catch (error) {
             console.log(error);
             res.send(error)

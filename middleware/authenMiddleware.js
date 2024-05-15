@@ -6,23 +6,20 @@ module.exports = class AuthenMiddleware {
         if (!req.session.user) {
             return res.redirect('/')
         }
-
         next()
     }
 
     static isLoggedOut(req, res, next) {
-        if (!req.session.user) {
+        if (req.session.user) {
             return res.redirect('/home')
         }
-
         next()
     }
 
     static isAdmin(req, res, next) {
-        if (req.session.role !== 'admin') {
+        if (req.session.user.role !== 'admin') {
             return res.redirect('/home')
         }
-
         next()
     }
 

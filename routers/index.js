@@ -4,19 +4,20 @@ const router = require('express').Router()
 const AuthenController = require('../controllers/authenController')
 const marketRouters = require('./marketRouter')
 const dashboardRouters = require('./dashboardRouter')
+const AuthenMiddleware = require('../middleware/authenMiddleware')
 
-router.get('/', AuthenController.renderLandingPage)
+router.get('/', AuthenMiddleware.isLoggedOut, AuthenController.renderLandingPage)
 
-router.get('/login', AuthenController.renderLogin)
-router.post('/login', AuthenController.handleLogin)
-router.get('/signup', AuthenController.renderSignup)
-router.post('/signup', AuthenController.handleSignup)
+router.get('/login', AuthenMiddleware.isLoggedOut, AuthenController.renderLogin)
+router.post('/login', AuthenMiddleware.isLoggedOut, AuthenController.handleLogin)
+router.get('/signup', AuthenMiddleware.isLoggedOut, AuthenController.renderSignup)
+router.post('/signup', AuthenMiddleware.isLoggedOut, AuthenController.handleSignup)
 
-router.get('/home', AuthenController.renderHome)
+router.get('/home', AuthenMiddleware.isLoggedIn, AuthenController.renderHome)
+router.get('/admin', AuthenMiddleware.isAdmin, AuthenController.renderAdmin)
 
-
-router.use('/market', marketRouters)
-router.use('/dashboard', dashboardRouters)
+router.use('/market', AuthenMiddleware.isLoggedIn, marketRouters)
+router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)
 // route error handler
 
 module.exports = router

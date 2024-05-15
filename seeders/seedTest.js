@@ -11,7 +11,7 @@ async function buyOrder() {
             "role"
         )
         VALUES
-        ('alex112', '12345678', 'admin')`
+        ('admin', '$2b$10$udZrfu0rgObDK29exO/8kuCxSt8tupL9Af9ubOagFy8gHECwZJLaC', 'admin')`
 
         const insertOrders = `
         INSERT INTO "MarketOrders" (

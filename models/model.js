@@ -10,20 +10,50 @@ const apiKey_production = ''
 
 class Model {
 
+    static async handleLogin(username, password) {
+        try {
+            const loginValidation = new ErrorValidation(['usernameVal', 'passwordVal'])
+            if (!username) loginValidation.errorEmpty('usernameVal')
+            if (!password) loginValidation.errorEmpty('passwordVal')
+            if (loginValidation.status) throw loginValidation
+
+            const queryHash = `
+            SELECT
+                *
+            FROM
+                "Users"
+            WHERE
+                "Users"."username" = '${username}'
+            `
+
+            const user = (await pool.query(queryHash)).rows[0]
+            if (!user) throw `Account not found.`
+            console.log(user);
+            if(bcryptjs.compareSync(password, user.passHash)) {
+                return user
+            } else {
+                throw `Password is incorrect.`
+            }
+
+        } catch (error) {
+            throw error
+        }
+    }
+
     static async handleSignup(username, password, rePassword, email) {
         try {
             const signupValidation = new ErrorValidation(['usernameVal', 'passwordVal', 'emailVal'])
 
-            if(!username) signupValidation.errorEmpty('usernameVal')
-            if(!email) signupValidation.errorEmpty('emailVal')
-            if(!password || !rePassword) signupValidation.errorEmpty('passwordVal')
-            if(password !== rePassword) signupValidation.errorPassword('passwordVal')
-            if(username.length < 5) signupValidation.errorLength('usernameVal', 5)
-            if(password.length < 8 || password.length < 8) signupValidation.errorLength('passwordVal', 8)
+            if (!username) signupValidation.errorEmpty('usernameVal')
+            if (!email) signupValidation.errorEmpty('emailVal')
+            if (!password || !rePassword) signupValidation.errorEmpty('passwordVal')
+            if (password !== rePassword) signupValidation.errorPassword('passwordVal')
+            if (username.length < 5) signupValidation.errorLength('usernameVal', 5)
+            if (password.length < 8) signupValidation.errorLength('passwordVal', 8)
             //TODO EMAIL VALIDATION IS EMAIL
             //TODO USERNAME isUnique VALIDATION
 
-            if(signupValidation.status) throw signupValidation
+            if (signupValidation.status) throw signupValidation
 
             const salt = bcryptjs.genSaltSync(10)
             const hash = bcryptjs.hashSync(password, salt)
