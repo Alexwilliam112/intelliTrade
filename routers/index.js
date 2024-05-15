@@ -1,18 +1,20 @@
 'use strict'
 
 const router = require('express').Router()
-const Controller = require('../controllers/controller')
-const marketRouters = require('./markets')
-const dashboardRouters = require('./Dashboard')
+const AuthenController = require('../controllers/authenController')
+const marketRouters = require('./marketRouter')
+const dashboardRouters = require('./dashboardRouter')
 
-router.get('/', Controller.renderLandingPage)
+router.get('/', AuthenController.renderLandingPage)
 
-// auth middleware
-// if req.session => next
-router.get('/login', Controller.loginForm)
-router.get('/signup', Controller.signupForm)
+router.get('/login', AuthenController.renderLogin)
+router.post('/login', AuthenController.handleLogin)
+router.get('/signup', AuthenController.renderSignup)
+router.post('/signup', AuthenController.handleSignup)
 
-router.get('/home', Controller.renderHome)
+router.get('/home', AuthenController.renderHome)
+
+
 router.use('/market', marketRouters)
 router.use('/dashboard', dashboardRouters)
 // route error handler

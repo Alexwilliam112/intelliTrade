@@ -8,6 +8,15 @@ const apiKey_production = ''
 
 class Model {
 
+    static async handleSignup(username, password, rePassword, email) {
+        try {
+            
+
+        } catch (error) {
+            throw error
+        }
+    }
+
     static async getNews() {
         try {
             const req = `https://api.goapi.io/stock/idx/news`

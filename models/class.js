@@ -170,13 +170,9 @@ class StockHistories {
         };
 
         const stringDate = dateFormat.toLocaleDateString('en-US', options).replace(/\//g, '-');
-
         const parts = stringDate.split('-');
-
         const formattedDate = parts[2] + '-' + parts[0] + '-' + parts[1];
-
         return formattedDate;
-
     }
 }
 
