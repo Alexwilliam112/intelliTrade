@@ -3,6 +3,7 @@
 const ErrorValidation = require('./ErrorClass')
 const Factory = require('./class')
 const pool = require('../config/connection')
+const bcryptjs = require('bcrypt')
 const axios = require('axios')
 // const apiKey_dev = '76822e86-c694-5fd9-d618-46feac4a'
 const apiKey_production = ''
@@ -11,7 +12,7 @@ class Model {
 
     static async handleSignup(username, password, rePassword, email) {
         try {
-            const signupValidation = new ErrorValidation([usernameVal, passwordVal, emailVal])
+            const signupValidation = new ErrorValidation(['usernameVal', 'passwordVal', 'emailVal'])
 
             if(!username) signupValidation.errorEmpty('usernameVal')
             if(!email) signupValidation.errorEmpty('emailVal')
@@ -24,10 +25,15 @@ class Model {
 
             if(signupValidation.status) throw signupValidation
 
-            
+            const salt = bcryptjs.genSaltSync(10)
+            const hash = bcryptjs.hashSync(password, salt)
 
             const query = `
-            INSERT INTO "Users"`
+            INSERT INTO "Users" ("username", "passHash", "role")
+            VALUES
+                ('${username}', '${hash}', 'user')`
+
+            await pool.query(query)
 
         } catch (error) {
             throw error
