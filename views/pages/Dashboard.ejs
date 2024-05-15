@@ -39,39 +39,39 @@
             <table class="items-center bg-transparent w-full border-collapse">
               <thead>
                 <tr>
-                  <th
+                  <th style="width: 190px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Order Type
                   </th>
-                  <th
+                  <th style="width: 130px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Order No.
                   </th>
-                  <th
+                  <th style="width: 102px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     userId
                   </th>
-                  <th
+                  <th style="width: 100px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Ticker
                   </th>
-                  <th
+                  <th style="width: 78px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Qty
                   </th>
-                  <th
+                  <th style="width: 88px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Limit
                   </th>
-                  <th
+                  <th style="width: 126px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Status
                   </th>
-                  <th
+                  <th style="width: 140px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Expiration
                   </th>
-                  <th
+                  <th style="width: 198px;"
                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     Action
                   </th>
@@ -110,10 +110,12 @@
                         <%= el.expirationDate %>
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
-                        <a href="/dashboard/accept/<%= el.orderNumber %>" class="viewButton"
-                          style="font-size: 10px; padding-left: 10px; padding-right: 12px;">PROCESS</a>
-                        <a href="/dashboard/delete/<%= el.orderNumber %>" class="deleteButton"
-                          style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
+                        <% if (el.status !== 'Completed') { %>
+                          <a href="/dashboard/updateOrder/<%= el.orderNumber %>" class="viewButton"
+                            style="font-size: 10px; padding-left: 10px; padding-right: 12px;">PROCESS</a>
+                          <a href="/dashboard/delete/<%= el.orderNumber %>" class="deleteButton"
+                            style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
+                        <% } %>
                       </td>
                     </tr>
                     <% } %>

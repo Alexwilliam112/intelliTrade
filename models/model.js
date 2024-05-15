@@ -254,6 +254,49 @@ class Model {
             console.log(error);
         }
     }
+
+    static async updateOrder(docId) {
+        try {
+            const checkStatus = `
+            SELECT
+                "MarketOrders"."status"
+            FROM
+                "MarketOrders"
+            WHERE
+                "MarketOrders"."id" = ${docId}
+            `
+
+            const orderStatus = (await pool.query(checkStatus)).rows[0].status
+            let newStatus = ''
+
+            switch (orderStatus) {
+                case 'Open': {
+                    newStatus = 'Processed';
+                    break;
+                }
+
+                case 'Processed': {
+                    newStatus = 'Completed';
+                    break;
+                }
+            }
+
+            const updateQuery = `
+            UPDATE
+                "MarketOrders"
+            SET
+                "status" = '${newStatus}'
+            WHERE
+                "id" = ${docId}
+            `
+
+            await pool.query(updateQuery)
+            return orderStatus
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 module.exports = Model

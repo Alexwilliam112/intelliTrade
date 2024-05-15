@@ -133,6 +133,17 @@ class Controller {
 
         }
     }
+
+    static async updateOrder(req, res) {
+        try {
+            const { id } = req.params
+            const tabState = await Model.updateOrder(id)
+            res.redirect(`/dashboard?status=${tabState}`)
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 module.exports = Controller
