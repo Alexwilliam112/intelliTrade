@@ -12,6 +12,7 @@ router.get('/login', AuthenMiddleware.isLoggedOut, AuthenController.renderLogin)
 router.post('/login', AuthenMiddleware.isLoggedOut, AuthenController.handleLogin)
 router.get('/signup', AuthenMiddleware.isLoggedOut, AuthenController.renderSignup)
 router.post('/signup', AuthenMiddleware.isLoggedOut, AuthenController.handleSignup)
+router.get('/signout', AuthenMiddleware.isLoggedIn, AuthenController.handleLogout)
 
 router.get('/home', AuthenMiddleware.isLoggedIn, AuthenController.renderHome)
 router.get('/admin', AuthenMiddleware.isAdmin, AuthenController.renderAdmin)

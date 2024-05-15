@@ -63,16 +63,6 @@ module.exports = class AuthenController {
         }
     }
 
-    static async handleLogout(req, res) {
-        try {
-            
-
-        } catch (error) {
-            console.log(error);
-            res.send(error)
-        }
-    }
-
     static async renderHome(req, res) {
         try {
             let newsData = await Model.getNews()
@@ -87,7 +77,18 @@ module.exports = class AuthenController {
     static async renderAdmin(req, res) {
         try {
             
-            
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async handleLogout(req, res) {
+        try {
+            req.session.destroy()
+            res.redirect('/')
+
         } catch (error) {
             console.log(error);
             res.send(error)
