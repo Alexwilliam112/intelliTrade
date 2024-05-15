@@ -54,8 +54,9 @@ module.exports = class DashboardController {
 
             const orders = await Model.readOrders()
             const stocks = await Model.readStocks()
-            const portfolios = await Model.readPortfolio(1) //TODO
-            res.render("./pages/Dashboard", { orders, stocks, portfolios, status_filter, tabState })
+            const user = req.session.user
+            const portfolios = await Model.readPortfolio(user.id)
+            res.render("./pages/Dashboard", { orders, stocks, portfolios, status_filter, tabState, user })
 
         } catch (error) {
             console.log(error);

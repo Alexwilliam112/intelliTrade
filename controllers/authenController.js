@@ -31,7 +31,6 @@ module.exports = class AuthenController {
 
             delete user.passHash
             req.session.user = user
-            console.log(req.session);
 
             res.redirect('/dashboard')
 

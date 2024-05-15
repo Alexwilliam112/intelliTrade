@@ -19,6 +19,6 @@ router.get('/admin', AuthenMiddleware.isAdmin, AuthenController.renderAdmin)
 
 router.use('/market', AuthenMiddleware.isLoggedIn, marketRouters)
 router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)
-// route error handler
+//TODO route error handler
 
 module.exports = router

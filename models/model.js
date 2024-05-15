@@ -28,7 +28,7 @@ class Model {
 
             const user = (await pool.query(queryHash)).rows[0]
             if (!user) throw `Account not found.`
-            console.log(user);
+
             if(bcryptjs.compareSync(password, user.passHash)) {
                 return user
             } else {
