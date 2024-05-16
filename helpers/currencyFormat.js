@@ -1,8 +1,10 @@
 'use strict'
 
 const currencyFormatter = (number) => {
-    const newNumber = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    return `IDR  ${newNumber}`
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR"
+    }).format(number);
 }
 
 module.exports = { currencyFormatter }
