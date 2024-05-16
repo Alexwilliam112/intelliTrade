@@ -5,8 +5,7 @@ const Factory = require('./class')
 const pool = require('../config/connection')
 const bcryptjs = require('bcrypt')
 const axios = require('axios')
-// const apiKey_dev = '76822e86-c694-5fd9-d618-46feac4a'
-const apiKey_production = ''
+
 
 class Model {
 
@@ -76,7 +75,7 @@ class Model {
             const value = await axios.get(req, {
                 headers: {
                     'accept': 'application/json',
-                    'X-API-KEY': apiKey_dev,
+                    'X-API-KEY': process.env.apiKey_dev,
                 },
                 params: {
                     page: 1,

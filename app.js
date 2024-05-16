@@ -6,6 +6,7 @@ const session = require('express-session')
 const app = express()
 const router = require('./routers/index')
 const PORT = 3002
+require('dotenv').config()
 
 const favicon = require('serve-favicon')
 const path = require('path')
