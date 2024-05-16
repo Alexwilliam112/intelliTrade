@@ -1,7 +1,6 @@
 'use strict'
 
 const Model = require('../models/model')
-const apiKey_primary = process.env
 
 module.exports = class AdminController {
 

@@ -75,7 +75,7 @@ class Model {
             const value = await axios.get(req, {
                 headers: {
                     'accept': 'application/json',
-                    'X-API-KEY': process.env.apiKey_dev,
+                    'X-API-KEY': process.env.apiKey_dev_news,
                 },
                 params: {
                     page: 1,
