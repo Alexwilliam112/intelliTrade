@@ -26,7 +26,7 @@ module.exports = class AuthenController {
 
     static async handleLogin(req, res) {
         try {
-            const {username, password} = req.body
+            const { username, password } = req.body
             const user = await Model.handleLogin(username, password)
 
             delete user.passHash
@@ -52,7 +52,7 @@ module.exports = class AuthenController {
 
     static async handleSignup(req, res) {
         try {
-            const {username, password, rePassword, email} = req.body
+            const { username, password, rePassword, email } = req.body
             await Model.handleSignup(username, password, rePassword, email)
             res.redirect('/login')
 
@@ -75,7 +75,8 @@ module.exports = class AuthenController {
 
     static async renderAdmin(req, res) {
         try {
-            
+            const stocks = await Model.readStocks()
+            res.render("./pages/Admin", { stocks })
 
         } catch (error) {
             console.log(error);

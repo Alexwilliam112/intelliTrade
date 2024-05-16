@@ -17,10 +17,12 @@ module.exports = class AuthenMiddleware {
     }
 
     static isAdmin(req, res, next) {
+        if (!req.session.user) {
+            return res.redirect('/')
+        }
         if (req.session.user.role !== 'admin') {
             return res.redirect('/home')
         }
         next()
     }
-
 }
