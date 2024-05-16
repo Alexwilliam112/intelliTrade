@@ -1,0 +1,17 @@
+<div id="overlayAdd" class="overlay">
+	<div class="overlay-content">
+		<h1 style="margin-top: 10px; font-size: 20px;">ADD NEW COMPANY</h1>
+		<form action="/admin/add" method="post">
+			<label for="stockCode" style=" margin-top: 15px;">Ticker:</label>
+			<input type="text" id="stockCodeBuy" name="stockCode" style="padding-left: 20px; margin-top: 15px;">
+			<label for="dividend">Dividend Yield:</label>
+			<input type="number" id="dividendBuy" name="dividend" style="padding-left: 20px; margin-top: 5px;">
+			<div
+				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px;">
+				<button type="submit" class="addButton" style="font-size: 14px; width: 180px">ADD COMPANY</button>
+				<button type="button" class="cancelButton" style="font-size: 14px; width: 180px;"
+					onclick="closeForm()">CANCEL</button>
+			</div>
+		</form>
+	</div>
+</div>

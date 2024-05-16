@@ -1,10 +1,13 @@
 'use strict'
 
+const AuthenMiddleware = require('../middleware/authenMiddleware')
 const router = require('express').Router()
-const AuthenController = require('../controllers/authenController')
+
+const adminRouter = require('./adminRouter')
 const marketRouters = require('./marketRouter')
 const dashboardRouters = require('./dashboardRouter')
-const AuthenMiddleware = require('../middleware/authenMiddleware')
+
+const AuthenController = require('../controllers/authenController')
 
 router.get('/', AuthenMiddleware.isLoggedOut, AuthenController.renderLandingPage)
 
@@ -15,8 +18,8 @@ router.post('/signup', AuthenMiddleware.isLoggedOut, AuthenController.handleSign
 router.get('/signout', AuthenMiddleware.isLoggedIn, AuthenController.handleLogout)
 
 router.get('/home', AuthenMiddleware.isLoggedIn, AuthenController.renderHome)
-router.get('/admin', AuthenMiddleware.isAdmin, AuthenController.renderAdmin)
 
+router.use('/admin', AuthenMiddleware.isAdmin, adminRouter)
 router.use('/market', AuthenMiddleware.isLoggedIn, marketRouters)
 router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)
 //TODO route error handler

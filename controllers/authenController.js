@@ -73,17 +73,6 @@ module.exports = class AuthenController {
         }
     }
 
-    static async renderAdmin(req, res) {
-        try {
-            const stocks = await Model.readStocks()
-            res.render("./pages/Admin", { stocks })
-
-        } catch (error) {
-            console.log(error);
-            res.send(error)
-        }
-    }
-
     static async handleLogout(req, res) {
         try {
             req.session.destroy()
