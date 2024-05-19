@@ -12,7 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     //methods
   }
   CompanyProfile.init({
-    StockId: DataTypes.INTEGER,
+    StockId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: {
+        msg: 'Error profile: company profile already exists'
+      }
+    },
     about: DataTypes.TEXT,
     logo: DataTypes.TEXT,
     npwp: DataTypes.STRING,

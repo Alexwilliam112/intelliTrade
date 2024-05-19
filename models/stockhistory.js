@@ -12,8 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     //methods
   }
   StockHistory.init({
-    StockId: DataTypes.INTEGER,
-    date: DataTypes.DATE,
+    StockId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
     high: DataTypes.INTEGER,
     low: DataTypes.INTEGER,
     open: DataTypes.INTEGER,
