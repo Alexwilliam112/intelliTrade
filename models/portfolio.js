@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
 
-    static async readPortfolio(UserId) {
+    static async readPortfolio(filterQuery) {
       try {
         const portfolioList = await Portfolio.findAll({
           attributes: [
@@ -56,9 +56,7 @@ module.exports = (sequelize, DataTypes) => {
               ]
             }
           ],
-          where: {
-            UserId: UserId
-          },
+          where: filterQuery,
           raw: true //BUG: StockId returned undefined if not using true
         });
         return portfolioList

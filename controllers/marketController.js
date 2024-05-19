@@ -1,6 +1,6 @@
 'use strict'
 
-const { sequelize, Stock, StockHistory } = require('../models/index.js')
+const { sequelize, Stock, StockHistory, Portfolio } = require('../models/index.js')
 const { currencyFormatter } = require('../helpers/currencyFormat.js')
 
 module.exports = class MarketController {
@@ -22,11 +22,16 @@ module.exports = class MarketController {
             const { id } = req.params
             const historicalDatas = await StockHistory.readHistorical(id)
             const stockDetail = await Stock.findStock(id)
-            const stocks = await Stock.readStockDetails()
+            const stocks = [stockDetail]
+            const user = req.session.user
+            const portfolios = await Portfolio.readPortfolio({
+                UserId: user.id,
+                StockId: id
+            })
 
             res.render("./pages/Historicals", {
                 historicalDatas: JSON.stringify(historicalDatas),
-                stockDetail: stockDetail,
+                stockDetail, portfolios,
                 stocks, currencyFormatter
             })
 
