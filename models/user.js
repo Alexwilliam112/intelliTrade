@@ -44,6 +44,24 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+    email: {
+      type: DataTypes.STRING,
+      unique: {
+        msg: 'This email has been used.'
+      },
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Email is required.'
+        },
+        notEmpty: {
+          msg: 'Email is required.'
+        },
+        isEmail: {
+          msg: 'Invalid email.'
+        }
+      }
+    },
     role: {
       type: DataTypes.ENUM('admin', 'broker', 'user'),
       allowNull: false,

@@ -1,6 +1,5 @@
 'use strict'
 
-const Model = require('../models/model')
 const { sequelize, User } = require('../models/index.js')
 const bcrypt = require('bcrypt');
 
@@ -61,7 +60,10 @@ module.exports = class AuthenController {
     static async handleSignup(req, res) {
         try {
             const { username, password, rePassword, email } = req.body
-            await Model.handleSignup(username, password, rePassword, email)
+            if (password !== rePassword) throw new Error('Retyped password is incorrect.')
+
+            await User.create({ username, password, email })
+
             res.redirect('/login')
 
         } catch (error) {
