@@ -10,12 +10,4 @@ module.exports = {
     estimateValue: (quantity, currentPrice) => {
         return quantity * currentPrice
     },
-
-    volumeIndicator: (currentVol, previousVol) => {
-        if(previousVol < currentVol) {
-            return false
-        } else {
-            return true
-        }
-    }
 }

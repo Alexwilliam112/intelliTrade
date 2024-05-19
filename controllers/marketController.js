@@ -2,7 +2,6 @@
 
 const { sequelize, Stock, StockHistory } = require('../models/index.js')
 const { currencyFormatter } = require('../helpers/currencyFormat.js')
-const { volumeIndicator } = require('../helpers/valueCalculators.js')
 
 module.exports = class MarketController {
 
@@ -10,7 +9,7 @@ module.exports = class MarketController {
         try {
             const stocks = await Stock.readStockDetails()
             const stockVolumes = await StockHistory.getVolumeGrowth()
-            res.render("./pages/Market", { stocks, volumeIndicator, stockVolumes })
+            res.render("./pages/Market", { stocks, stockVolumes })
 
         } catch (error) {
             console.log(error);
