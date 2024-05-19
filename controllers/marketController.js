@@ -1,13 +1,16 @@
 'use strict'
 
-const Model = require('../models/model')
+const { sequelize, Stock, StockHistory } = require('../models/index.js')
+const { currencyFormatter } = require('../helpers/currencyFormat.js')
+const { volumeIndicator } = require('../helpers/valueCalculators.js')
 
 module.exports = class MarketController {
 
     static async renderMarket(req, res) {
         try {
-            const stocks = await Model.readStocks()
-            res.render("./pages/Market", { stocks })
+            const stocks = await Stock.readStockDetails()
+            const stockVolumes = await StockHistory.getVolumeGrowth()
+            res.render("./pages/Market", { stocks, volumeIndicator, stockVolumes })
 
         } catch (error) {
             console.log(error);
@@ -18,14 +21,14 @@ module.exports = class MarketController {
     static async stockDetails(req, res) {
         try {
             const { id } = req.params
-            const historicalDatas = await Model.readHistorical(id)
-            const stockDetail = await Model.findStock(id)
-            const stocks = await Model.readStocks()
+            const historicalDatas = await StockHistory.readHistorical(id)
+            const stockDetail = await Stock.findStock(id)
+            const stocks = await Stock.readStockDetails()
 
             res.render("./pages/Historicals", {
                 historicalDatas: JSON.stringify(historicalDatas),
                 stockDetail: stockDetail,
-                stocks
+                stocks, currencyFormatter
             })
 
         } catch (error) {

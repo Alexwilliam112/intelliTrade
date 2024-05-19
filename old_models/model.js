@@ -73,6 +73,7 @@ class Model {
         }
     }
 
+    //TRANSITIONED TO SEQUELIZE. CLEARED
     static async readHistorical(id) {
         try {
             const sql = `
@@ -90,11 +91,10 @@ class Model {
                 return Factory.createStockHistories(el.id, el.date, el.high, el.low, el.open,
                     el.close, el.volume, el.StockId)
             })
-
             return historicals
 
         } catch (error) {
-            console.log(error);
+            throw error
         }
     }
 
