@@ -6,11 +6,68 @@ module.exports = (sequelize, DataTypes) => {
   class Portfolio extends Model {
 
     static associate(models) {
-      this.belongsTo(models.User)
-      this.belongsTo(models.Stock)
+      this.belongsTo(models.User, {
+        foreignKey: 'UserId'
+      })
+      this.belongsTo(models.Stock, {
+        foreignKey: 'StockId'
+      })
     }
 
-    //methods
+    static async readPortfolio(UserId) {
+      try {
+        const portfolioList = await Portfolio.findAll({
+          attributes: [
+            'id',
+            'quantity',
+            'StockId',
+            'UserId',
+            [sequelize.literal(`(
+            SELECT
+              "close"
+            FROM
+              "StockHistories"
+            JOIN
+              "Portfolios"
+            ON
+              "StockHistories"."StockId" = "Portfolios"."StockId"
+            WHERE
+              "StockHistories"."StockId" = "Portfolios"."StockId"
+            ORDER BY
+              "date" DESC
+            LIMIT
+              1)`), 'currentPrice'],
+          ],
+          include: [
+            {
+              model: sequelize.models.Stock,
+              attributes: [
+                'stockCode',
+                'stockName',
+                'dividend'
+              ],
+              include: [
+                {
+                  model: sequelize.models.StockHistory,
+                  attributes: ['close'],
+                  order: [['date', 'DESC']],
+                  limit: 1
+                }
+              ]
+            }
+          ],
+          where: {
+            UserId: UserId
+          },
+          raw: true //BUG: StockId returned undefined if not using true
+        });
+        return portfolioList
+
+      } catch (error) {
+        throw error;
+      }
+    }
+
   }
   Portfolio.init({
     UserId: {

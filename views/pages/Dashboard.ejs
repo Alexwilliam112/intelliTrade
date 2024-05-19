@@ -78,47 +78,46 @@
                 </tr>
               </thead>
 
-
               <tbody>
                 <% orders.forEach(el=> { %>
-                  <% if (el.status=== status_filter) { %>
+                  <% if (el.orderStatus=== status_filter) { %>
                     <tr>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                        <%= el.type %>
+                        <%= el.orderType %>
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
-                        <%= el.orderNumber %>
+                        <%= el.id %>
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                        <%= el.UserId %>
+                        <%= el['User.id'] %>
                       </td>
                       <td
                         class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                        <%= el.stockCode %>
+                        <%= el['Stock.stockCode'] %>
                       </td>
 
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                        <%= el.qty %>
+                        <%= el.quantity %>
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                        <%= el.price %>
+                        <%= currencyFormatter(el.price) %>
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                        <%= el.status %>
+                        <%= el.orderStatus %>
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                        <%= el.expirationDate %>
+                        <%= dateFormatter(el.expiration) %>
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
-                        <% if (el.status !== 'Completed') { %>
+                        <% if (el.orderStatus !== 'Completed') { %>
                           <% if (user.role === 'admin') { %>
-                            <a href="/dashboard/updateOrder/<%= el.orderNumber %>" class="viewButton"
+                            <a href="/dashboard/updateOrder/<%= el.id %>" class="viewButton"
                               style="font-size: 10px; padding-left: 10px; padding-right: 12px;">PROCESS</a>
-                            <a href="/dashboard/delete/<%= el.orderNumber %>" class="deleteButton"
+                            <a href="/dashboard/delete/<%= el.id %>" class="deleteButton"
                               style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
                           <% } %>
-                          <% if (el.status === 'Open' && user.role === 'user') { %>
-                            <a href="/dashboard/delete/<%= el.orderNumber %>" class="deleteButton"
+                          <% if (el.orderStatus === 'Open' && user.role === 'user') { %>
+                            <a href="/dashboard/delete/<%= el.id %>" class="deleteButton"
                               style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
                           <% } %>
                         <% } %>
@@ -188,10 +187,10 @@
                       <%= el.id %>
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
-                      <%= el.stockName %>
+                      <%= el['Stock.stockName'] %>
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.stockCode %>
+                      <%= el['Stock.stockCode'] %>
                     </td>
                     <td
                       class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 text-left text-blueGray-700 ">
@@ -199,13 +198,13 @@
                     </td>
 
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.estimateDividend %>
+                      <%= currencyFormatter(estimateDividend(el['Stock.dividend'], el.quantity, el.currentPrice)) %>
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.estimateValue %>
+                      <%=  currencyFormatter(estimateValue(el.currentPrice, el.quantity)) %>
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
-                      <%= el.currentPrice %>
+                      <%= currencyFormatter(el.currentPrice) %>
                     </td>
                   </tr>
                   <% }) %>

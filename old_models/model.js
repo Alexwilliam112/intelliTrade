@@ -9,6 +9,7 @@ const axios = require('axios')
 
 class Model {
 
+    //TRANSITIONED TO SEQUELIZE. CLEARED
     static async readStocks() {
         try {
             const sql = `
@@ -112,6 +113,7 @@ class Model {
         }
     }
 
+    //TRANSITIONED TO SEQUELIZE. CLEARED
     static async readOrders(UserId) {
         try {
             let sql = ''
@@ -174,6 +176,7 @@ class Model {
         }
     }
 
+    //TRANSITIONED TO SEQUELIZE. CLEARED
     static async readPortfolio(UserId) {
         try {
             const sql = `
@@ -214,7 +217,7 @@ class Model {
             return portfolioList
 
         } catch (error) {
-            console.log(error);
+            throw error
         }
     }
 
@@ -257,7 +260,7 @@ class Model {
             return orderStatus
 
         } catch (error) {
-            console.log(error);
+            throw error
         }
     }
 }

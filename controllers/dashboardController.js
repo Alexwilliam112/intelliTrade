@@ -1,6 +1,9 @@
 'use strict'
 
-const Model = require('../models/model')
+const { sequelize, Stock, Portfolio, MarketOrder } = require('../models/index.js')
+const { dateFormatter } = require('../helpers/dateFormat.js')
+const { currencyFormatter } = require('../helpers/currencyFormat.js')
+const { estimateDividend, estimateValue } = require('../helpers/valueCalculators.js')
 
 module.exports = class DashboardController {
 
@@ -52,28 +55,33 @@ module.exports = class DashboardController {
                 }
             }
 
-            const orders = await Model.readOrders()
-            const stocks = await Model.readStocks()
+            const orders = await MarketOrder.readOrders()
+            const stocks = await Stock.readStockDetails()
             const user = req.session.user
-            const portfolios = await Model.readPortfolio(user.id)
-            res.render("./pages/Dashboard", { orders, stocks, portfolios, status_filter, tabState, user })
+            const portfolios = await Portfolio.readPortfolio(user.id)
+
+            res.render("./pages/Dashboard", {
+                orders, stocks, portfolios, status_filter,
+                tabState, user, dateFormatter, currencyFormatter,
+                estimateDividend, estimateValue
+            })
 
         } catch (error) {
             console.log(error);
             res.send(error)
-
         }
     }
-
 
     static async updateOrder(req, res) {
         try {
             const { id } = req.params
-            const tabState = await Model.updateOrder(id)
+
+            const tabState = await MarketOrder.updateOrder(Number(id))
             res.redirect(`/dashboard?status=${tabState}`)
 
         } catch (error) {
             console.log(error);
+            res.send(error)
         }
     }
 }

@@ -10,7 +10,99 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Stock)
     }
 
-    //methods
+    static async readOrders(UserId) {
+      try {
+        let orders;
+        if (!UserId) {
+          orders = await MarketOrder.findAll({
+            attributes: [
+              'id',
+              'quantity',
+              'price',
+              'expiration',
+              'orderType',
+              'StockId',
+              'orderStatus'
+            ],
+            include: [
+              {
+                model: sequelize.models.Stock,
+                attributes: ['stockCode']
+              },
+              {
+                model: sequelize.models.User,
+                attributes: ['id']
+              }
+            ],
+            raw: true
+          });
+        } else {
+          orders = await MarketOrder.findAll({
+            where: {
+              UserId: UserId
+            },
+            attributes: [
+              'id',
+              'quantity',
+              'price',
+              'expiration',
+              'orderType',
+              'StockId',
+              'orderStatus'],
+            include: [
+              {
+                model: sequelize.models.Stock,
+                attributes: ['stockCode']
+              },
+              {
+                model: sequelize.models.User,
+                attributes: ['id']
+              }
+            ],
+            raw: true
+          });
+        }
+        return orders;
+
+      } catch (error) {
+        throw error;
+      }
+    }
+
+    static async updateOrder(docId) {
+      try {
+
+        const order = await this.findOne({ //BUG: fingByPk returns null
+          where: {
+            id: docId
+          }
+        });
+
+        if (!order) {
+          throw new Error('Order not found');
+        }
+
+        let newStatus = '';
+        switch (order.orderStatus) {
+          case 'Open':
+            newStatus = 'Processed';
+            break;
+          case 'Processed':
+            newStatus = 'Completed';
+            break;
+          default:
+            throw new Error('Invalid order status');
+        }
+
+        await order.update({ orderStatus: newStatus });
+        return order.orderStatus;
+
+      } catch (error) {
+        throw error;
+      }
+    }
+
+
   }
   MarketOrder.init({
     UserId: {
@@ -51,7 +143,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Invalid quantity'
         },
         isValid(qty) {
-          if(qty < 1) throw new Error('Invalid quantity.')
+          if (qty < 1) throw new Error('Invalid quantity.')
         }
       }
     },
@@ -66,7 +158,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Price is required.'
         },
         isValid(price) {
-          if(price < 1) throw new Error('Invalid price.')
+          if (price < 1) throw new Error('Invalid price.')
         }
       }
     },
@@ -81,7 +173,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Expiration date is required.'
         },
         isValid(date) {
-          if(date) throw new Error(`Earliest expiration is today`)
+          if (date) throw new Error(`Earliest expiration is today`)
         }
       }
     },

@@ -5,7 +5,7 @@ const router = require('express').Router()
 
 const adminRouter = require('./adminRouter')
 // const marketRouters = require('./marketRouter')
-// const dashboardRouters = require('./dashboardRouter')
+const dashboardRouters = require('./dashboardRouter')
 
 const AuthenController = require('../controllers/authenController')
 
@@ -21,7 +21,7 @@ router.get('/home', AuthenMiddleware.isLoggedIn, AuthenController.renderHome)
 
 router.use('/admin', AuthenMiddleware.isAdmin, adminRouter)
 // router.use('/market', AuthenMiddleware.isLoggedIn, marketRouters)
-// router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)
+router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)
 //TODO route error handler
 
 module.exports = router
