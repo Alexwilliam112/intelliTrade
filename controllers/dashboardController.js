@@ -55,9 +55,13 @@ module.exports = class DashboardController {
                 }
             }
 
-            const orders = await MarketOrder.readOrders()
-            const stocks = await Stock.readStockDetails()
             const user = req.session.user
+            let orderFilter = user.id
+
+            if(user.role === 'admin' || user.role === 'broker') orderFilter = undefined
+
+            const orders = await MarketOrder.readOrders(orderFilter)
+            const stocks = await Stock.readStockDetails()
             const portfolios = await Portfolio.readPortfolio(user.id)
 
             res.render("./pages/Dashboard", {
