@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.Stock, { through: models.MarketOrder })
     }
 
-    //methods
   }
   User.init({
     username: DataTypes.STRING,

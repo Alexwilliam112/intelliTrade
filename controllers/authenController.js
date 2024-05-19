@@ -2,6 +2,7 @@
 
 const Model = require('../models/model')
 const { sequelize, User } = require('../models/index.js')
+const bcrypt = require('bcrypt');
 
 module.exports = class AuthenController {
 
@@ -28,16 +29,22 @@ module.exports = class AuthenController {
     static async handleLogin(req, res) {
         try {
             const { username, password } = req.body
-            const user = await Model.handleLogin(username, password)
 
-            delete user.passHash
+            const user = await User.findOne({ where: { username } })
+            const errorMsg = 'Invalid username or password.'
+
+            if (!user) return res.redirect(`/login?error=${errorMsg}`);
+
+            const isValid = await bcrypt.compare(password, user.password)
+            if (!isValid) return res.redirect(`/login?error=${errorMsg}`)
+
+            delete user.password
             req.session.user = user
-
             res.redirect('/dashboard')
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            res.send(error.message)
         }
     }
 
