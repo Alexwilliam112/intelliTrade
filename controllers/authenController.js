@@ -1,6 +1,7 @@
 'use strict'
 
 const { sequelize, User } = require('../models/index.js')
+const { News } = require('../models/news.js')
 const bcrypt = require('bcrypt');
 
 module.exports = class AuthenController {
@@ -74,7 +75,7 @@ module.exports = class AuthenController {
 
     static async renderHome(req, res) {
         try {
-            let newsData = await Model.getNews()
+            let newsData = await News.getNews()
             res.render("./pages/Home", { newsData })
 
         } catch (error) {
