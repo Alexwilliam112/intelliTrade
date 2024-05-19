@@ -16,42 +16,34 @@ module.exports = (sequelize, DataTypes) => {
       try {
         const stocks = await Stock.findAll({
           attributes: [
-            'id',
-            'stockName',
-            'stockCode',
-            'dividend',
-            'createdAt',
-            [sequelize.literal('"CompanyProfile"."about"'), 'about'],
-            [sequelize.literal('"CompanyProfile"."logo"'), 'logo'],
-            [sequelize.literal('"CompanyProfile"."npwp"'), 'npwp'],
-            [sequelize.literal('"CompanyProfile"."address"'), 'address'],
-            [sequelize.literal('"CompanyProfile"."ipoFundRaised"'), 'ipoFundRaised'],
-            [sequelize.literal('"CompanyProfile"."ipoListingDate"'), 'ipoListingDate'],
-            [sequelize.literal('"CompanyProfile"."ipoOfferingShares"'), 'ipoOfferingShares'],
-            [sequelize.literal('"CompanyProfile"."ipoPercentage"'), 'ipoPercentage'],
-            [sequelize.literal('"CompanyProfile"."securitiesBureau"'), 'securitiesBureau'],
-            [sequelize.literal('"StockHistories"."volume"'), 'volume']
+              'id',
+              'stockName',
+              'stockCode',
+              'dividend',
+              'createdAt',
+              [sequelize.literal('(SELECT "volume" FROM "StockHistories" WHERE "StockHistories"."StockId" = "Stock"."id" ORDER BY "date" DESC LIMIT 1)'), 'volume'],
+              [sequelize.literal('"CompanyProfile"."about"'), 'about'],
+              [sequelize.literal('"CompanyProfile"."logo"'), 'logo'],
+              [sequelize.literal('"CompanyProfile"."npwp"'), 'npwp'],
+              [sequelize.literal('"CompanyProfile"."address"'), 'address'],
+              [sequelize.literal('"CompanyProfile"."ipoFundRaised"'), 'ipoFundRaised'],
+              [sequelize.literal('"CompanyProfile"."ipoListingDate"'), 'ipoListingDate'],
+              [sequelize.literal('"CompanyProfile"."ipoOfferingShares"'), 'ipoOfferingShares'],
+              [sequelize.literal('"CompanyProfile"."ipoPercentage"'), 'ipoPercentage'],
+              [sequelize.literal('"CompanyProfile"."securitiesBureau"'), 'securitiesBureau']
           ],
           include: [
-            {
-              model: sequelize.models.CompanyProfile,
-              attributes: []
-            },
-            {
-              model: sequelize.models.StockHistory,
-              attributes: [],
-              required: true,
-              separate: true,
-              limit: 1,
-              order: [['date', 'DESC']]
-            }
+              {
+                  model: sequelize.models.CompanyProfile,
+                  attributes: []
+              }
           ]
-        });
+      });
 
-        return stocks;
+      return stocks;
 
       } catch (error) {
-        throw errror
+        throw error
       }
     }
   }
