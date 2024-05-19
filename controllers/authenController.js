@@ -69,7 +69,7 @@ module.exports = class AuthenController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            res.send(error.message)
         }
     }
 
