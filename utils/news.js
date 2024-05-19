@@ -1,5 +1,6 @@
 'use strict'
 
+const axios = require('axios')
 class NewsModel {
     constructor(imageUrl, date, title, description, publisherLogo,
         publisherName, newsUrl) {
@@ -25,7 +26,7 @@ module.exports = class News {
                 },
                 params: {
                     page: 1,
-                    symbol: 'BBCA',
+                    symbol: '',
                 },
             })
 

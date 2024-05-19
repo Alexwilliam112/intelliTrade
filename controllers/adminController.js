@@ -1,12 +1,12 @@
 'use strict'
 
-const Model = require('../models/model')
+const { sequelize, Stock } = require('../models/index.js')
 
 module.exports = class AdminController {
 
     static async renderAdmin(req, res) {
         try {
-            const stocks = await Model.readStocks()
+            const stocks = await Stock.readStockDetails()
             res.render("./pages/Admin", { stocks })
 
         } catch (error) {

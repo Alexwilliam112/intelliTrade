@@ -1,7 +1,7 @@
 'use strict'
 
 const { sequelize, User } = require('../models/index.js')
-const { News } = require('../models/news.js')
+const News = require('../utils/news.js')
 const bcrypt = require('bcrypt');
 
 module.exports = class AuthenController {

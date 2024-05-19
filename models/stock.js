@@ -12,7 +12,48 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.StockHistory)
     }
 
-    //methods
+    static async readStockDetails() {
+      try {
+        const stocks = await Stock.findAll({
+          attributes: [
+            'id',
+            'stockName',
+            'stockCode',
+            'dividend',
+            'createdAt',
+            [sequelize.literal('"CompanyProfile"."about"'), 'about'],
+            [sequelize.literal('"CompanyProfile"."logo"'), 'logo'],
+            [sequelize.literal('"CompanyProfile"."npwp"'), 'npwp'],
+            [sequelize.literal('"CompanyProfile"."address"'), 'address'],
+            [sequelize.literal('"CompanyProfile"."ipoFundRaised"'), 'ipoFundRaised'],
+            [sequelize.literal('"CompanyProfile"."ipoListingDate"'), 'ipoListingDate'],
+            [sequelize.literal('"CompanyProfile"."ipoOfferingShares"'), 'ipoOfferingShares'],
+            [sequelize.literal('"CompanyProfile"."ipoPercentage"'), 'ipoPercentage'],
+            [sequelize.literal('"CompanyProfile"."securitiesBureau"'), 'securitiesBureau'],
+            [sequelize.literal('"StockHistories"."volume"'), 'volume']
+          ],
+          include: [
+            {
+              model: sequelize.models.CompanyProfile,
+              attributes: []
+            },
+            {
+              model: sequelize.models.StockHistory,
+              attributes: [],
+              required: true,
+              separate: true,
+              limit: 1,
+              order: [['date', 'DESC']]
+            }
+          ]
+        });
+
+        return stocks;
+
+      } catch (error) {
+        throw errror
+      }
+    }
   }
   Stock.init({
     stockName: {
@@ -60,7 +101,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Invalid dividend yield.'
         },
         isValid(value) {
-          if(value > 100) throw new Error('Invalid dividend yield.')
+          if (value > 100) throw new Error('Invalid dividend yield.')
         }
       }
     }
