@@ -1,6 +1,7 @@
 'use strict'
 
 const Model = require('../models/model')
+const { sequelize, User } = require('../models/index.js')
 
 module.exports = class AuthenController {
 
