@@ -68,6 +68,21 @@ module.exports = (sequelize, DataTypes) => {
         throw error;
       }
     }
+
+    static async updateStock(id, dividend) {
+      try {
+        await this.update({
+          dividend: dividend
+        }, {
+          where: {
+            id: id
+          }
+        })
+
+      } catch (error) {
+        throw error
+      }
+    }
   }
 
   Stock.init({
@@ -124,5 +139,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Stock',
   });
+
+  Stock.beforeUpdate((stock) => {
+    const today = new Date()
+    stock.updatedAt = today
+  })
+
   return Stock;
 };

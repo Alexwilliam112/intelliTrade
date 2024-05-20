@@ -5,6 +5,6 @@ const AdminController = require('../controllers/adminController')
 
 router.get('/', AdminController.renderAdmin)
 router.post('/add', AdminController.handleAdd)
-router.get('/:id/update', AdminController.renderUpdate)
+router.post('/update', AdminController.handleUpdate)
 
 module.exports = router

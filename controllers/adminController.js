@@ -18,7 +18,19 @@ module.exports = class AdminController {
             }
 
             const stocks = await Stock.readStockDetails(filterQuery)
-            res.render("./pages/Admin", { stocks })
+            res.render("./pages/Admin", { stocks, stockDatas: JSON.stringify(stocks) })
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async handleUpdate(req, res) {
+        try {
+            const { StockId, dividend } = req.body
+            await Stock.updateStock(StockId, dividend)
+            res.redirect('/admin')
 
         } catch (error) {
             console.log(error);
@@ -79,17 +91,6 @@ module.exports = class AdminController {
         } catch (error) {
             console.log(error);
             res.send(error.message)
-        }
-    }
-
-    static async renderUpdate(req, res) {
-        try {
-            const { id } = req.params
-
-            res.render("pages/adminupdate.ejs")
-
-        } catch (error) {
-            console.log(error);
         }
     }
 }

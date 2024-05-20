@@ -29,6 +29,7 @@
                         <div
                             style="width: auto; height: auto; justify-content: right; display: flex; padding-top: 30px;">
                             <button class="addButton" onclick="openAdd()">ADD NEW</button>
+                            <button class="cancelButton" onclick="openUpdate()">UPDATE</button>
                         </div>
                     </div>
                 </div>
@@ -73,7 +74,6 @@
                                     </td>
                                     <td
                                         class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href="/admin/<%= el.id %>/update" class="cancelButton">Update</a>
                                         <a href="/admin/<%= el.id %>/delete" class="deleteButton">Delete</a>
                                     </td>
                                 </tr>
@@ -86,13 +86,39 @@
             </div>
         </div>
 
+        <div id="dataContainer" data-stocks="<%= stockDatas %>"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const stocksElement = document.getElementById('dataContainer');
+                const stocks = JSON.parse(stocksElement.getAttribute('data-stocks'));
+                const stockIdSelect = document.getElementById('stockIdUpdate');
+                const dividendInput = document.getElementById('dividendUpdate');
+
+                stockIdSelect.addEventListener('change', function () {
+                    const selectedStockId = this.value;
+                    const selectedStock = stocks.find(el => el.id === parseInt(selectedStockId));
+
+                    if (selectedStock && selectedStock.dividend !== undefined) {
+                        dividendInput.value = selectedStock.dividend;
+                    } else {
+                        dividendInput.value = '';
+                    }
+                });
+            });
+        </script>
+
         <script>
             function openAdd() {
                 document.getElementById("overlayAdd").style.display = "block";
             }
 
+            function openUpdate() {
+                document.getElementById("overlayUpdate").style.display = "block";
+            }
+
             function closeForm() {
                 document.getElementById("overlayAdd").style.display = "none";
+                document.getElementById("overlayUpdate").style.display = "none";
             }
         </script>
 
