@@ -122,9 +122,8 @@ module.exports = (sequelize, DataTypes) => {
         throw error;
       }
     }
-
-
   }
+
   MarketOrder.init({
     UserId: {
       type: DataTypes.INTEGER,
@@ -215,14 +214,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     orderStatus: {
       type: DataTypes.ENUM('Open', 'Processed', 'Completed'),
-      allowNull: false,
+      allowNull: true,
     }
   }, {
     sequelize,
     modelName: 'MarketOrder',
   });
 
-  MarketOrder.beforeValidate((marketOrder) => {
+  MarketOrder.beforeUpdate((marketOrder) => {
+    const now = new Date()
+    marketOrder.updatedAt = now
+  })
+
+  MarketOrder.beforeCreate((marketOrder) => {
     const now = new Date()
     marketOrder.createdAt = now
     marketOrder.updatedAt = now
