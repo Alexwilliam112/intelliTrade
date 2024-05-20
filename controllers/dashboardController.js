@@ -9,10 +9,11 @@ module.exports = class DashboardController {
 
     static async buyPost(req, res) {
         try {
-
+            res.send('BUY POST')
 
         } catch (error) {
-
+            console.log(error);
+            res.send(error)
         }
     }
 
@@ -21,7 +22,8 @@ module.exports = class DashboardController {
 
 
         } catch (error) {
-
+            console.log(error);
+            res.send(error)
         }
     }
 
@@ -63,11 +65,15 @@ module.exports = class DashboardController {
             const orders = await MarketOrder.readOrders(orderFilter)
             const stocks = await Stock.readStockDetails()
             const portfolios = await Portfolio.readPortfolio({ UserId: user.id })
+            const transactionRoute = {
+                buyPost: '/dashboard/buyorder',
+                sellPost: '/dashboard/sellorder'
+            }
 
             res.render("./pages/Dashboard", {
                 orders, stocks, portfolios, status_filter,
                 tabState, user, dateFormatter, currencyFormatter,
-                estimateDividend, estimateValue
+                estimateDividend, estimateValue, transactionRoute
             })
 
         } catch (error) {

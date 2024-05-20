@@ -1,7 +1,7 @@
 <div id="overlayBuy" class="overlay">
 	<div class="overlay-content">
 		<h1 style="margin-top: 10px; font-size: 20px;">BUY ORDER</h1>
-		<form action="/market/:id/buyorder" method="post">
+		<form action= <%= transactionRoute.buyPost %> method="post">
 			<label for="StockId">Stock:</label>
 			<select name="StockId" id="StockId">
 				<option value="">--SELECT--</option>
@@ -17,8 +17,8 @@
 			<input type="number" id="quantityBuy" name="quantity" style="padding-left: 20px; margin-top: 5px;">
 			<label for="price" style=" margin-top: 15px;">Limit Price:</label>
 			<input type="number" id="priceBuy" name="price" style="padding-left: 20px; margin-top: 15px;">
-			<label for="Expiration" style=" margin-top: 15px;">Order Expiration:</label>
-			<input type="date" id="ExpirationBuy" name="Expiration" style="padding-left: 20px; margin-top: 15px;">
+			<label for="expiration" style=" margin-top: 15px;">Order Expiration:</label>
+			<input type="date" id="ExpirationBuy" name="expiration" style="padding-left: 20px; margin-top: 15px;">
 			<div
 				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px;">
 				<button type="submit" class="addButton" style="font-size: 14px; width: 115px">PLACE BUY</button>
@@ -32,9 +32,9 @@
 <div id="overlaySell" class="overlay">
 	<div class="overlay-content">
 		<h1 style="margin-top: 10px; font-size: 20px;">SELL ORDER</h1>
-		<form action="/market/:id/sellorder" method="post">
-			<label for="portfolioId">Stock:</label>
-			<select name="portfolioId" id="portfolioId">
+		<form action=<%= transactionRoute.sellPost %> method="post">
+			<label for="StockId">Stock:</label>
+			<select name="StockId" id="StockId">
 				<option value="">--SELECT--</option>
 				<% if (typeof(portfolios) !=='undefined' ) { %>
 					<% portfolios.forEach(el=> { %>
@@ -48,8 +48,8 @@
 			<input type="number" id="quantitySell" name="quantity" style="padding-left: 20px; margin-top: 5px;">
 			<label for="price" style=" margin-top: 15px;">Limit Price:</label>
 			<input type="number" id="priceSell" name="price" style="padding-left: 20px; margin-top: 15px;">
-			<label for="Expiration" style=" margin-top: 15px;">Order Expiration:</label>
-			<input type="date" id="ExpirationSell" name="Expiration" style="padding-left: 20px; margin-top: 15px;">
+			<label for="expiration" style=" margin-top: 15px;">Order Expiration:</label>
+			<input type="date" id="ExpirationSell" name="expiration" style="padding-left: 20px; margin-top: 15px;">
 			<div
 				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px;">
 				<button type="submit" class="addButton" style="font-size: 14px; width: 115px">PUT SELL</button>

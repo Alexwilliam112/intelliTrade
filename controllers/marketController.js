@@ -1,6 +1,6 @@
 'use strict'
 
-const { sequelize, Stock, StockHistory, Portfolio } = require('../models/index.js')
+const { sequelize, Stock, StockHistory, Portfolio, MarketOrder } = require('../models/index.js')
 const { currencyFormatter } = require('../helpers/currencyFormat.js')
 
 module.exports = class MarketController {
@@ -28,10 +28,14 @@ module.exports = class MarketController {
                 UserId: user.id,
                 StockId: id
             })
+            const transactionRoute = {
+                buyPost: `/market/${id}/buyorder`,
+                sellPost: `/market/${id}/sellorder`
+            }
 
             res.render("./pages/Historicals", {
                 historicalDatas: JSON.stringify(historicalDatas),
-                stockDetail, portfolios,
+                stockDetail, portfolios, transactionRoute,
                 stocks, currencyFormatter
             })
 
@@ -43,19 +47,31 @@ module.exports = class MarketController {
 
     static async buyPost(req, res) {
         try {
+            const { id } = req.params
+            const { StockId, quantity, price, expiration } = req.body
+            const user = req.session.user
 
+            await MarketOrder.createOrder(user.id, StockId, quantity, price, expiration, 'Buy_Order')
+            res.redirect(`/market/${id}`)
 
         } catch (error) {
-
+            console.log(error);
+            res.send(error)
         }
     }
 
     static async sellPost(req, res) {
         try {
+            const { id } = req.params
+            const { StockId, quantity, price, expiration } = req.body
+            const user = req.session.user
 
+            await MarketOrder.createOrder(user.id, StockId, quantity, price, expiration, 'Sell_Order')
+            res.redirect(`/market/${id}`)
 
         } catch (error) {
-
+            console.log(error);
+            res.send(error)
         }
     }
 }

@@ -69,6 +69,26 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
+    static async createOrder(UserId, StockId, quantity, price, expiration, orderType) {
+      try {
+        const usrId = Number(UserId)
+        const stckId = Number(StockId)
+        const expDate = new Date(expiration)
+        await this.create({
+          UserId: usrId,
+          StockId: stckId,
+          quantity,
+          price,
+          expiration: expDate,
+          orderType,
+        })
+        return
+
+      } catch (error) {
+        throw error
+      }
+    }
+
     static async updateOrder(docId) {
       try {
 
@@ -173,7 +193,10 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Expiration date is required.'
         },
         isValid(date) {
-          if (date) throw new Error(`Earliest expiration is today`)
+          let today = new Date()
+          let yesterday = new Date(today);
+          yesterday.setDate(today.getDate() - 1);
+          if (date <= yesterday) throw new Error(`Earliest expiration is today`)
         }
       }
     },
@@ -197,5 +220,13 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'MarketOrder',
   });
+
+  MarketOrder.beforeValidate((marketOrder) => {
+    const now = new Date()
+    marketOrder.createdAt = now
+    marketOrder.updatedAt = now
+    marketOrder.orderStatus = 'Open'
+  })
+
   return MarketOrder;
 };
