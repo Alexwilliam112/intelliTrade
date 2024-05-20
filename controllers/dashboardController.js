@@ -7,26 +7,6 @@ const { estimateDividend, estimateValue } = require('../helpers/valueCalculators
 
 module.exports = class DashboardController {
 
-    static async buyPost(req, res) {
-        try {
-            res.send('BUY POST')
-
-        } catch (error) {
-            console.log(error);
-            res.send(error)
-        }
-    }
-
-    static async sellPost(req, res) {
-        try {
-
-
-        } catch (error) {
-            console.log(error);
-            res.send(error)
-        }
-    }
-
     static async renderDashboard(req, res) {
         try {
             let status_filter = req.query.status
@@ -88,6 +68,34 @@ module.exports = class DashboardController {
 
             const tabState = await MarketOrder.updateOrder(Number(id))
             res.redirect(`/dashboard?status=${tabState}`)
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async buyPost(req, res) {
+        try {
+            const { StockId, quantity, price, expiration } = req.body
+            const user = req.session.user
+
+            await MarketOrder.createOrder(user.id, StockId, quantity, price, expiration, 'Buy_Order')
+            res.redirect(`/dashboard`)
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async sellPost(req, res) {
+        try {
+            const { StockId, quantity, price, expiration } = req.body
+            const user = req.session.user
+
+            await MarketOrder.createOrder(user.id, StockId, quantity, price, expiration, 'Sell_Order')
+            res.redirect(`/dashboard`)
 
         } catch (error) {
             console.log(error);
