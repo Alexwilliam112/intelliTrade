@@ -2,7 +2,7 @@
 
 const { sequelize, Stock, Portfolio, MarketOrder } = require('../models/index.js')
 const { dateFormatter } = require('../helpers/dateFormat.js')
-const { currencyFormatter } = require('../helpers/currencyFormat.js')
+const { currencyFormatter, amountFormatter } = require('../helpers/numberFormat.js')
 const { estimateDividend, estimateValue } = require('../helpers/valueCalculators.js')
 
 module.exports = class DashboardController {
@@ -53,7 +53,8 @@ module.exports = class DashboardController {
             res.render("./pages/Dashboard", {
                 orders, stocks, portfolios, status_filter,
                 tabState, user, dateFormatter, currencyFormatter,
-                estimateDividend, estimateValue, transactionRoute
+                estimateDividend, estimateValue, transactionRoute,
+                amountFormatter
             })
 
         } catch (error) {

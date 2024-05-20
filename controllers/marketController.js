@@ -1,7 +1,7 @@
 'use strict'
 
 const { sequelize, Stock, StockHistory, Portfolio, MarketOrder } = require('../models/index.js')
-const { currencyFormatter } = require('../helpers/currencyFormat.js')
+const { currencyFormatter } = require('../helpers/numberFormat.js')
 
 module.exports = class MarketController {
 
