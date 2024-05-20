@@ -2,6 +2,7 @@
 
 const { sequelize, Stock } = require('../models/index.js')
 const { Op } = require('sequelize');
+const axios = require('axios')
 
 module.exports = class AdminController {
 
@@ -18,6 +19,22 @@ module.exports = class AdminController {
 
             const stocks = await Stock.readStockDetails(filterQuery)
             res.render("./pages/Admin", { stocks })
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async handleAdd(req, res) {
+        try {
+            const { stockCode, dividend } = req.body
+
+
+
+            await sequelize.transaction(async (t) => {
+                const stock = await Stock.create()
+            })
 
         } catch (error) {
             console.log(error);

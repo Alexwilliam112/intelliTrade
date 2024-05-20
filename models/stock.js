@@ -101,7 +101,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         len: {
           args: [4],
-          msg: 'Invalid ticker'
+          msg: 'Ticker max length is 4'
         }
       }
     },
