@@ -22,7 +22,7 @@ module.exports = class News {
             const value = await axios.get(reqUrl, {
                 headers: {
                     'accept': 'application/json',
-                    'X-API-KEY': process.env.apiKey_dev_news,
+                    'X-API-KEY': process.env.apiKey_news1,
                 },
                 params: {
                     page: 1,

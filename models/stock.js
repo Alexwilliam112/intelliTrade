@@ -12,8 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.StockHistory)
     }
 
-    static async readStockDetails() {
+    static async readStockDetails(filterQuery) {
       try {
+        if (!filterQuery) filterQuery = {}
         const stocks = await Stock.findAll({
           attributes: [
             'id',
@@ -38,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
               attributes: []
             }
           ],
+          where: filterQuery,
           raw: true
         });
         return stocks;

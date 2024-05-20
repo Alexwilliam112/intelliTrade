@@ -2,14 +2,23 @@
 
 const { sequelize, Stock, StockHistory, Portfolio, MarketOrder } = require('../models/index.js')
 const { currencyFormatter, amountFormatter } = require('../helpers/numberFormat.js')
+const { Op } = require('sequelize');
 
 module.exports = class MarketController {
 
     static async renderMarket(req, res) {
         try {
-            const stocks = await Stock.readStockDetails()
-            const stockVolumes = await StockHistory.getVolumeGrowth()
-            res.render("./pages/Market", { stocks, stockVolumes, amountFormatter })
+            const { search } = req.query
+            const filterQuery = {}
+            if (search) {
+                filterQuery[Op.or] = [
+                    { stockName: { [Op.iLike]: `%${search}%` } },
+                    { stockCode: { [Op.iLike]: `%${search}%` } }
+                ];
+            }
+
+            const stocks = await Stock.readStockDetails(filterQuery)
+            res.render("./pages/Market", { stocks, amountFormatter })
 
         } catch (error) {
             console.log(error);
