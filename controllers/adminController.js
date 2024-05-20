@@ -1,12 +1,22 @@
 'use strict'
 
 const { sequelize, Stock } = require('../models/index.js')
+const { Op } = require('sequelize');
 
 module.exports = class AdminController {
 
     static async renderAdmin(req, res) {
         try {
-            const stocks = await Stock.readStockDetails()
+            const { search } = req.query
+            const filterQuery = {}
+            if (search) {
+                filterQuery[Op.or] = [
+                    { stockName: { [Op.iLike]: `%${search}%` } },
+                    { stockCode: { [Op.iLike]: `%${search}%` } }
+                ];
+            }
+
+            const stocks = await Stock.readStockDetails(filterQuery)
             res.render("./pages/Admin", { stocks })
 
         } catch (error) {
