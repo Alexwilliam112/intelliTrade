@@ -10,58 +10,31 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Stock)
     }
 
-    static async readOrders(UserId) {
+    static async readOrders(filterQuery) {
       try {
-        let orders;
-        if (!UserId) {
-          orders = await MarketOrder.findAll({
-            attributes: [
-              'id',
-              'quantity',
-              'price',
-              'expiration',
-              'orderType',
-              'StockId',
-              'orderStatus'
-            ],
-            include: [
-              {
-                model: sequelize.models.Stock,
-                attributes: ['stockCode']
-              },
-              {
-                model: sequelize.models.User,
-                attributes: ['id']
-              }
-            ],
-            raw: true
-          });
-        } else {
-          orders = await MarketOrder.findAll({
-            where: {
-              UserId: UserId
+        const orders = await MarketOrder.findAll({
+          where: filterQuery,
+          attributes: [
+            'id',
+            'quantity',
+            'price',
+            'expiration',
+            'orderType',
+            'StockId',
+            'orderStatus'
+          ],
+          include: [
+            {
+              model: sequelize.models.Stock,
+              attributes: ['stockCode']
             },
-            attributes: [
-              'id',
-              'quantity',
-              'price',
-              'expiration',
-              'orderType',
-              'StockId',
-              'orderStatus'],
-            include: [
-              {
-                model: sequelize.models.Stock,
-                attributes: ['stockCode']
-              },
-              {
-                model: sequelize.models.User,
-                attributes: ['id']
-              }
-            ],
-            raw: true
-          });
-        }
+            {
+              model: sequelize.models.User,
+              attributes: ['id', 'username']
+            }
+          ],
+          raw: true
+        });
         return orders;
 
       } catch (error) {

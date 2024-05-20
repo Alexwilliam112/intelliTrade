@@ -38,11 +38,12 @@ module.exports = class DashboardController {
             }
 
             const user = req.session.user
-            let orderFilter = user.id
+            let filterQuery = { UserId: user.id }
 
-            if (user.role === 'admin' || user.role === 'broker') orderFilter = undefined
+            if(user.role === 'admin') filterQuery = {}
+            if(user.role === 'broker') filterQuery = {}
 
-            const orders = await MarketOrder.readOrders(orderFilter)
+            const orders = await MarketOrder.readOrders(filterQuery)
             const stocks = await Stock.readStockDetails()
             const portfolios = await Portfolio.readPortfolio({ UserId: user.id })
             const transactionRoute = {
