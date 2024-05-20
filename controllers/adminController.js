@@ -1,6 +1,6 @@
 'use strict'
 
-const { sequelize, Stock, CompanyProfile, StockHistory } = require('../models/index.js')
+const { sequelize, Stock, CompanyProfile, StockHistory, User } = require('../models/index.js')
 const { Op } = require('sequelize');
 const { fetchHistoricals, fetchCompanyProfiles } = require('../utils/goapiFetch.js')
 
@@ -8,6 +8,17 @@ module.exports = class AdminController {
 
     static async renderAdmin(req, res) {
         try {
+            const deleteConfig = {
+                deleteId: req.query.deleteId,
+                deleteName: req.query.deleteName,
+                overlay: true
+            }
+            if (!req.query.deleteId || !req.query.deleteName) {
+                deleteConfig.deleteId = 'none'
+                deleteConfig.deleteName = 'none'
+                deleteConfig.overlay = false
+            }
+
             const { search } = req.query
             const filterQuery = {}
             if (search) {
@@ -18,7 +29,11 @@ module.exports = class AdminController {
             }
 
             const stocks = await Stock.readStockDetails(filterQuery)
-            res.render("./pages/Admin", { stocks, stockDatas: JSON.stringify(stocks) })
+            res.render("./pages/Admin", {
+                deleteConfig, stocks,
+                stockDatas: JSON.stringify(stocks),
+                openDelete: JSON.stringify(deleteConfig.overlay)
+            })
 
         } catch (error) {
             console.log(error);
@@ -30,6 +45,29 @@ module.exports = class AdminController {
         try {
             const { StockId, dividend } = req.body
             await Stock.updateStock(StockId, dividend)
+            res.redirect('/admin')
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async handleDelete(req, res) {
+        try {
+            const { deleteId } = req.params
+            const { password, viewDelete } = req.body
+            const username = req.session.user.username
+
+            const user = await User.findOne({ where: { username } })
+            const isValid = await bcrypt.compare(password, user.password)
+            if (!isValid) return res.redirect(`/admin/?deleteId=${deleteId}&deleteName=${viewDelete}`)
+            delete user.password
+
+            await sequelize.transaction(async (t) => {
+                //TODO: DELETE STOCK AND COMPANY PROFILE AND HISTORICALS
+            })
+
             res.redirect('/admin')
 
         } catch (error) {
