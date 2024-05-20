@@ -1,7 +1,7 @@
 'use strict'
 
 const { sequelize, Stock, StockHistory, Portfolio, MarketOrder } = require('../models/index.js')
-const { currencyFormatter } = require('../helpers/numberFormat.js')
+const { currencyFormatter, amountFormatter } = require('../helpers/numberFormat.js')
 
 module.exports = class MarketController {
 
@@ -9,7 +9,7 @@ module.exports = class MarketController {
         try {
             const stocks = await Stock.readStockDetails()
             const stockVolumes = await StockHistory.getVolumeGrowth()
-            res.render("./pages/Market", { stocks, stockVolumes })
+            res.render("./pages/Market", { stocks, stockVolumes, amountFormatter })
 
         } catch (error) {
             console.log(error);
@@ -36,7 +36,7 @@ module.exports = class MarketController {
             res.render("./pages/Historicals", {
                 historicalDatas: JSON.stringify(historicalDatas),
                 stockDetail, portfolios, transactionRoute,
-                stocks, currencyFormatter
+                stocks, currencyFormatter, amountFormatter
             })
 
         } catch (error) {
