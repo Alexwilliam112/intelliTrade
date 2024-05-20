@@ -1,7 +1,7 @@
 {
   "name": "intellitrade",
-  "version": "3.2.9",
-  "description": "on transition to sequelize ORM",
+  "version": "3.3.0",
+  "description": "on final development phase. all essential functions already working",
   "main": "app.js",
   "scripts": {
     "dev-server": "npx nodemon app.js",
