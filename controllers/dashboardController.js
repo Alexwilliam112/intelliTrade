@@ -4,6 +4,7 @@ const { sequelize, Stock, Portfolio, MarketOrder } = require('../models/index.js
 const { dateFormatter } = require('../helpers/dateFormat.js')
 const { currencyFormatter, amountFormatter } = require('../helpers/numberFormat.js')
 const { estimateDividend, estimateValue } = require('../helpers/valueCalculators.js')
+const { Op } = require('sequelize');
 
 module.exports = class DashboardController {
 
@@ -39,9 +40,11 @@ module.exports = class DashboardController {
 
             const user = req.session.user
             let filterQuery = { UserId: user.id }
+            if (user.role === 'admin') filterQuery = {}
+            if (user.role === 'broker') filterQuery = {}
 
-            if(user.role === 'admin') filterQuery = {}
-            if(user.role === 'broker') filterQuery = {}
+            const { orderNumber } = req.query
+            if(orderNumber) filterQuery.id = orderNumber
 
             const orders = await MarketOrder.readOrders(filterQuery)
             const stocks = await Stock.readStockDetails()

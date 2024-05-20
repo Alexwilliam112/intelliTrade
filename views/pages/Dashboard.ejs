@@ -23,7 +23,9 @@
                   style="display: flex; align-items: center; justify-content: right; vertical-align: middle; gap: 5px;">
                   <input type="search" placeholder="Search by order number" style="width: 300px;"
                     class="bg-white border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:border-indigo-500"
-                    style="height: 37.5px;" />
+                    style="height: 37.5px;" 
+                    name="orderNumber"/>
+                    <input type="search" name="status" value="<%= status_filter %>" style="display: none;">
                   <input type="submit" value="Search" class="viewButton"
                     style="width: 80px; font-size: 14px; justify-content: center;" />
                 </form>
