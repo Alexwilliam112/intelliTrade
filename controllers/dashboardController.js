@@ -44,7 +44,7 @@ module.exports = class DashboardController {
             if (user.role === 'broker') filterQuery = {}
 
             const { orderNumber } = req.query
-            if(orderNumber) filterQuery.id = orderNumber
+            if (orderNumber) filterQuery.id = orderNumber
 
             const orders = await MarketOrder.readOrders(filterQuery)
             const stocks = await Stock.readStockDetails()
@@ -101,6 +101,18 @@ module.exports = class DashboardController {
 
             await MarketOrder.createOrder(user.id, StockId, quantity, price, expiration, 'Sell_Order')
             res.redirect(`/dashboard`)
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async cancelOrder(req, res) {
+        try {
+            const { id } = req.params
+            const tabState = await MarketOrder.deleteOrder(id)
+            res.redirect(`/dashboard?status=${tabState}`)
 
         } catch (error) {
             console.log(error);

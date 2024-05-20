@@ -95,6 +95,21 @@ module.exports = (sequelize, DataTypes) => {
         throw error;
       }
     }
+
+    static async deleteOrder(id) {
+      try {
+        const deletedOrder = await this.findOne({ where: { id: id } })
+        await this.destroy({
+          where: {
+            id: id
+          }
+        })
+        return deletedOrder.orderStatus
+
+      } catch (error) {
+        throw error
+      }
+    }
   }
 
   MarketOrder.init({
