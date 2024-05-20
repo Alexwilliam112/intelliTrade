@@ -43,7 +43,7 @@ module.exports = {
         return normalizedData
     },
 
-    fetchCompanyProfiles: async (ticker, stockId) => {
+    fetchCompanyProfiles: async (ticker) => {
         const reqUrl = `https://api.goapi.io/stock/idx/${ticker}/profile`;
         const resData = await axios.get(reqUrl, {
             headers: {
@@ -55,7 +55,7 @@ module.exports = {
         const profile = resData.data.data
 
         return {
-            StockId: stockId,
+            stockName: profile.name,
             about: profile.about,
             logo: profile.logo,
             npwp: profile.npwp,

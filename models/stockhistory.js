@@ -76,10 +76,17 @@ module.exports = (sequelize, DataTypes) => {
     low: DataTypes.INTEGER,
     open: DataTypes.INTEGER,
     close: DataTypes.INTEGER,
-    volume: DataTypes.INTEGER
+    volume: DataTypes.BIGINT
   }, {
     sequelize,
     modelName: 'StockHistory',
   });
+
+  StockHistory.beforeBulkCreate((stockHistory) => {
+    const today = new Date()
+    stockHistory.createdAt = today
+    stockHistory.updatedAt = today
+  })
+
   return StockHistory;
 };
