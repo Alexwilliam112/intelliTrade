@@ -1,8 +1,9 @@
 'use strict'
 
 const { sequelize, User } = require('../models/index.js')
-const News = require('../utils/news.js')
+const News = require('../utils/newsClass.js')
 const bcrypt = require('bcrypt');
+const { InternalError, instantiateValidationError } = require('../utils/errorClass.js')
 
 module.exports = class AuthenController {
 
@@ -58,18 +59,21 @@ module.exports = class AuthenController {
         }
     }
 
-    static async handleSignup(req, res) {
+    static async handleSignup(req, res, next) {
         try {
             const { username, password, rePassword, email } = req.body
-            if (password !== rePassword) throw new Error('Retyped password is incorrect.')
+            if (password !== rePassword) {
+                const errorPass = new InternalError('validation', 'signup')
+                errorPass.errors.password = 'Retyped password is incorrect.'
+                throw errorPass
+            }
 
             await User.create({ username, password, email })
-
             res.redirect('/login')
 
         } catch (error) {
-            console.log(error);
-            res.send(error.message)
+            instantiateValidationError(error, 'signup', next)
+            next(error)
         }
     }
 

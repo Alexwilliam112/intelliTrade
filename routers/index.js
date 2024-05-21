@@ -2,6 +2,7 @@
 
 const AuthenMiddleware = require('../middleware/authenMiddleware')
 const router = require('express').Router()
+const { ErrorHandler } = require('../middleware/errorHandler')
 
 const adminRouter = require('./adminRouter')
 const marketRouters = require('./marketRouter')
@@ -20,10 +21,13 @@ router.get('/signout', AuthenMiddleware.isLoggedIn, AuthenController.handleLogou
 
 router.get('/home', AuthenMiddleware.isLoggedIn, AuthenController.renderHome)
 
+router.get('/error', (req, res) => {
+    throw new Error(` test error`)
+})
 router.get('/portfolio', AuthenMiddleware.isLoggedIn, PortfolioController.renderPortfolio)
 router.use('/admin', AuthenMiddleware.isAdmin, adminRouter)
 router.use('/market', AuthenMiddleware.isLoggedIn, marketRouters)
 router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)
-//TODO route error handler
+router.use(ErrorHandler)
 
 module.exports = router
