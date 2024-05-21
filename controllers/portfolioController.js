@@ -7,7 +7,7 @@ const { estimateDividend, estimateValue } = require('../helpers/valueCalculators
 
 module.exports = class PortfolioController {
 
-    static async renderPortfolio (req, res) {
+    static async renderPortfolio (req, res, next) {
         try {
             const user = req.session.user
 
@@ -20,7 +20,7 @@ module.exports = class PortfolioController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 }
