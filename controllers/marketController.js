@@ -4,10 +4,12 @@ const { sequelize, Stock, StockHistory, Portfolio, MarketOrder } = require('../m
 const { currencyFormatter, amountFormatter } = require('../helpers/numberFormat.js')
 const { Op } = require('sequelize');
 const { dateFormatter } = require('../helpers/dateFormat.js')
+const { ValidationError, instantiateValidationError,
+    ErrorOrigin } = require('../utils/errorClass.js')
 
 module.exports = class MarketController {
 
-    static async renderMarket(req, res) {
+    static async renderMarket(req, res, next) {
         try {
             const { search } = req.query
             const filterQuery = {}
@@ -23,11 +25,11 @@ module.exports = class MarketController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 
-    static async stockDetails(req, res) {
+    static async stockDetails(req, res, next) {
         try {
             const { id } = req.params
             const historicalDatas = await StockHistory.readHistorical(id)
@@ -52,11 +54,12 @@ module.exports = class MarketController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.historicalRead, next)
+            next(error)
         }
     }
 
-    static async buyPost(req, res) {
+    static async buyPost(req, res, next) {
         try {
             const { id } = req.params
             const { StockId, quantity, price, expiration } = req.body
@@ -67,11 +70,12 @@ module.exports = class MarketController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.historicalBuy, next)
+            next(error)
         }
     }
 
-    static async sellPost(req, res) {
+    static async sellPost(req, res, next) {
         try {
             const { id } = req.params
             const { StockId, quantity, price, expiration } = req.body
@@ -82,7 +86,8 @@ module.exports = class MarketController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.historicalSell, next)
+            next(error)
         }
     }
 }

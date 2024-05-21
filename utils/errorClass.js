@@ -51,6 +51,18 @@ class ErrorOrigin {
     static get userCreate() {
         return 'userCreate'
     }
+
+    static get historicalRead() {
+        return 'historicalRead'
+    }
+
+    static get historicalBuy() {
+        return 'historicalBuy'
+    }
+
+    static get historicalSell() {
+        return 'historicalSell'
+    }
 }
 
 module.exports = {
