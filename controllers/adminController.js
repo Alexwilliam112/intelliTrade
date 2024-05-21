@@ -9,7 +9,23 @@ module.exports = class AdminController {
 
     static async renderUserManage(req, res) {
         try {
-            
+            const deleteConfig = {
+                deleteId: req.query.deleteId,
+                deleteName: req.query.deleteName,
+                overlay: true
+            }
+            if (!req.query.deleteId || !req.query.deleteName) {
+                deleteConfig.deleteId = 'none'
+                deleteConfig.deleteName = 'none'
+                deleteConfig.overlay = false
+            }
+
+            const users = await User.findAll()
+            res.render('admins/userManage', {
+                users,
+                deleteConfig,
+                openDelete: JSON.stringify(deleteConfig.overlay)
+            })
 
         } catch (error) {
             console.log(error);
@@ -64,6 +80,30 @@ module.exports = class AdminController {
         }
     }
 
+    static async handleDeleteUser(req, res) {
+        try {
+            const { id } = req.params
+            const { password, viewDelete } = req.body
+            const username = req.session.user.username
+
+            const user = await User.findOne({ where: { username } })
+            const isValid = await bcrypt.compare(password, user.password)
+            if (!isValid) return res.redirect(`/admin/userManage/?deleteId=${id}&deleteName=${viewDelete}`)
+            delete user.password
+
+            await User.destroy({
+                where: {
+                    id: id
+                }
+            })
+            res.redirect('/admin/userManage')
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
     static async handleDelete(req, res) {
         try {
             const { deleteId } = req.params
@@ -84,6 +124,18 @@ module.exports = class AdminController {
                     { transaction: t, })
             })
             res.redirect('/admin/companyData')
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async handleAddUser(req, res) {
+        try {
+            const { username, email, password } = req.body
+            await User.create({ username, password, email })
+            res.redirect('/admin/userManage')
 
         } catch (error) {
             console.log(error);
