@@ -8,6 +8,7 @@ const marketRouters = require('./marketRouter')
 const dashboardRouters = require('./dashboardRouter')
 
 const AuthenController = require('../controllers/authenController')
+const PortfolioController = require('../controllers/portfolioController')
 
 router.get('/', AuthenMiddleware.isLoggedOut, AuthenController.renderLandingPage)
 
@@ -19,6 +20,7 @@ router.get('/signout', AuthenMiddleware.isLoggedIn, AuthenController.handleLogou
 
 router.get('/home', AuthenMiddleware.isLoggedIn, AuthenController.renderHome)
 
+router.get('/portfolio', AuthenMiddleware.isLoggedIn, PortfolioController.renderPortfolio)
 router.use('/admin', AuthenMiddleware.isAdmin, adminRouter)
 router.use('/market', AuthenMiddleware.isLoggedIn, marketRouters)
 router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)

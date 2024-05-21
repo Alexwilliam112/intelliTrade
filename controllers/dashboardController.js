@@ -4,7 +4,6 @@ const { sequelize, Stock, Portfolio, MarketOrder } = require('../models/index.js
 const { dateFormatter } = require('../helpers/dateFormat.js')
 const { currencyFormatter, amountFormatter } = require('../helpers/numberFormat.js')
 const { estimateDividend, estimateValue } = require('../helpers/valueCalculators.js')
-const { Op } = require('sequelize');
 
 module.exports = class DashboardController {
 

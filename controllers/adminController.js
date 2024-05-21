@@ -7,6 +7,16 @@ const bcrypt = require('bcrypt');
 
 module.exports = class AdminController {
 
+    static async renderUserManage(req, res) {
+        try {
+            
+
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
     static async renderAdmin(req, res) {
         try {
             const deleteConfig = {
@@ -30,7 +40,7 @@ module.exports = class AdminController {
             }
 
             const stocks = await Stock.readStockDetails(filterQuery)
-            res.render("./admins/Admin", {
+            res.render("./admins/CompanyData", {
                 deleteConfig, stocks,
                 stockDatas: JSON.stringify(stocks),
                 openDelete: JSON.stringify(deleteConfig.overlay)
