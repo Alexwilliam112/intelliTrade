@@ -3,6 +3,7 @@
 const { sequelize, Stock, StockHistory, Portfolio, MarketOrder } = require('../models/index.js')
 const { currencyFormatter, amountFormatter } = require('../helpers/numberFormat.js')
 const { Op } = require('sequelize');
+const { dateFormatter } = require('../helpers/dateFormat.js')
 
 module.exports = class MarketController {
 
@@ -45,7 +46,8 @@ module.exports = class MarketController {
             res.render("./pages/Historicals", {
                 historicalDatas: JSON.stringify(historicalDatas),
                 stockDetail, portfolios, transactionRoute,
-                stocks, currencyFormatter, amountFormatter
+                stocks, currencyFormatter, amountFormatter,
+                dateFormatter
             })
 
         } catch (error) {
