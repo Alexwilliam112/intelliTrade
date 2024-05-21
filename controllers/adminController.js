@@ -4,10 +4,12 @@ const { sequelize, Stock, CompanyProfile, StockHistory, User } = require('../mod
 const { Op } = require('sequelize');
 const { fetchHistoricals, fetchCompanyProfiles } = require('../utils/goapiFetch.js')
 const bcrypt = require('bcrypt');
+const { instantiateValidationError,
+    ErrorOrigin } = require('../utils/errorClass.js')
 
 module.exports = class AdminController {
 
-    static async renderUserManage(req, res) {
+    static async renderUserManage(req, res, next) {
         try {
             const deleteConfig = {
                 deleteId: req.query.deleteId,
@@ -37,11 +39,11 @@ module.exports = class AdminController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 
-    static async renderAdmin(req, res) {
+    static async renderAdmin(req, res, next) {
         try {
             const deleteConfig = {
                 deleteId: req.query.deleteId,
@@ -72,11 +74,11 @@ module.exports = class AdminController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 
-    static async handleUpdate(req, res) {
+    static async handleUpdate(req, res, next) {
         try {
             const { StockId, dividend } = req.body
             await Stock.updateStock(StockId, dividend)
@@ -84,11 +86,12 @@ module.exports = class AdminController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.companyUpdate, next)
+            next(error)
         }
     }
 
-    static async handleDeleteUser(req, res) {
+    static async handleDeleteUser(req, res, next) {
         try {
             const { id } = req.params
             const { password, viewDelete } = req.body
@@ -108,11 +111,12 @@ module.exports = class AdminController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.userDelete, next)
+            next(error)
         }
     }
 
-    static async handleDelete(req, res) {
+    static async handleDelete(req, res, next) {
         try {
             const { deleteId } = req.params
             const { password, viewDelete } = req.body
@@ -135,11 +139,12 @@ module.exports = class AdminController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.companyDelete, next)
+            next(error)
         }
     }
 
-    static async handleAddUser(req, res) {
+    static async handleAddUser(req, res, next) {
         try {
             const { username, email, password } = req.body
             await User.create({ username, password, email })
@@ -147,11 +152,12 @@ module.exports = class AdminController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.userCreate, next)
+            next(error)
         }
     }
 
-    static async handleAdd(req, res) {
+    static async handleAdd(req, res, next) {
         try {
             const { stockCode, dividend } = req.body
             const ticker = stockCode.toUpperCase()
@@ -203,7 +209,8 @@ module.exports = class AdminController {
 
         } catch (error) {
             console.log(error);
-            res.send(error.message)
+            instantiateValidationError(error, ErrorOrigin.companyCreate, next)
+            next(error)
         }
     }
 }

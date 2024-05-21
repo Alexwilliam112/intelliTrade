@@ -4,7 +4,7 @@ const { sequelize, User } = require('../models/index.js')
 const News = require('../utils/newsClass.js')
 const bcrypt = require('bcrypt');
 const { ValidationError, instantiateValidationError,
-    origin_login, origin_signup } = require('../utils/errorClass.js')
+    ErrorOrigin } = require('../utils/errorClass.js')
 
 module.exports = class AuthenController {
 
@@ -35,14 +35,16 @@ module.exports = class AuthenController {
             const user = await User.findOne({ where: { username } })
 
             if (!user) {
-                const error = new ValidationError(origin_login)
+                const error = new ValidationError(ErrorOrigin.login)
                 error.errors.username = 'Account not found.'
+                throw error
             }
 
             const isValid = await bcrypt.compare(password, user.password)
             if (!isValid) {
-                const error = new ValidationError(origin_login)
+                const error = new ValidationError(ErrorOrigin.login)
                 error.errors.password = 'Invalid password.'
+                throw error
             }
 
             delete user.password
@@ -50,7 +52,7 @@ module.exports = class AuthenController {
             res.redirect('/dashboard')
 
         } catch (error) {
-            instantiateValidationError(error, origin_login, next)
+            instantiateValidationError(error, ErrorOrigin.login, next)
             next(error)
         }
     }
@@ -69,7 +71,7 @@ module.exports = class AuthenController {
         try {
             const { username, password, rePassword, email } = req.body
             if (password !== rePassword) {
-                const error = new ValidationError(origin_signup)
+                const error = new ValidationError(ErrorOrigin.signup)
                 error.errors.password = 'Retyped password is incorrect.'
                 throw error
             }
@@ -78,7 +80,7 @@ module.exports = class AuthenController {
             res.redirect('/login')
 
         } catch (error) {
-            instantiateValidationError(error, origin_signup, next)
+            instantiateValidationError(error, ErrorOrigin.signup, next)
             next(error)
         }
     }

@@ -22,11 +22,39 @@ function instantiateValidationError(error, origin, next) {
     }
 }
 
+class ErrorOrigin {
+
+    static get signup() {
+        return 'signup'
+    }
+
+    static get login() {
+        return 'login'
+    }
+
+    static get companyUpdate() {
+        return 'companyDataUpdate'
+    }
+
+    static get companyCreate() {
+        return 'companyCreate'
+    }
+
+    static get companyDelete() {
+        return 'companyDataDelete'
+    }
+
+    static get userDelete() {
+        return 'userDelete'
+    }
+
+    static get userCreate() {
+        return 'userCreate'
+    }
+}
+
 module.exports = {
     ValidationError,
     instantiateValidationError,
-
-    //standardized origins
-    origin_signup: 'signup',
-    origin_login: 'login',
+    ErrorOrigin,
 };
