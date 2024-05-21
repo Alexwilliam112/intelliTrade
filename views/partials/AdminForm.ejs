@@ -1,7 +1,7 @@
 <div id="overlayAdd" class="overlay">
 	<div class="overlay-content">
 		<h1 style="margin-top: 10px; font-size: 20px;">ADD NEW COMPANY</h1>
-		<form action="/admin/add" method="post">
+		<form action="/admin/companyData/add" method="post">
 			<label for="stockCode" style=" margin-top: 15px;">Ticker:</label>
 			<input type="text" id="stockCodeBuy" name="stockCode" style="padding-left: 20px; margin-top: 15px; border-radius:7px;">
 			<label for="dividend" style="margin-top: 30px;">Dividend Yield:</label>
@@ -19,7 +19,7 @@
 <div id="overlayUpdate" class="overlay">
 	<div class="overlay-content">
 		<h1 style="margin-top: 10px; font-size: 20px;">UPDATE DIVIDEND</h1>
-		<form action="/admin/update" method="post">
+		<form action="/admin/companyData/update" method="post">
 			<label for="stockIdUpdate" style=" margin-top: 15px;">Ticker:</label>
 			<select name="StockId" id="stockIdUpdate" style=" border-radius:7px; height: auto; padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
 				<option value="">---SELECT---</option>

@@ -30,7 +30,7 @@ module.exports = class AdminController {
             }
 
             const stocks = await Stock.readStockDetails(filterQuery)
-            res.render("./pages/Admin", {
+            res.render("./admins/Admin", {
                 deleteConfig, stocks,
                 stockDatas: JSON.stringify(stocks),
                 openDelete: JSON.stringify(deleteConfig.overlay)
@@ -46,7 +46,7 @@ module.exports = class AdminController {
         try {
             const { StockId, dividend } = req.body
             await Stock.updateStock(StockId, dividend)
-            res.redirect('/admin')
+            res.redirect('/admin/companyData')
 
         } catch (error) {
             console.log(error);
@@ -62,7 +62,7 @@ module.exports = class AdminController {
 
             const user = await User.findOne({ where: { username } })
             const isValid = await bcrypt.compare(password, user.password)
-            if (!isValid) return res.redirect(`/admin/?deleteId=${deleteId}&deleteName=${viewDelete}`)
+            if (!isValid) return res.redirect(`/admin/companyData/?deleteId=${deleteId}&deleteName=${viewDelete}`)
             delete user.password
 
             await sequelize.transaction(async (t) => {
@@ -73,7 +73,7 @@ module.exports = class AdminController {
                 await Stock.destroy({ where: { id: deleteId } },
                     { transaction: t, })
             })
-            res.redirect('/admin')
+            res.redirect('/admin/companyData')
 
         } catch (error) {
             console.log(error);
@@ -129,7 +129,7 @@ module.exports = class AdminController {
                     { transaction: t, }
                 )
             })
-            res.redirect('/admin')
+            res.redirect('/admin/companyData')
 
         } catch (error) {
             console.log(error);
