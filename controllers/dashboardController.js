@@ -4,10 +4,12 @@ const { sequelize, Stock, Portfolio, MarketOrder } = require('../models/index.js
 const { dateFormatter } = require('../helpers/dateFormat.js')
 const { currencyFormatter, amountFormatter } = require('../helpers/numberFormat.js')
 const { estimateDividend, estimateValue } = require('../helpers/valueCalculators.js')
+const { instantiateValidationError,
+    ErrorOrigin } = require('../utils/errorClass.js')
 
 module.exports = class DashboardController {
 
-    static async renderDashboard(req, res) {
+    static async renderDashboard(req, res, next) {
         try {
             let status_filter = req.query.status
             if (!status_filter) {
@@ -62,11 +64,11 @@ module.exports = class DashboardController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 
-    static async updateOrder(req, res) {
+    static async updateOrder(req, res, next) {
         try {
             const { id } = req.params
 
@@ -75,11 +77,11 @@ module.exports = class DashboardController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 
-    static async buyPost(req, res) {
+    static async buyPost(req, res, next) {
         try {
             const { StockId, quantity, price, expiration } = req.body
             const user = req.session.user
@@ -89,11 +91,12 @@ module.exports = class DashboardController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.marketBuy, next)
+            next(error)
         }
     }
 
-    static async sellPost(req, res) {
+    static async sellPost(req, res, next) {
         try {
             const { StockId, quantity, price, expiration } = req.body
             const user = req.session.user
@@ -103,11 +106,12 @@ module.exports = class DashboardController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            instantiateValidationError(error, ErrorOrigin.marketSell, next)
+            next(error)
         }
     }
 
-    static async cancelOrder(req, res) {
+    static async cancelOrder(req, res, next) {
         try {
             const { id } = req.params
             const tabState = await MarketOrder.deleteOrder(id)
@@ -115,7 +119,7 @@ module.exports = class DashboardController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 }

@@ -63,6 +63,14 @@ class ErrorOrigin {
     static get historicalSell() {
         return 'historicalSell'
     }
+
+    static get marketBuy() {
+        return 'marketBuy'
+    }
+
+    static get marketSell() {
+        return 'marketSell'
+    }
 }
 
 module.exports = {
