@@ -18,16 +18,18 @@ router.post('/login', AuthenMiddleware.isLoggedOut, AuthenController.handleLogin
 router.get('/signup', AuthenMiddleware.isLoggedOut, AuthenController.renderSignup)
 router.post('/signup', AuthenMiddleware.isLoggedOut, AuthenController.handleSignup)
 router.get('/signout', AuthenMiddleware.isLoggedIn, AuthenController.handleLogout)
-
 router.get('/home', AuthenMiddleware.isLoggedIn, AuthenController.renderHome)
 
-router.get('/error', (req, res) => {
-    throw new Error(` test error`)
-})
 router.get('/portfolio', AuthenMiddleware.isLoggedIn, PortfolioController.renderPortfolio)
 router.use('/admin', AuthenMiddleware.isAdmin, adminRouter)
 router.use('/market', AuthenMiddleware.isLoggedIn, marketRouters)
 router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)
+
+router.use((req, res, next) => {
+    const err = new Error(`Request Not Found - ${req.originalUrl}`);
+    err.status = 404;
+    next(err);
+});
 router.use(ErrorHandler)
 
 module.exports = router
