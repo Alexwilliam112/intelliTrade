@@ -1,7 +1,6 @@
 'use strict'
 
 module.exports = {
-
     currencyFormatter: (number) => {
         return new Intl.NumberFormat("id-ID", {
             style: "currency",
@@ -11,7 +10,6 @@ module.exports = {
 
     amountFormatter: (number) => {
         let numberString = String(number);
-
         if (numberString.indexOf('.') !== -1 || numberString.indexOf(',') !== -1) {
             let parts = numberString.split(/\.|,/);
             let integerPart = parts[0];
