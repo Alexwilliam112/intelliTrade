@@ -3,6 +3,7 @@
 const { sequelize, Stock, CompanyProfile, StockHistory, User } = require('../models/index.js')
 const { Op } = require('sequelize');
 const { fetchHistoricals, fetchCompanyProfiles } = require('../utils/goapiFetch.js')
+const bcrypt = require('bcrypt');
 
 module.exports = class AdminController {
 
@@ -65,9 +66,13 @@ module.exports = class AdminController {
             delete user.password
 
             await sequelize.transaction(async (t) => {
-                //TODO: DELETE STOCK AND COMPANY PROFILE AND HISTORICALS
+                await CompanyProfile.destroy({ where: { StockId: deleteId } },
+                    { transaction: t, })
+                await StockHistory.destroy({ where: { StockId: deleteId } },
+                    { transaction: t, })
+                await Stock.destroy({ where: { id: deleteId } },
+                    { transaction: t, })
             })
-
             res.redirect('/admin')
 
         } catch (error) {
