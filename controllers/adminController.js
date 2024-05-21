@@ -20,7 +20,15 @@ module.exports = class AdminController {
                 deleteConfig.overlay = false
             }
 
-            const users = await User.findAll()
+            let filterQuery = {}
+            const { search } = req.query
+            if(search) filterQuery.username = {
+                [Op.iLike]: `%${search}%`
+            }
+
+            const users = await User.findAll({
+                where: filterQuery
+            })
             res.render('admins/userManage', {
                 users,
                 deleteConfig,
