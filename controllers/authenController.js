@@ -3,59 +3,65 @@
 const { sequelize, User } = require('../models/index.js')
 const News = require('../utils/newsClass.js')
 const bcrypt = require('bcrypt');
-const { InternalError, instantiateValidationError } = require('../utils/errorClass.js')
+const { ValidationError, instantiateValidationError,
+    origin_login, origin_signup } = require('../utils/errorClass.js')
 
 module.exports = class AuthenController {
 
-    static async renderLandingPage(req, res) {
+    static async renderLandingPage(req, res, next) {
         try {
             res.render("./auth/LandingPage")
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 
-    static async renderLogin(req, res) {
+    static async renderLogin(req, res, next) {
         try {
             res.render("./auth/LogIn")
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 
-    static async handleLogin(req, res) {
+    static async handleLogin(req, res, next) {
         try {
             const { username, password } = req.body
 
             const user = await User.findOne({ where: { username } })
-            const errorMsg = 'Invalid username or password.'
 
-            if (!user) return res.redirect(`/login?error=${errorMsg}`);
+            if (!user) {
+                const error = new ValidationError(origin_login)
+                error.errors.username = 'Account not found.'
+            }
 
             const isValid = await bcrypt.compare(password, user.password)
-            if (!isValid) return res.redirect(`/login?error=${errorMsg}`)
+            if (!isValid) {
+                const error = new ValidationError(origin_login)
+                error.errors.password = 'Invalid password.'
+            }
 
             delete user.password
             req.session.user = user
             res.redirect('/dashboard')
 
         } catch (error) {
-            console.log(error);
-            res.send(error.message)
+            instantiateValidationError(error, origin_login, next)
+            next(error)
         }
     }
 
-    static async renderSignup(req, res) {
+    static async renderSignup(req, res, next) {
         try {
             res.render("./auth/SignUp")
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 
@@ -63,16 +69,16 @@ module.exports = class AuthenController {
         try {
             const { username, password, rePassword, email } = req.body
             if (password !== rePassword) {
-                const errorPass = new InternalError('validation', 'signup')
-                errorPass.errors.password = 'Retyped password is incorrect.'
-                throw errorPass
+                const error = new ValidationError(origin_signup)
+                error.errors.password = 'Retyped password is incorrect.'
+                throw error
             }
 
             await User.create({ username, password, email })
             res.redirect('/login')
 
         } catch (error) {
-            instantiateValidationError(error, 'signup', next)
+            instantiateValidationError(error, origin_signup, next)
             next(error)
         }
     }
@@ -84,18 +90,17 @@ module.exports = class AuthenController {
 
         } catch (error) {
             console.log(error);
-            res.send(error)
         }
     }
 
-    static async handleLogout(req, res) {
+    static async handleLogout(req, res, next) {
         try {
             req.session.destroy()
             res.redirect('/')
 
         } catch (error) {
             console.log(error);
-            res.send(error)
+            next(error)
         }
     }
 }

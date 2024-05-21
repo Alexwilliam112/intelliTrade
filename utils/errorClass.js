@@ -1,10 +1,10 @@
 'use strict'
 
 
-class InternalError extends Error {
-    constructor(errorName, origin) {
+class ValidationError extends Error {
+    constructor(origin) {
         super()
-        this.name = errorName
+        this.name = 'validation'
         this.errors = {}
         this.origin = origin
     }
@@ -12,7 +12,7 @@ class InternalError extends Error {
 
 function instantiateValidationError(error, origin, next) {
     if (error.name === 'SequelizeValidationError') {
-        const sequelizeError = new InternalError('validation', origin)
+        const sequelizeError = new ValidationError(origin)
         error.errors.forEach(errObj => {
             sequelizeError.errors[errObj.path] = errObj.message
         });
@@ -23,6 +23,10 @@ function instantiateValidationError(error, origin, next) {
 }
 
 module.exports = {
-    InternalError,
-    instantiateValidationError
+    ValidationError,
+    instantiateValidationError,
+
+    //standardized origins
+    origin_signup: 'signup',
+    origin_login: 'login',
 };
