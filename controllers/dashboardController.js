@@ -72,8 +72,48 @@ module.exports = class DashboardController {
         try {
             const { id } = req.params
 
-            const tabState = await MarketOrder.updateOrder(Number(id))
-            res.redirect(`/dashboard?status=${tabState}`)
+            await sequelize.transaction(async (t) => {
+                const tabState = await MarketOrder.updateOrder(Number(id), { transaction: t })
+                const orderRecord = await MarketOrder.findOne({
+                    where: {
+                        id: id
+                    },
+                    raw: true
+                }, { transaction: t })
+
+                if (orderRecord.orderStatus !== 'Completed') return res.redirect(`/dashboard?status=${tabState}`)
+
+                const portfolioRecord = await Portfolio.findOne({
+                    where: {
+                        StockId: orderRecord.StockId,
+                        UserId: orderRecord.UserId
+                    }
+                }, { transaction: t })
+
+                if (!portfolioRecord) {
+                    const timeNow = new Date()
+                    await Portfolio.create({
+                        UserId: orderRecord.UserId,
+                        StockId: orderRecord.StockId,
+                        quantity: orderRecord.quantity,
+                        createdAt: timeNow,
+                        updatedAt: timeNow
+                    }, { transaction: t })
+
+                } else {
+                    await Portfolio.update(
+                        {
+                            quantity: portfolioRecord.quantity + orderRecord.quantity
+                        },
+                        {
+                            where: {
+                                id: portfolioRecord.id
+                            },
+                            transaction: t
+                        })
+                }
+                res.redirect(`/dashboard?status=${tabState}`)
+            })
 
         } catch (error) {
             console.log(error);
