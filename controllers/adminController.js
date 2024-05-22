@@ -4,7 +4,7 @@ const { sequelize, Stock, CompanyProfile, StockHistory, User } = require('../mod
 const { Op } = require('sequelize');
 const { fetchHistoricals, fetchCompanyProfiles } = require('../utils/goapiFetch.js')
 const bcrypt = require('bcrypt');
-const { instantiateValidationError,
+const { instantiateValidationError, ValidationError,
     ErrorOrigin } = require('../utils/errorClass.js')
 
 module.exports = class AdminController {
@@ -24,7 +24,7 @@ module.exports = class AdminController {
 
             let filterQuery = {}
             const { search } = req.query
-            if(search) filterQuery.username = {
+            if (search) filterQuery.username = {
                 [Op.iLike]: `%${search}%`
             }
 
@@ -44,15 +44,45 @@ module.exports = class AdminController {
 
     static async renderAdmin(req, res, next) {
         try {
+            const encodedError = req.query.error
+            const errorObj = encodedError ? JSON.parse(decodeURIComponent(encodedError)) : {}
+            let errors = errorObj.errors
+
+            if (!errors) {
+                errors = {
+                    stockCode: '',
+                    dividend: '',
+
+                }
+            }
+
+            //toggle overlay if error exists
+            let overlayType = ''
+            switch (errorObj.origin) {
+                case ErrorOrigin.companyUpdate: {
+                    overlayType = 'update'
+                    break
+                }
+
+                case ErrorOrigin.companyDelete: {
+                    overlayType = 'delete'
+                    break
+                }
+
+                case ErrorOrigin.companyCreate: {
+                    overlayType = 'create'
+                    break
+                }
+            }
+
+            //reset overlay state if errors exist
             const deleteConfig = {
                 deleteId: req.query.deleteId,
                 deleteName: req.query.deleteName,
-                overlay: true
             }
             if (!req.query.deleteId || !req.query.deleteName) {
                 deleteConfig.deleteId = 'none'
                 deleteConfig.deleteName = 'none'
-                deleteConfig.overlay = false
             }
 
             const { search } = req.query
@@ -68,7 +98,7 @@ module.exports = class AdminController {
             res.render("./admins/CompanyData", {
                 deleteConfig, stocks,
                 stockDatas: JSON.stringify(stocks),
-                openDelete: JSON.stringify(deleteConfig.overlay)
+                overlayType, errors
             })
 
         } catch (error) {
@@ -79,6 +109,8 @@ module.exports = class AdminController {
     static async handleUpdate(req, res, next) {
         try {
             const { StockId, dividend } = req.body
+            if (!StockId) throw new ValidationError(ErrorOrigin.companyUpdate, { stockCode: 'Ticker is required.' })
+
             await Stock.updateStock(StockId, dividend)
             res.redirect('/admin/companyData')
 
@@ -153,6 +185,8 @@ module.exports = class AdminController {
             const ticker = stockCode.toUpperCase()
 
             await sequelize.transaction(async (t) => {
+                if (!ticker) throw new ValidationError(ErrorOrigin.companyCreate, { stockCode: 'Ticker is required' })
+
                 const today = new Date()
                 const stockDetail = await fetchCompanyProfiles(ticker)
 
@@ -198,6 +232,9 @@ module.exports = class AdminController {
             res.redirect('/admin/companyData')
 
         } catch (error) {
+            if(error.name === 'SequelizeUniqueConstraintError') {
+                return next(new ValidationError(ErrorOrigin.companyCreate, {stockCode: 'Company already listed.'}))
+            }
             next(instantiateValidationError(error, ErrorOrigin.companyCreate))
         }
     }

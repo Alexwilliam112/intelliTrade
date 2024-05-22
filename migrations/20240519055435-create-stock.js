@@ -15,7 +15,8 @@ module.exports = {
       },
       stockCode: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       dividend: {
         type: Sequelize.FLOAT,

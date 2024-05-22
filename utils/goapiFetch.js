@@ -1,6 +1,7 @@
 'use strict'
 
 const axios = require('axios')
+const { ValidationError, ErrorOrigin } = require('./errorClass')
 module.exports = {
 
     fetchHistoricals: async (ticker, stockId) => {
@@ -44,10 +45,16 @@ module.exports = {
             return normalizedData
 
         } catch (error) {
-            const apiError = new Error(error.response.data.message)
-            apiError.name = 'Request failed with status code 401'
-            apiError.status = 401
-            throw apiError
+            if (error.message === "invalid API key, please register for get your API key.") {
+                throw new ValidationError(ErrorOrigin.companyCreate, { stockCode: 'API Request Error.' })
+            } else if (error.message === "Something went wrong") {
+                throw new ValidationError(ErrorOrigin.companyCreate, { stockCode: 'Rejected: Company Not Found.' })
+            } else {
+                const apiError = new Error(error.response.data.message)
+                apiError.name = 'Request failed with status code 401'
+                apiError.status = 401
+                throw apiError
+            }
         }
     },
 
@@ -77,10 +84,16 @@ module.exports = {
             }
 
         } catch (error) {
-            const apiError = new Error(error.response.data.message)
-            apiError.name = 'Request failed with status code 401'
-            apiError.status = 401
-            throw apiError
+            if (error.response.data.message === "invalid API key, please register for get your API key.") {
+                throw new ValidationError(ErrorOrigin.companyCreate, { stockCode: 'API Request Error.' })
+            } else if (error.response.data.message === "Something went wrong") {
+                throw new ValidationError(ErrorOrigin.companyCreate, { stockCode: 'Rejected: Company Not Found.' })
+            } else {
+                const apiError = new Error(error.response.data.message)
+                apiError.name = 'Request failed with status code 401'
+                apiError.status = 401
+                throw apiError
+            }
         }
     }
 }

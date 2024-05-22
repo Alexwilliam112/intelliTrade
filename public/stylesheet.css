@@ -513,4 +513,21 @@ form select {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    vertical-align: bottom;
+}
+
+.errorMessageForm {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+}
+
+.errorAlignForm {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    vertical-align: bottom;
+    margin-top: 15px;
 }

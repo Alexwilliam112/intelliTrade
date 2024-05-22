@@ -31,8 +31,8 @@ module.exports = {
                 }
 
                 case ErrorOrigin.companyUpdate: {
-                    const encodedError = encodeURIComponent(JSON.stringify(err.errors))
-                    return res.redirect(`/signup?error=${encodedError}`)
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/admin/companyData?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.companyDelete: {
@@ -41,8 +41,8 @@ module.exports = {
                 }
 
                 case ErrorOrigin.companyCreate: {
-                    //logic
-                    return;
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/admin/companyData?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.userDelete: {

@@ -4,8 +4,8 @@
     <link rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-    <%- include ('../partials/AdminForm.ejs', { stocks }) %>
-    <%- include ('../partials/AdminDelete.ejs', { deleteConfig }) %>
+    <%- include ('../partials/AdminForm.ejs', { stocks, errors }) %>
+    <%- include ('../partials/AdminDelete.ejs', { deleteConfig, errors }) %>
 
         <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24" style="padding-top: 30px;">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -88,14 +88,28 @@
             </div>
         </div>
 
-        <div id="dataContainerDel" data-overlayDelete="<%= openDelete %>"></div>
+        <div id="overlayTypeContainer" data-overlay-type="<%= overlayType %>"></div>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const overlayState = document.getElementById('dataContainerDel');
-                const delState = JSON.parse(overlayState.getAttribute('data-overlayDelete'));
+                const overlayTypeContainer = document.getElementById('overlayTypeContainer');
+                const overlayType = overlayTypeContainer.dataset.overlayType;
 
-                if(delState === true) {
-                    document.getElementById("overlayDelete").style.display = "block";
+                switch (overlayType) {
+                    case 'update': {
+                        console.log(`into update`);
+                        document.getElementById("overlayUpdate").style.display = "block";
+                        break;
+                    }
+
+                    case 'delete': {
+                        document.getElementById("overlayDelete").style.display = "block";
+                        break;
+                    }
+
+                    case 'create': {
+                        document.getElementById("overlayAdd").style.display = "block";
+                        break;
+                    }
                 }
             });
         </script>

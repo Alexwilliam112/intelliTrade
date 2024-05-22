@@ -1,10 +1,14 @@
 [
   {
-    "name": "validation",
-    "message": "Invalid request.",
+    "name": "Request failed with status code 401",
+    "message": "The route stock/idx//profile could not be found.",
     "stack": [
-      "validation: Invalid request.",
-      "    at handleLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:45:31)"
+      "Request failed with status code 401: The route stock/idx//profile could not be found.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:80:30)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:189:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
     ]
   },
   {
@@ -12,58 +16,10 @@
     "message": "Invalid request.",
     "stack": [
       "validation: Invalid request.",
-      "    at handleLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:45:31)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:74:31)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
-      "    at isLoggedOut (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\middleware\\authenMiddleware.js:16:9)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
-      "    at Route.dispatch (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:119:3)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:284:15",
-      "    at Function.process_params (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:346:12)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:76:31)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
-      "    at isLoggedOut (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\middleware\\authenMiddleware.js:16:9)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
-      "    at Route.dispatch (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:119:3)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:284:15",
-      "    at Function.process_params (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:346:12)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:76:31)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
-      "    at isLoggedOut (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\middleware\\authenMiddleware.js:16:9)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
-      "    at Route.dispatch (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:119:3)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:284:15",
-      "    at Function.process_params (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:346:12)"
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:188:36",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:24",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
     ]
   },
   {
@@ -72,220 +28,68 @@
     "stack": [
       "validation: Invalid request.",
       "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:76:31)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
-      "    at isLoggedOut (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\middleware\\authenMiddleware.js:16:9)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
-      "    at Route.dispatch (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:119:3)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
-      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:284:15",
-      "    at Function.process_params (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:346:12)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:85:13)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:82:18)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:82:18)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
-      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:82:18)"
-    ]
-  },
-  {
-    "name": "validation",
-    "message": "Invalid request.",
-    "stack": [
-      "validation: Invalid request.",
-      "    at handleLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:36:31)",
+      "    at handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:235:18)",
       "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
     ]
   },
   {
-    "name": "validation",
-    "message": "Invalid request.",
+    "name": "Request failed with status code 401",
+    "message": "Something went wrong",
     "stack": [
-      "validation: Invalid request.",
-      "    at handleLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:36:31)",
-      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+      "Request failed with status code 401: Something went wrong",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:80:30)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
     ]
   },
   {
-    "name": "validation",
-    "message": "Invalid request.",
+    "name": "Request failed with status code 401",
+    "message": "Something went wrong",
     "stack": [
-      "validation: Invalid request.",
-      "    at handleLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:36:31)",
-      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+      "Request failed with status code 401: Something went wrong",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:81:30)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:81:30)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
     ]
   },
   {
     "name": "ReferenceError",
-    "message": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\auth\\LogIn.ejs:20\n    18|                     <div class=\"errorAlign\">\r\n    19|                         <label for=\"username\">Username</label>\r\n >> 20|                         <p class=\"errorMessage\"><%= errors.username %></p>\r\n    21|                     </div>\r\n    22|                     <input type=\"text\" id=\"username\" name=\"username\" class=\"inputField\">\r\n    23|                     <div class=\"errorAlign\">\r\n\nerrors is not defined",
-    "origin": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\auth\\LogIn.ejs",
+    "message": "response is not defined",
     "stack": [
-      "ReferenceError: C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\auth\\LogIn.ejs:20",
-      "    18|                     <div class=\"errorAlign\">\r",
-      "    19|                         <label for=\"username\">Username</label>\r",
-      " >> 20|                         <p class=\"errorMessage\"><%= errors.username %></p>\r",
-      "    21|                     </div>\r",
-      "    22|                     <input type=\"text\" id=\"username\" name=\"username\" class=\"inputField\">\r",
-      "    23|                     <div class=\"errorAlign\">\r",
-      "",
-      "errors is not defined",
-      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:12:26)",
-      "    at LogIn (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
-      "    at tryHandleCache (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:274:36)",
-      "    at exports.renderFile [as engine] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:491:10)",
-      "    at View.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\view.js:135:8)",
-      "    at tryRender (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:657:10)",
-      "    at Function.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:609:3)",
-      "    at ServerResponse.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\response.js:1048:7)",
-      "    at renderLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:22:17)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)"
+      "ReferenceError: response is not defined",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:80:25)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
     ]
   },
   {
-    "name": "ReferenceError",
-    "message": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\auth\\LogIn.ejs:20\n    18|                     <div class=\"errorAlign\">\r\n    19|                         <label for=\"username\">Username</label>\r\n >> 20|                         <p class=\"errorMessage\"><%= errors.username %></p>\r\n    21|                     </div>\r\n    22|                     <input type=\"text\" id=\"username\" name=\"username\" class=\"inputField\">\r\n    23|                     <div class=\"errorAlign\">\r\n\nerrors is not defined",
-    "origin": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\auth\\LogIn.ejs",
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
     "stack": [
-      "ReferenceError: C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\auth\\LogIn.ejs:20",
-      "    18|                     <div class=\"errorAlign\">\r",
-      "    19|                         <label for=\"username\">Username</label>\r",
-      " >> 20|                         <p class=\"errorMessage\"><%= errors.username %></p>\r",
-      "    21|                     </div>\r",
-      "    22|                     <input type=\"text\" id=\"username\" name=\"username\" class=\"inputField\">\r",
-      "    23|                     <div class=\"errorAlign\">\r",
-      "",
-      "errors is not defined",
-      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:12:26)",
-      "    at LogIn (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
-      "    at tryHandleCache (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:274:36)",
-      "    at exports.renderFile [as engine] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:491:10)",
-      "    at View.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\view.js:135:8)",
-      "    at tryRender (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:657:10)",
-      "    at Function.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:609:3)",
-      "    at ServerResponse.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\response.js:1048:7)",
-      "    at renderLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:22:17)",
-      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)"
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:92:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
     ]
   },
   {
@@ -293,7 +97,186 @@
     "message": "Invalid request.",
     "stack": [
       "validation: Invalid request.",
-      "    at handleLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:38:31)",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:188:36",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:24",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:93:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:94:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:94:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:94:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:95:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:92:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:93:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:93:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:94:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "Request failed with status code 401",
+    "message": "invalid API key, please register for get your API key.",
+    "stack": [
+      "Request failed with status code 401: invalid API key, please register for get your API key.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:94:34)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "ReferenceError",
+    "message": "cause is not defined",
+    "stack": [
+      "ReferenceError: cause is not defined",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:88:13)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:89:23)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at fetchCompanyProfiles (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\goapiFetch.js:91:23)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:191:37",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:188:36",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:24",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
+      "    at handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:235:18)",
       "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
     ]
   },
@@ -302,7 +285,44 @@
     "message": "Invalid request.",
     "stack": [
       "validation: Invalid request.",
-      "    at handleLogin (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:45:31)"
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
+      "    at handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:235:18)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+    ]
+  },
+  {
+    "name": "SequelizeUniqueConstraintError",
+    "message": "Company with this ticker already exists.",
+    "stack": [
+      "Error",
+      "    at Query.run (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\dialects\\postgres\\query.js:50:25)",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:315:28",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async PostgresQueryInterface.insert (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\dialects\\abstract\\query-interface.js:308:21)",
+      "    at async Stock.save (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\model.js:2490:35)",
+      "    at async Stock.create (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\model.js:1362:12)",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:193:31",
+      "    at async C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:18",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:187:13)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:236:29)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:17:32)",
+      "    at handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:238:18)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
     ]
   }
 ]
