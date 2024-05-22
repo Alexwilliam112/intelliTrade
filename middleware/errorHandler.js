@@ -1,7 +1,20 @@
 'use strict'
 const { ErrorOrigin } = require('../utils/errorClass')
+const { readFile, writeFile } = require('fs').promises
 module.exports = {
-    ErrorHandler: (err, req, res, next) => {
+    ErrorHandler: async (err, req, res, next) => {
+        const prevLog = JSON.parse(await readFile('./logs/errorLogs.json'))
+        const newError = {
+            statusCode: err.statusCode,
+            name: err.name,
+            message: err.message,
+            origin: err.path,
+            stack: err.stack.split('\n')
+        }
+        prevLog.push(newError)
+        const currentLog = JSON.stringify(prevLog, null, 2)
+        await writeFile('./logs/errorLogs.json', currentLog)
+
         if (err.status === 404) {
             res.render('auth/ErrorPage', { err })
 
@@ -66,7 +79,7 @@ module.exports = {
                     break;
             }
 
-        } else if(err.name = 'Request failed with status code 401') {
+        } else if (err.name = 'Request failed with status code 401') {
             res.render('auth/ErrorPage', { err })
 
         } else {
