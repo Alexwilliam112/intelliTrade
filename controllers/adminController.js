@@ -38,7 +38,6 @@ module.exports = class AdminController {
             })
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -73,7 +72,6 @@ module.exports = class AdminController {
             })
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -85,9 +83,7 @@ module.exports = class AdminController {
             res.redirect('/admin/companyData')
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.companyUpdate, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.companyUpdate))
         }
     }
 
@@ -110,9 +106,7 @@ module.exports = class AdminController {
             res.redirect('/admin/userManage')
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.userDelete, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.userDelete))
         }
     }
 
@@ -138,9 +132,7 @@ module.exports = class AdminController {
             res.redirect('/admin/companyData')
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.companyDelete, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.companyDelete))
         }
     }
 
@@ -151,9 +143,7 @@ module.exports = class AdminController {
             res.redirect('/admin/userManage')
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.userCreate, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.userCreate))
         }
     }
 
@@ -208,9 +198,7 @@ module.exports = class AdminController {
             res.redirect('/admin/companyData')
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.companyCreate, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.companyCreate))
         }
     }
 }

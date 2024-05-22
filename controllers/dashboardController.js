@@ -63,7 +63,6 @@ module.exports = class DashboardController {
             })
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -116,7 +115,6 @@ module.exports = class DashboardController {
             })
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -130,9 +128,7 @@ module.exports = class DashboardController {
             res.redirect(`/dashboard`)
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.marketBuy, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.marketBuy))
         }
     }
 
@@ -145,9 +141,7 @@ module.exports = class DashboardController {
             res.redirect(`/dashboard`)
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.marketSell, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.marketSell))
         }
     }
 
@@ -158,7 +152,6 @@ module.exports = class DashboardController {
             res.redirect(`/dashboard?status=${tabState}`)
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }

@@ -19,7 +19,6 @@ module.exports = class PortfolioController {
             })
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }

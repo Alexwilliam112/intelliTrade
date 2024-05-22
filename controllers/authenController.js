@@ -13,7 +13,6 @@ module.exports = class AuthenController {
             res.render("./auth/LandingPage")
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -23,7 +22,6 @@ module.exports = class AuthenController {
             res.render("./auth/LogIn")
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -52,17 +50,18 @@ module.exports = class AuthenController {
             res.redirect('/dashboard')
 
         } catch (error) {
-            instantiateValidationError(error, ErrorOrigin.login, next)
-            next(error)
+            
+            next(instantiateValidationError(error, ErrorOrigin.login))
         }
     }
 
     static async renderSignup(req, res, next) {
         try {
-            res.render("./auth/SignUp")
+            const encodedError = req.query.error
+            const errors = encodedError ? JSON.parse(decodeURIComponent(encodedError)) : {}
+            res.render("./auth/SignUp", {errors})
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -80,8 +79,7 @@ module.exports = class AuthenController {
             res.redirect('/login')
 
         } catch (error) {
-            instantiateValidationError(error, ErrorOrigin.signup, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.signup))
         }
     }
 
@@ -97,7 +95,6 @@ module.exports = class AuthenController {
             res.render("./pages/Home", { newsData, user })
 
         } catch (error) {
-            console.log(error);
         }
     }
 
@@ -107,7 +104,6 @@ module.exports = class AuthenController {
             res.redirect('/')
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }

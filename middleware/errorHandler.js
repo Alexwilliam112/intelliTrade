@@ -21,72 +21,69 @@ module.exports = {
         } else if (err.status === 403) {
             switch (err.origin) {
                 case ErrorOrigin.signup: {
-                    //LOGIC
-                    break;
+                    const encodedError = encodeURIComponent(JSON.stringify(err.errors))
+                    return res.redirect(`/signup?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.login: {
-                    //logic
-                    break;
+                    const encodedError = encodeURIComponent(JSON.stringify(err.errors))
+                    return res.redirect(`/login?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.companyUpdate: {
-                    //logic
-                    break;
+                    const encodedError = encodeURIComponent(JSON.stringify(err.errors))
+                    return res.redirect(`/signup?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.companyDelete: {
                     //logic
-                    break;
+                    return;
                 }
 
                 case ErrorOrigin.companyCreate: {
                     //logic
-                    break;
+                    return;
                 }
 
                 case ErrorOrigin.userDelete: {
                     //logic
-                    break;
+                    return;
                 }
 
                 case ErrorOrigin.userCreate: {
                     //logic
-                    break;
+                    return;
                 }
 
                 case ErrorOrigin.historicalBuy: {
                     //logic
-                    break;
+                    return;
                 }
 
                 case ErrorOrigin.historicalSell: {
                     //logic
-                    break;
+                    return;
                 }
 
                 case ErrorOrigin.marketBuy: {
                     //logic
-                    break;
+                    return;
                 }
 
                 case ErrorOrigin.marketSell: {
                     //logic
-                    break;
+                    return;
                 }
-
-                default:
-                    break;
             }
 
-        } else if (err.name = 'Request failed with status code 401') {
-            res.render('auth/ErrorPage', { err })
+        } else if (err.name === 'Request failed with status code 401') {
+            return res.render('auth/ErrorPage', { err })
 
         } else {
             err.status = 500
             err.name = 'Internal Server Error'
             err.message = 'The server encountered an unexpected condition that prevented it from fulfilling the request. Please try again later or contact the administrator for assistance.'
-            res.render('auth/ErrorPage', { err })
+            return res.render('auth/ErrorPage', { err })
         }
     }
 }

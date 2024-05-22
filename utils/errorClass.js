@@ -12,15 +12,16 @@ class ValidationError extends Error {
     }
 }
 
-function instantiateValidationError(error, origin, next) {
+function instantiateValidationError(error, origin) {
     if (error.name === 'SequelizeValidationError') {
         const sequelizeError = new ValidationError(origin)
         error.errors.forEach(errObj => {
             sequelizeError.errors[errObj.path] = errObj.message
         });
-        next(sequelizeError)
+        console.log(sequelizeError);
+        return sequelizeError
     } else {
-        return
+        return error
     }
 }
 

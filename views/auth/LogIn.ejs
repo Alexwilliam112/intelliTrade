@@ -15,9 +15,15 @@
             LOG IN <br>
             <form action="/login" class="formGroup" method="post">
                 <div class="formCard">
-                    <label for="username">Username</label>
+                    <div class="errorAlign">
+                        <label for="username">Username</label>
+                        <p class="errorMessage"><%= errors.username %></p>
+                    </div>
                     <input type="text" id="username" name="username" class="inputField">
-                    <label for="password">Password</label>
+                    <div class="errorAlign">
+                        <label for="password">Password</label>
+                        <p class="errorMessage"><%= errors.password %></p>
+                    </div>
                     <input type="password" id="password" name="password" class="inputField">
                 </div>
                 <button type="submit" class="landingButton">LOGIN</button>

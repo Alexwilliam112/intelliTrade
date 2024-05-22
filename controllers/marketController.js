@@ -24,7 +24,6 @@ module.exports = class MarketController {
             res.render("./pages/Market", { stocks, amountFormatter })
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -55,7 +54,6 @@ module.exports = class MarketController {
             })
 
         } catch (error) {
-            console.log(error);
             next(error)
         }
     }
@@ -70,9 +68,7 @@ module.exports = class MarketController {
             res.redirect(`/market/${id}`)
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.historicalBuy, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.historicalBuy))
         }
     }
 
@@ -86,9 +82,7 @@ module.exports = class MarketController {
             res.redirect(`/market/${id}`)
 
         } catch (error) {
-            console.log(error);
-            instantiateValidationError(error, ErrorOrigin.historicalSell, next)
-            next(error)
+            next(instantiateValidationError(error, ErrorOrigin.historicalSell))
         }
     }
 }

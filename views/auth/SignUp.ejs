@@ -15,13 +15,29 @@
             SIGN UP <br>
             <form action="/signup" class="formGroup" method="post">
                 <div class="formCard">
-                    <label for="username">Username</label>
+
+                    <div class="errorAlign">
+                        <label for="username">Username</label>
+                        <p class="errorMessage"><%= errors.username %></p>
+                    </div>
                     <input type="text" id="username" name="username" class="inputField">
-                    <label for="password">Create Password</label>
+
+                    <div class="errorAlign">
+                        <label for="password">Create Password</label>
+                        <p class="errorMessage"><%= errors.password %></p>
+                    </div>
                     <input type="password" id="password" name="password" class="inputField">
-                    <label for="rePassword">Confirm password</label>
+
+                    <div class="errorAlign">
+                        <label for="rePassword">Confirm password</label>
+                        <p class="errorMessage"><%= errors.password %></p>
+                    </div>
                     <input type="password" id="rePassword" name="rePassword" class="inputField">
-                    <label for="email">Email Address</label>
+
+                    <div class="errorAlign">
+                        <label for="email">Email Address</label>
+                        <p class="errorMessage"><%= errors.email %></p>
+                    </div>
                     <input type="email" id="email" name="email" class="inputField">
                 </div>
                 <button type="submit" class="landingButton">CREATE ACCOUNT</button>
