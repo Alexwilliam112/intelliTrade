@@ -1,7 +1,7 @@
 {
   "name": "intellitrade",
-  "version": "3.3.0",
-  "description": "on final development phase. all essential functions already working",
+  "version": "3.9.5",
+  "description": "On testing: Error Handling.",
   "main": "app.js",
   "scripts": {
     "dev-server": "npx nodemon app.js",
