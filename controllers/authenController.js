@@ -19,7 +19,10 @@ module.exports = class AuthenController {
 
     static async renderLogin(req, res, next) {
         try {
-            res.render("./auth/LogIn")
+            const encodedError = req.query.error
+            const errors = encodedError ? JSON.parse(decodeURIComponent(encodedError)) : {}
+
+            res.render("./auth/LogIn", { errors })
 
         } catch (error) {
             next(error)
@@ -29,7 +32,6 @@ module.exports = class AuthenController {
     static async handleLogin(req, res, next) {
         try {
             const { username, password } = req.body
-
             const user = await User.findOne({ where: { username } })
 
             if (!user) {
@@ -50,7 +52,6 @@ module.exports = class AuthenController {
             res.redirect('/dashboard')
 
         } catch (error) {
-            
             next(instantiateValidationError(error, ErrorOrigin.login))
         }
     }
@@ -59,7 +60,7 @@ module.exports = class AuthenController {
         try {
             const encodedError = req.query.error
             const errors = encodedError ? JSON.parse(decodeURIComponent(encodedError)) : {}
-            res.render("./auth/SignUp", {errors})
+            res.render("./auth/SignUp", { errors })
 
         } catch (error) {
             next(error)
@@ -95,6 +96,7 @@ module.exports = class AuthenController {
             res.render("./pages/Home", { newsData, user })
 
         } catch (error) {
+            next(error)
         }
     }
 
