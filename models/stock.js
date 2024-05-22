@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.StockHistory)
     }
 
+    get dividendPercentage() { //redundancy due to requirement instance method/getter
+      const dividend = this.getDataValue('dividend')
+      return `${dividend} %`
+    }
+
     static async readStockDetails(filterQuery) {
       try {
         if (!filterQuery) filterQuery = {}

@@ -87,8 +87,14 @@ module.exports = class AuthenController {
 
     static async renderHome(req, res) {
         try {
-            let newsData = await News.getNews()
-            res.render("./pages/Home", { newsData })
+            const userId = req.session.user.id
+            const user = await User.findOne({
+                where: {
+                    id: userId
+                }
+            })
+            const newsData = await News.getNews()
+            res.render("./pages/Home", { newsData, user })
 
         } catch (error) {
             console.log(error);

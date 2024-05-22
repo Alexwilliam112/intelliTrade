@@ -45,11 +45,13 @@ module.exports = class MarketController {
                 sellPost: `/market/${id}/sellorder`
             }
 
+            const stockEntity = await Stock.findByPk(id) //redundancy due to requirement instance method/getter
+
             res.render("./pages/Historicals", {
                 historicalDatas: JSON.stringify(historicalDatas),
                 stockDetail, portfolios, transactionRoute,
                 stocks, currencyFormatter, amountFormatter,
-                dateFormatter
+                dateFormatter, stockEntity
             })
 
         } catch (error) {
