@@ -47,11 +47,10 @@ module.exports = (sequelize, DataTypes) => {
         const usrId = Number(UserId)
         const stckId = Number(StockId)
         const expDate = new Date(expiration)
-        const lotUnit = quantity * 100
         await this.create({
           UserId: usrId,
           StockId: stckId,
-          quantity: lotUnit,
+          quantity,
           price,
           expiration: expDate,
           orderType,
@@ -218,6 +217,7 @@ module.exports = (sequelize, DataTypes) => {
     const now = new Date()
     marketOrder.createdAt = now
     marketOrder.updatedAt = now
+    marketOrder.quantity *= 100
     marketOrder.orderStatus = 'Open'
   })
 
