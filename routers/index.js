@@ -26,8 +26,9 @@ router.use('/market', AuthenMiddleware.isLoggedIn, marketRouters)
 router.use('/dashboard', AuthenMiddleware.isLoggedIn, dashboardRouters)
 
 router.use((req, res, next) => {
-    const err = new Error(`Request Not Found - ${req.originalUrl}`);
+    const err = new Error(`Page Not Found. ( ${req.originalUrl} ). The requested URL was not found on this server. Please check the URL for errors and try again, or navigate back to a valid page.`);
     err.status = 404;
+    err.name = 'Request Not Found'
     next(err);
 });
 router.use(ErrorHandler)

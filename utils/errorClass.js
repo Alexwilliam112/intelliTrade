@@ -4,6 +4,8 @@
 class ValidationError extends Error {
     constructor(origin) {
         super()
+        this.status = 403
+        this.message = 'Invalid request.'
         this.name = 'validation'
         this.errors = {}
         this.origin = origin
@@ -50,10 +52,6 @@ class ErrorOrigin {
 
     static get userCreate() {
         return 'userCreate'
-    }
-
-    static get historicalRead() {
-        return 'historicalRead'
     }
 
     static get historicalBuy() {

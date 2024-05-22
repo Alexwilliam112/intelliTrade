@@ -54,7 +54,6 @@ module.exports = class MarketController {
 
         } catch (error) {
             console.log(error);
-            instantiateValidationError(error, ErrorOrigin.historicalRead, next)
             next(error)
         }
     }
