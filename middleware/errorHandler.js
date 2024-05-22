@@ -66,10 +66,14 @@ module.exports = {
                     break;
             }
 
+        } else if(err.name = 'Request failed with status code 401') {
+            res.render('auth/ErrorPage', { err })
+
         } else {
             err.status = 500
             err.name = 'Internal Server Error'
             err.message = 'The server encountered an unexpected condition that prevented it from fulfilling the request. Please try again later or contact the administrator for assistance.'
+            res.render('auth/ErrorPage', { err })
         }
     }
 }
