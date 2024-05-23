@@ -1,10 +1,11 @@
 {
   "name": "intellitrade",
-  "version": "3.9.5",
-  "description": "On testing: Error Handling.",
+  "version": "4.0.0",
+  "description": "Ready for production.",
   "main": "app.js",
   "scripts": {
     "dev-server": "npx nodemon app.js",
+    "dev-start": "node devStart.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexander William",
