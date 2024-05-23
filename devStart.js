@@ -2,10 +2,10 @@
 const { exec } = require('child_process');
 
     const commands = [
-        // `npm install`,
-        // `npx sequelize db:create`,
-        // `npx sequelize db:migrate`,
-        // `npx sequelize db:seed:all`,
+        `npm install`,
+        `npx sequelize db:create`,
+        `npx sequelize db:migrate`,
+        `npx sequelize db:seed:all`,
         `node ./logs/startLog.js`,
         `node app.js`,
     ];
