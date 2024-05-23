@@ -2,11 +2,12 @@
 const { exec } = require('child_process');
 
     const commands = [
-        `npm install`,
-        `npx sequelize db:create`,
-        `npx sequelize db:migrate`,
-        `npx sequelize db:seed:all`
-        `node app.js`
+        // `npm install`,
+        // `npx sequelize db:create`,
+        // `npx sequelize db:migrate`,
+        // `npx sequelize db:seed:all`,
+        `node ./logs/startLog.js`,
+        `node app.js`,
     ];
 
 
@@ -25,12 +26,6 @@ const { exec } = require('child_process');
     };
 
 (async () => {
-    models.forEach(el => {
-        if (el !== null) {
-            commands.push(el)
-        }
-    });
-
     for await (const el of commands) {
         try {
             await execPromise(el)
