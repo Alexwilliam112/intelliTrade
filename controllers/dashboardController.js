@@ -175,6 +175,29 @@ module.exports = class DashboardController {
     static async cancelOrder(req, res, next) {
         try {
             const { id } = req.params
+            const order = await MarketOrder.findOne({
+                where: {
+                    id: id
+                }
+            })
+
+            if(order.orderStatus !== 'Open') {
+                const err = new Error('Access Denied. You are unauthorized to perform that action.')
+                err.status = 403
+                throw err
+            }
+
+            const tabState = await MarketOrder.deleteOrder(id)
+            res.redirect(`/dashboard?status=${tabState}`)
+
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async terminateOrder(req, res, next) {
+        try {
+            const { id } = req.params
             const tabState = await MarketOrder.deleteOrder(id)
             res.redirect(`/dashboard?status=${tabState}`)
 

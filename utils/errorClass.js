@@ -4,7 +4,7 @@
 class ValidationError extends Error {
     constructor(origin, errors = {}, target = {}) {
         super()
-        this.status = 403
+        this.status = 400
         this.message = 'Invalid request.'
         this.name = 'validation'
         this.errors = errors

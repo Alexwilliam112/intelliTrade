@@ -20,6 +20,9 @@ module.exports = {
             res.render('auth/ErrorPage', { err })
 
         } else if (err.status === 403) {
+            res.render('auth/ErrorPage', { err })
+
+        } else if (err.status === 400) {
             switch (err.origin) {
                 case ErrorOrigin.signup: {
                     const encodedError = encodeURIComponent(JSON.stringify(err.errors))

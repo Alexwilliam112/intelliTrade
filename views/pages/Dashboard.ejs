@@ -114,11 +114,11 @@
                           <% if (user.role==='admin' ) { %>
                             <a href="/dashboard/updateOrder/<%= el.id %>" class="viewButton"
                               style="font-size: 10px; padding-left: 10px; padding-right: 12px;">PROCESS</a>
-                            <a href="/dashboard/delete/<%= el.id %>" class="deleteButton"
-                              style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
+                            <a href="/dashboard/terminate/<%= el.id %>" class="deleteButton"
+                              style="font-size: 10px; padding-left: 10px; padding-right: 12px;">TERMINATE</a>
                             <% } %>
                               <% if (el.orderStatus==='Open' && user.role==='user' ) { %>
-                                <a href="/dashboard/delete/<%= el.id %>" class="deleteButton"
+                                <a href="/dashboard/cancel/<%= el.id %>" class="deleteButton"
                                   style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
                                 <% } %>
                                   <% } %>
