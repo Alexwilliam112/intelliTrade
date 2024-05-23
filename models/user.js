@@ -11,6 +11,15 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.Stock, { through: models.MarketOrder })
     }
 
+    static async updateRole(id, role) {
+      try {
+        await this.update({ role: role }, { where: { id: id } });
+
+      } catch (error) {
+        throw error;
+      }
+    }
+
   }
   User.init({
     username: {
@@ -64,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: {
       type: DataTypes.ENUM('admin', 'broker', 'user'),
-      allowNull: false,
+      allowNull: true,
       isIn: {
         args: [['admin', 'broker', 'user']],
         msg: 'Error: invalid role. check model',
@@ -75,11 +84,8 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
   });
 
-  User.beforeValidate((user) => {
-    user.role = 'user'
-  })
-
   User.beforeCreate(async (user) => {
+    user.role = 'user'
     const salt = await bcrypt.genSalt(10)
     user.password = await bcrypt.hash(user.password, salt)
   })

@@ -153,6 +153,18 @@ module.exports = class AdminController {
         }
     }
 
+    static async handleUpdateRole(req, res, next) {
+        try {
+            const { id } = req.params
+            const { role } = req.body
+            await User.updateRole(id, role)
+            res.redirect('/admin/userManage')
+
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async handleDeleteUser(req, res, next) {
         try {
             const { id } = req.params

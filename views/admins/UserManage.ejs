@@ -33,17 +33,13 @@
 						<table class="items-center bg-transparent w-full border-collapse">
 							<thead>
 								<tr>
-									<th
+									<th style="padding-left: 50px; padding-right: 50px;"
 										class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
 										UserID
 									</th>
-									<th
+									<th style="padding-left: 100px; padding-right: 100px;"
 										class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
 										Username
-									</th>
-									<th
-										class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-										User Role
 									</th>
 									<th
 										class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
@@ -56,22 +52,25 @@
 								<% users.forEach(el=> { %>
 									<tr
 										style="border-bottom: 0.5px solid rgb(207, 207, 207); border-top: 0.5px solid rgb(207, 207, 207);">
-										<th style="font-size: 14px; font-weight: 450;"
+										<th style="padding-left: 50px; padding-right: 50px;"
+											style="font-size: 14px; font-weight: 450;"
 											class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
 											<%- el.id %>
 										</th>
-										<td style="font-size: 14px; font-weight: 450;"
+										<td style="font-size: 14px; font-weight: 450; padding-left: 100px; padding-right: 100px;"
 											class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
 											<%- el.username %>
 										</td>
 										<td style="font-size: 14px; font-weight: 450;"
-											class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-											<%- el.role %>
-										</td>
-										<td style="font-size: 14px; font-weight: 450;"
-											class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-											<a href="/admin/userManage/?deleteId=<%= el.id %>&deleteName=<%= el.username %>"><button
-													class="deleteButton" style="margin-bottom: 0px;">Delete User</button></a>
+											class="border-t-0 px-0 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+											<form action="/admin/userManage/updateRole/<%= el.id %>" method="post" style=" display: flex; flex-direction: row; gap: 20px;">
+												<select name="role" id="role" style="width: 200px;">
+													<option value="admin" <%= el.role === 'admin'? 'selected' : '' %>>Admin</option>
+													<option value="broker" <%= el.role === 'broker'? 'selected' : '' %>>Broker</option>
+													<option value="user" <%= el.role === 'user'? 'selected' : '' %>>User</option>
+												</select>
+												<button type="submit" class="cancelButton">SAVE</button>
+											</form>
 										</td>
 									</tr>
 									<% }) %>

@@ -267,5 +267,33 @@
       "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
       "    at trim_prefix (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:328:13)"
     ]
+  },
+  {
+    "time": "2024-05-23T11:13:12.363Z",
+    "name": "Request Not Found",
+    "message": "Page Not Found. ( /admin/userManage/updateRole/2 ). The requested URL was not found on this server. Please check the URL for errors and try again, or navigate back to a valid page.",
+    "stack": [
+      "Request Not Found: Page Not Found. ( /admin/userManage/updateRole/2 ). The requested URL was not found on this server. Please check the URL for errors and try again, or navigate back to a valid page.",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\routers\\index.js:29:17",
+      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
+      "    at trim_prefix (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:328:13)",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:286:9",
+      "    at Function.process_params (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:346:12)",
+      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:280:10)",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:646:15",
+      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:265:14)",
+      "    at Function.handle (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:175:3)",
+      "    at router (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:47:12)"
+    ]
+  },
+  {
+    "time": "2024-05-23T11:26:50.000Z",
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleSignup (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\authenController.js:83:18)"
+    ]
   }
 ]

@@ -5,7 +5,7 @@ const AdminController = require('../controllers/adminController')
 
 router.get('/companyData', AdminController.renderAdmin)
 router.get('/userManage', AdminController.renderUserManage)
-router.post('/userManage/delete/:id', AdminController.handleDeleteUser)
+router.post('/userManage/updateRole/:id', AdminController.handleUpdateRole)
 router.post('/userManage/add', AdminController.handleAddUser)
 router.post('/companyData/add', AdminController.handleAdd)
 router.post('/companyData/update', AdminController.handleUpdate)
