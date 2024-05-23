@@ -11,6 +11,32 @@ module.exports = class DashboardController {
 
     static async renderDashboard(req, res, next) {
         try {
+            const encodedError = req.query.error
+            const errorObj = encodedError ? JSON.parse(decodeURIComponent(encodedError)) : {}
+            let errors = errorObj.errors
+
+            if (!errors) {
+                errors = {
+                    StockId: '',
+                    quantity: '',
+                    price: '',
+                    expiration: '',
+                }
+            }
+
+            let overlayType = ''
+            switch (errorObj.origin) {
+                case ErrorOrigin.marketBuy: {
+                    overlayType = 'buy'
+                    break
+                }
+
+                case ErrorOrigin.marketSell: {
+                    overlayType = 'sell'
+                    break
+                }
+            }
+
             let status_filter = req.query.status
             if (!status_filter) {
                 status_filter = 'Open'
@@ -52,14 +78,15 @@ module.exports = class DashboardController {
             const portfolios = await Portfolio.readPortfolio({ UserId: user.id })
             const transactionRoute = {
                 buyPost: '/dashboard/buyorder',
-                sellPost: '/dashboard/sellorder'
+                sellPost: '/dashboard/sellorder',
+                reset: '/dashboard'
             }
 
             res.render("./pages/Dashboard", {
                 orders, stocks, portfolios, status_filter,
                 tabState, user, dateFormatter, currencyFormatter,
                 estimateDividend, estimateValue, transactionRoute,
-                amountFormatter
+                amountFormatter, errors, overlayType
             })
 
         } catch (error) {

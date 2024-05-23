@@ -23,9 +23,8 @@
                   style="display: flex; align-items: center; justify-content: right; vertical-align: middle; gap: 5px;">
                   <input type="search" placeholder="Search by order number" style="width: 300px;"
                     class="bg-white border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:border-indigo-500"
-                    style="height: 37.5px;" 
-                    name="orderNumber"/>
-                    <input type="search" name="status" value="<%= status_filter %>" style="display: none;">
+                    style="height: 37.5px;" name="orderNumber" />
+                  <input type="search" name="status" value="<%= status_filter %>" style="display: none;">
                   <input type="submit" value="Search" class="viewButton"
                     style="width: 80px; font-size: 14px; justify-content: center;" />
                 </form>
@@ -82,7 +81,7 @@
 
               <tbody>
                 <% orders.forEach(el=> { %>
-                  <% if (el.orderStatus=== status_filter) { %>
+                  <% if (el.orderStatus===status_filter) { %>
                     <tr>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
                         <%= el.orderType %>
@@ -111,18 +110,18 @@
                         <%= dateFormatter(el.expiration) %>
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
-                        <% if (el.orderStatus !== 'Completed') { %>
-                          <% if (user.role === 'admin') { %>
+                        <% if (el.orderStatus !=='Completed' ) { %>
+                          <% if (user.role==='admin' ) { %>
                             <a href="/dashboard/updateOrder/<%= el.id %>" class="viewButton"
                               style="font-size: 10px; padding-left: 10px; padding-right: 12px;">PROCESS</a>
                             <a href="/dashboard/delete/<%= el.id %>" class="deleteButton"
                               style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
-                          <% } %>
-                          <% if (el.orderStatus === 'Open' && user.role === 'user') { %>
-                            <a href="/dashboard/delete/<%= el.id %>" class="deleteButton"
-                              style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
-                          <% } %>
-                        <% } %>
+                            <% } %>
+                              <% if (el.orderStatus==='Open' && user.role==='user' ) { %>
+                                <a href="/dashboard/delete/<%= el.id %>" class="deleteButton"
+                                  style="font-size: 10px; padding-left: 10px; padding-right: 12px;">CANCEL</a>
+                                <% } %>
+                                  <% } %>
                       </td>
                     </tr>
                     <% } %>
@@ -134,19 +133,39 @@
       </div>
 
 
-    <script>
-      function openBuy() {
-        document.getElementById("overlayBuy").style.display = "block";
-      }
+      <div id="overlayTypeContainer" data-overlay-type="<%= overlayType %>"></div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const overlayTypeContainer = document.getElementById('overlayTypeContainer');
+          const overlayType = overlayTypeContainer.dataset.overlayType;
 
-      function openSell() {
-        document.getElementById("overlaySell").style.display = "block";
-      }
+          switch (overlayType) {
+            case 'buy': {
+              document.getElementById("overlayBuy").style.display = "block";
+              break;
+            }
 
-      function closeForm() {
-        document.getElementById("overlayBuy").style.display = "none";
-        document.getElementById("overlaySell").style.display = "none";
-      }
-    </script>
+            case 'sell': {
+              document.getElementById("overlaySell").style.display = "block";
+              break;
+            }
+          }
+        });
+      </script>
 
-    <%- include('../partials/Footer.ejs') %>
+      <script>
+        function openBuy() {
+          document.getElementById("overlayBuy").style.display = "block";
+        }
+
+        function openSell() {
+          document.getElementById("overlaySell").style.display = "block";
+        }
+
+        function closeForm() {
+          document.getElementById("overlayBuy").style.display = "none";
+          document.getElementById("overlaySell").style.display = "none";
+        }
+      </script>
+
+      <%- include('../partials/Footer.ejs') %>

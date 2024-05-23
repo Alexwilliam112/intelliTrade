@@ -78,5 +78,55 @@
       "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
       "    at buyPost (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\marketController.js:99:18)"
     ]
+  },
+  {
+    "time": "2024-05-23T06:27:30.099Z",
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at buyPost (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\dashboardController.js:158:18)"
+    ]
+  },
+  {
+    "time": "2024-05-23T06:28:07.049Z",
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at buyPost (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\dashboardController.js:158:18)"
+    ]
+  },
+  {
+    "time": "2024-05-23T06:28:09.550Z",
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at sellPost (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\dashboardController.js:171:18)"
+    ]
+  },
+  {
+    "time": "2024-05-23T06:28:13.283Z",
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at buyPost (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\dashboardController.js:158:18)"
+    ]
+  },
+  {
+    "time": "2024-05-23T06:28:37.216Z",
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at buyPost (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\dashboardController.js:158:18)"
+    ]
   }
 ]
