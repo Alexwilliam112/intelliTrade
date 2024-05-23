@@ -41,11 +41,10 @@ module.exports = class News {
             return newsData
 
         } catch (error) {
-            console.log(error);
             return [{
                 imageUrl: '',
                 date: '',
-                title: 'NOT FOUND',
+                title: 'FAILED TO FETCH DATA',
                 description: `ERROR MESSAGE: ${error.message}`,
                 publisherLogo: '',
                 publisherName: '',

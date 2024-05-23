@@ -49,7 +49,7 @@ module.exports = class AuthenController {
 
             delete user.password
             req.session.user = user
-            res.redirect('/dashboard')
+            res.redirect('/home')
 
         } catch (error) {
             next(instantiateValidationError(error, ErrorOrigin.login))

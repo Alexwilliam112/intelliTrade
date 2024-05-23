@@ -11,7 +11,7 @@ module.exports = {
                 const resData = await axios.get(reqUrl, {
                     headers: {
                         'accept': 'application/json',
-                        'X-API-KEY': process.env.apiKey_historical2
+                        'X-API-KEY': process.env.apiKey_historical1
                     },
                     params: {
                         from,
@@ -64,7 +64,7 @@ module.exports = {
             const resData = await axios.get(reqUrl, {
                 headers: {
                     'accept': 'application/json',
-                    'X-API-KEY': 'c153dceb-74ea-5f0c-1331-b007c520',
+                    'X-API-KEY': process.env.apiKey_companyProfile,
                 },
                 params: {},
             });
