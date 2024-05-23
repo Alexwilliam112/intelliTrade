@@ -2,7 +2,11 @@
 	<div class="overlay-content">
 		<h1 style="margin-top: 10px; font-size: 20px;">BUY ORDER</h1>
 		<form action= <%= transactionRoute.buyPost %> method="post">
-			<label for="StockId">Stock:</label>
+
+			<div class="errorAlignForm">
+				<label for="StockId">Stock:</label>
+				<p class="errorMessageForm"><%= errors.StockId %></p>
+			</div>
 			<select name="StockId" id="StockId">
 				<option value="">--SELECT--</option>
 				<% if (typeof(stocks) !=='undefined' ) { %>
@@ -13,17 +17,29 @@
 					<% }) %>
 				<% } %>
 			</select>
-			<label for="quantity">Quantity (LOT):</label>
+
+			<div class="errorAlignForm">
+				<label for="quantity">Quantity (LOT):</label>
+				<p class="errorMessageForm"><%= errors.quantity %></p>
+			</div>
 			<input type="number" id="quantityBuy" name="quantity" style="padding-left: 20px; margin-top: 5px;">
-			<label for="price" style=" margin-top: 15px;">Limit Price:</label>
+
+			<div class="errorAlignForm" style=" margin-top: 15px;">
+				<label for="price">Limit Price:</label>
+				<p class="errorMessageForm"><%= errors.price %></p>
+			</div>
 			<input type="number" id="priceBuy" name="price" style="padding-left: 20px; margin-top: 15px;">
-			<label for="expiration" style=" margin-top: 15px;">Order Expiration:</label>
+
+			<div class="errorAlignForm" style=" margin-top: 15px;">
+				<label for="expiration">Order Expiration:</label>
+				<p class="errorMessageForm"><%= errors.expiration %></p>
+			</div>
 			<input type="date" id="ExpirationBuy" name="expiration" style="padding-left: 20px; margin-top: 15px;">
+
 			<div
 				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px;">
 				<button type="submit" class="addButton" style="font-size: 14px; width: 115px">PLACE BUY</button>
-				<button type="button" class="cancelButton" style="font-size: 14px; width: 115px;"
-					onclick="closeForm()">CANCEL</button>
+				<a href=<%= transactionRoute.reset %>><button type="button" class="cancelButton" style="font-size: 14px; width: 115px;">CANCEL</button></a>
 			</div>
 		</form>
 	</div>
@@ -33,7 +49,11 @@
 	<div class="overlay-content">
 		<h1 style="margin-top: 10px; font-size: 20px;">SELL ORDER</h1>
 		<form action=<%= transactionRoute.sellPost %> method="post">
-			<label for="StockId">Stock:</label>
+
+			<div class="errorAlignForm">
+				<label for="StockId">Stock:</label>
+				<p class="errorMessageForm"><%= errors.StockId %></p>
+			</div>
 			<select name="StockId" id="StockId">
 				<option value="">--SELECT--</option>
 				<% if (typeof(portfolios) !=='undefined' ) { %>
@@ -44,17 +64,29 @@
 					<% }) %>
 				<% } %>
 			</select>
-			<label for="quantity">Quantity (LOT):</label>
+
+			<div class="errorAlignForm">
+				<label for="quantity">Quantity (LOT):</label>
+				<p class="errorMessageForm"><%= errors.quantity %></p>
+			</div>
 			<input type="number" id="quantitySell" name="quantity" style="padding-left: 20px; margin-top: 5px;">
-			<label for="price" style=" margin-top: 15px;">Limit Price:</label>
+
+			<div class="errorAlignForm" style=" margin-top: 15px;">
+				<label for="price">Limit Price:</label>
+				<p class="errorMessageForm"><%= errors.price %></p>
+			</div>
 			<input type="number" id="priceSell" name="price" style="padding-left: 20px; margin-top: 15px;">
-			<label for="expiration" style=" margin-top: 15px;">Order Expiration:</label>
+
+			<div class="errorAlignForm" style=" margin-top: 15px;">
+				<label for="expiration">Order Expiration:</label>
+				<p class="errorMessageForm"><%= errors.expiration %></p>
+			</div>
 			<input type="date" id="ExpirationSell" name="expiration" style="padding-left: 20px; margin-top: 15px;">
+
 			<div
 				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px;">
 				<button type="submit" class="addButton" style="font-size: 14px; width: 115px">PUT SELL</button>
-				<button type="button" class="cancelButton" style="font-size: 14px; width: 115px;"
-					onclick="closeForm()">CANCEL</button>
+				<a href=<%= transactionRoute.reset %>><button type="button" class="cancelButton" style="font-size: 14px; width: 115px;">CANCEL</button></a>
 			</div>
 		</form>
 	</div>

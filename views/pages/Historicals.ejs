@@ -1,6 +1,6 @@
 <%- include('../partials/Header.ejs', {title: 'Historical Details' }) %>
 
-  <%- include('../partials/Transactions.ejs', { stocks, portfolios, transactionRoute }) %>
+  <%- include('../partials/Transactions.ejs', { stocks, portfolios, transactionRoute, errors }) %>
 
 
     <div style="background-color: #121A2C; position: relative; padding-top: 120px; justify-content: center;">
@@ -92,7 +92,7 @@
               Annual Dividend Yield
             </h6>
             <span class="text-xl font-semibold" style="color: #F6F7FB;">
-              <%= stockEntity.dividendPercentage %> 
+              <%= stockEntity.dividendPercentage %>
             </span>
           </div>
           <div>
@@ -140,8 +140,28 @@
       </div>
     </div>
 
-    <div id="dataContainer" data-chartData="<%= historicalDatas %>"></div>
 
+    <div id="overlayTypeContainer" data-overlay-type="<%= overlayType %>"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const overlayTypeContainer = document.getElementById('overlayTypeContainer');
+        const overlayType = overlayTypeContainer.dataset.overlayType;
+
+        switch (overlayType) {
+          case 'buy': {
+            document.getElementById("overlayBuy").style.display = "block";
+            break;
+          }
+
+          case 'sell': {
+            document.getElementById("overlaySell").style.display = "block";
+            break;
+          }
+        }
+      });
+    </script>
+
+    <div id="dataContainer" data-chartData="<%= historicalDatas %>"></div>
     <script>
       function openBuy() {
         document.getElementById("overlayBuy").style.display = "block";

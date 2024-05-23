@@ -30,6 +30,32 @@ module.exports = class MarketController {
 
     static async stockDetails(req, res, next) {
         try {
+            const encodedError = req.query.error
+            const errorObj = encodedError ? JSON.parse(decodeURIComponent(encodedError)) : {}
+            let errors = errorObj.errors
+
+            if (!errors) {
+                errors = {
+                    StockId: '',
+                    quantity: '',
+                    price: '',
+                    expiration: '',
+                }
+            }
+
+            let overlayType = ''
+            switch (errorObj.origin) {
+                case ErrorOrigin.historicalBuy: {
+                    overlayType = 'buy'
+                    break
+                }
+
+                case ErrorOrigin.historicalSell: {
+                    overlayType = 'sell'
+                    break
+                }
+            }
+
             const { id } = req.params
             const historicalDatas = await StockHistory.readHistorical(id)
             const stockDetail = await Stock.findStock(id)
@@ -41,7 +67,8 @@ module.exports = class MarketController {
             })
             const transactionRoute = {
                 buyPost: `/market/${id}/buyorder`,
-                sellPost: `/market/${id}/sellorder`
+                sellPost: `/market/${id}/sellorder`,
+                reset: `/market/${id}`
             }
 
             const stockEntity = await Stock.findByPk(id) //redundancy due to requirement instance method/getter
@@ -50,7 +77,7 @@ module.exports = class MarketController {
                 historicalDatas: JSON.stringify(historicalDatas),
                 stockDetail, portfolios, transactionRoute,
                 stocks, currencyFormatter, amountFormatter,
-                dateFormatter, stockEntity
+                dateFormatter, stockEntity, overlayType, errors
             })
 
         } catch (error) {
@@ -68,7 +95,8 @@ module.exports = class MarketController {
             res.redirect(`/market/${id}`)
 
         } catch (error) {
-            next(instantiateValidationError(error, ErrorOrigin.historicalBuy))
+            const { id } = req.params
+            next(instantiateValidationError(error, ErrorOrigin.historicalBuy, {id}))
         }
     }
 
@@ -82,7 +110,8 @@ module.exports = class MarketController {
             res.redirect(`/market/${id}`)
 
         } catch (error) {
-            next(instantiateValidationError(error, ErrorOrigin.historicalSell))
+            const { id } = req.params
+            next(instantiateValidationError(error, ErrorOrigin.historicalSell, {id}))
         }
     }
 }

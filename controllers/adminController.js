@@ -38,11 +38,6 @@ module.exports = class AdminController {
 
             //toggle overlay if error exists
             switch (errorObj.origin) {
-                case ErrorOrigin.userUpdate: {
-                    overlayType = 'update'
-                    break
-                }
-
                 case ErrorOrigin.userDelete: {
                     overlayType = 'delete'
                     break

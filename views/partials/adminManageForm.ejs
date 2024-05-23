@@ -2,24 +2,31 @@
 	<div class="overlay-content">
 		<h1 style="margin-top: 10px; font-size: 20px;">CREATE NEW USER</h1>
 		<form action="/admin/userManage/add" method="post">
-            
+
 			<div class="errorAlignForm" style=" margin-top: 15px;">
 				<label for="email">Email:</label>
-				<p class="errorMessageForm"><%= errors.email %></p>
+				<p class="errorMessageForm">
+					<%= errors.email %>
+				</p>
 			</div>
 			<input type="text" id="email" name="email" style="padding-left: 20px; margin-top: 15px; border-radius:7px;">
-			
+
 			<div class="errorAlignForm" style="margin-top: 30px;">
 				<label for="username">Username:</label>
-				<p class="errorMessageForm"><%= errors.username %></p>
+				<p class="errorMessageForm">
+					<%= errors.username %>
+				</p>
 			</div>
 			<input type="text" id="username" name="username" style="padding-left: 20px; margin-top: 15px; border-radius:7px;">
-			
+
 			<div class="errorAlignForm" style="margin-top: 30px;">
 				<label for="password">Password:</label>
-				<p class="errorMessageForm"><%= errors.password %></p>
+				<p class="errorMessageForm">
+					<%= errors.password %>
+				</p>
 			</div>
-			<input type="password" step="0.01" id="password" name="password" style="padding-left: 20px; margin-top: 5px; border-radius:7px;">
+			<input type="password" step="0.01" id="password" name="password"
+				style="padding-left: 20px; margin-top: 5px; border-radius:7px;">
 
 			<label for="role" style="margin-top: 30px;">User Role:</label>
 			<select name="role" id="role">

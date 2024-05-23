@@ -5,6 +5,7 @@ module.exports = {
     ErrorHandler: async (err, req, res, next) => {
         const prevLog = JSON.parse(await readFile('./logs/errorLogs.json'))
         const newError = {
+            time: new Date(),
             statusCode: err.statusCode,
             name: err.name,
             message: err.message,
@@ -56,23 +57,23 @@ module.exports = {
                 }
 
                 case ErrorOrigin.historicalBuy: {
-                    //logic
-                    return;
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/market/${err.target.id}?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.historicalSell: {
-                    //logic
-                    return;
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/market/${err.target.id}?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.marketBuy: {
-                    //logic
-                    return;
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/dashboard?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.marketSell: {
-                    //logic
-                    return;
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/dashboard?error=${encodedError}`)
                 }
             }
 
