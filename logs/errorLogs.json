@@ -390,5 +390,273 @@
       "validation: Invalid request.",
       "    at handleDelete (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:155:33)"
     ]
+  },
+  {
+    "name": "ReferenceError",
+    "message": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs:3\n    1| <%- include('../partials/Header.ejs', {title: 'User Management' }) %>\r\n    2| \r\n >> 3|     <%- include ('../partials/AdminManageForm.ejs') %>\r\n    4|     <%- include ('../partials/DeleteUser.ejs', { deleteConfig }) %>\r\n    5| \r\n    6|         <div class=\"w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24\" style=\"padding-top: 30px;\">\r\n\nC:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\partials\\AdminManageForm.ejs:8\n    6| \t\t\t<div class=\"errorAlignForm\" style=\" margin-top: 15px;\">\r\n    7| \t\t\t\t<label for=\"email\">Email:</label>\r\n >> 8| \t\t\t\t<p class=\"errorMessageForm\"><%= errors.email %></p>\r\n    9| \t\t\t</div>\r\n    10| \t\t\t<input type=\"text\" id=\"email\" name=\"email\" style=\"padding-left: 20px; margin-top: 15px; border-radius:7px;\">\r\n    11| \t\t\t\r\n\nerrors is not defined",
+    "origin": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs",
+    "stack": [
+      "ReferenceError: C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs:3",
+      "    1| <%- include('../partials/Header.ejs', {title: 'User Management' }) %>\r",
+      "    2| \r",
+      " >> 3|     <%- include ('../partials/AdminManageForm.ejs') %>\r",
+      "    4|     <%- include ('../partials/DeleteUser.ejs', { deleteConfig }) %>\r",
+      "    5| \r",
+      "    6|         <div class=\"w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24\" style=\"padding-top: 30px;\">\r",
+      "",
+      "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\partials\\AdminManageForm.ejs:8",
+      "    6| \t\t\t<div class=\"errorAlignForm\" style=\" margin-top: 15px;\">\r",
+      "    7| \t\t\t\t<label for=\"email\">Email:</label>\r",
+      " >> 8| \t\t\t\t<p class=\"errorMessageForm\"><%= errors.email %></p>\r",
+      "    9| \t\t\t</div>\r",
+      "    10| \t\t\t<input type=\"text\" id=\"email\" name=\"email\" style=\"padding-left: 20px; margin-top: 15px; border-radius:7px;\">\r",
+      "    11| \t\t\t\r",
+      "",
+      "errors is not defined",
+      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:12:26)",
+      "    at AdminManageForm (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
+      "    at include (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:701:39)",
+      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:13:17)",
+      "    at userManage (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
+      "    at tryHandleCache (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:274:36)",
+      "    at exports.renderFile [as engine] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:491:10)",
+      "    at View.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\view.js:135:8)",
+      "    at tryRender (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:657:10)",
+      "    at Function.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:609:3)"
+    ]
+  },
+  {
+    "name": "ReferenceError",
+    "message": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs:3\n    1| <%- include('../partials/Header.ejs', {title: 'User Management' }) %>\r\n    2| \r\n >> 3|     <%- include ('../partials/AdminManageForm.ejs') %>\r\n    4|     <%- include ('../partials/DeleteUser.ejs', { deleteConfig }) %>\r\n    5| \r\n    6|         <div class=\"w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24\" style=\"padding-top: 30px;\">\r\n\nC:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\partials\\AdminManageForm.ejs:8\n    6| \t\t\t<div class=\"errorAlignForm\" style=\" margin-top: 15px;\">\r\n    7| \t\t\t\t<label for=\"email\">Email:</label>\r\n >> 8| \t\t\t\t<p class=\"errorMessageForm\"><%= errors.email %></p>\r\n    9| \t\t\t</div>\r\n    10| \t\t\t<input type=\"text\" id=\"email\" name=\"email\" style=\"padding-left: 20px; margin-top: 15px; border-radius:7px;\">\r\n    11| \t\t\t\r\n\nerrors is not defined",
+    "origin": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs",
+    "stack": [
+      "ReferenceError: C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs:3",
+      "    1| <%- include('../partials/Header.ejs', {title: 'User Management' }) %>\r",
+      "    2| \r",
+      " >> 3|     <%- include ('../partials/AdminManageForm.ejs') %>\r",
+      "    4|     <%- include ('../partials/DeleteUser.ejs', { deleteConfig }) %>\r",
+      "    5| \r",
+      "    6|         <div class=\"w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24\" style=\"padding-top: 30px;\">\r",
+      "",
+      "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\partials\\AdminManageForm.ejs:8",
+      "    6| \t\t\t<div class=\"errorAlignForm\" style=\" margin-top: 15px;\">\r",
+      "    7| \t\t\t\t<label for=\"email\">Email:</label>\r",
+      " >> 8| \t\t\t\t<p class=\"errorMessageForm\"><%= errors.email %></p>\r",
+      "    9| \t\t\t</div>\r",
+      "    10| \t\t\t<input type=\"text\" id=\"email\" name=\"email\" style=\"padding-left: 20px; margin-top: 15px; border-radius:7px;\">\r",
+      "    11| \t\t\t\r",
+      "",
+      "errors is not defined",
+      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:12:26)",
+      "    at AdminManageForm (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
+      "    at include (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:701:39)",
+      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:13:17)",
+      "    at userManage (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
+      "    at tryHandleCache (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:274:36)",
+      "    at exports.renderFile [as engine] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:491:10)",
+      "    at View.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\view.js:135:8)",
+      "    at tryRender (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:657:10)",
+      "    at Function.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:609:3)"
+    ]
+  },
+  {
+    "name": "ReferenceError",
+    "message": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs:3\n    1| <%- include('../partials/Header.ejs', {title: 'User Management' }) %>\r\n    2| \r\n >> 3|     <%- include ('../partials/AdminManageForm.ejs', { errors }) %>\r\n    4|     <%- include ('../partials/DeleteUser.ejs', { deleteConfig }) %>\r\n    5| \r\n    6|         <div class=\"w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24\" style=\"padding-top: 30px;\">\r\n\nerrors is not defined",
+    "origin": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs",
+    "stack": [
+      "ReferenceError: C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs:3",
+      "    1| <%- include('../partials/Header.ejs', {title: 'User Management' }) %>\r",
+      "    2| \r",
+      " >> 3|     <%- include ('../partials/AdminManageForm.ejs', { errors }) %>\r",
+      "    4|     <%- include ('../partials/DeleteUser.ejs', { deleteConfig }) %>\r",
+      "    5| \r",
+      "    6|         <div class=\"w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24\" style=\"padding-top: 30px;\">\r",
+      "",
+      "errors is not defined",
+      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:13:63)",
+      "    at userManage (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
+      "    at tryHandleCache (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:274:36)",
+      "    at exports.renderFile [as engine] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:491:10)",
+      "    at View.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\view.js:135:8)",
+      "    at tryRender (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:657:10)",
+      "    at Function.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:609:3)",
+      "    at ServerResponse.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\response.js:1048:7)",
+      "    at renderUserManage (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:39:17)",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+    ]
+  },
+  {
+    "name": "TypeError",
+    "message": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs:3\n    1| <%- include('../partials/Header.ejs', {title: 'User Management' }) %>\r\n    2| \r\n >> 3|     <%- include ('../partials/AdminManageForm.ejs', { errors }) %>\r\n    4|     <%- include ('../partials/DeleteUser.ejs', { deleteConfig }) %>\r\n    5| \r\n    6|         <div class=\"w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24\" style=\"padding-top: 30px;\">\r\n\nC:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\partials\\AdminManageForm.ejs:8\n    6| \t\t\t<div class=\"errorAlignForm\" style=\" margin-top: 15px;\">\r\n    7| \t\t\t\t<label for=\"email\">Email:</label>\r\n >> 8| \t\t\t\t<p class=\"errorMessageForm\"><%= errors.email %></p>\r\n    9| \t\t\t</div>\r\n    10| \t\t\t<input type=\"text\" id=\"email\" name=\"email\" style=\"padding-left: 20px; margin-top: 15px; border-radius:7px;\">\r\n    11| \t\t\t\r\n\nCannot read properties of undefined (reading 'email')",
+    "origin": "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs",
+    "stack": [
+      "TypeError: C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\admins\\userManage.ejs:3",
+      "    1| <%- include('../partials/Header.ejs', {title: 'User Management' }) %>\r",
+      "    2| \r",
+      " >> 3|     <%- include ('../partials/AdminManageForm.ejs', { errors }) %>\r",
+      "    4|     <%- include ('../partials/DeleteUser.ejs', { deleteConfig }) %>\r",
+      "    5| \r",
+      "    6|         <div class=\"w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24\" style=\"padding-top: 30px;\">\r",
+      "",
+      "C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\views\\partials\\AdminManageForm.ejs:8",
+      "    6| \t\t\t<div class=\"errorAlignForm\" style=\" margin-top: 15px;\">\r",
+      "    7| \t\t\t\t<label for=\"email\">Email:</label>\r",
+      " >> 8| \t\t\t\t<p class=\"errorMessageForm\"><%= errors.email %></p>\r",
+      "    9| \t\t\t</div>\r",
+      "    10| \t\t\t<input type=\"text\" id=\"email\" name=\"email\" style=\"padding-left: 20px; margin-top: 15px; border-radius:7px;\">\r",
+      "    11| \t\t\t\r",
+      "",
+      "Cannot read properties of undefined (reading 'email')",
+      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:12:33)",
+      "    at AdminManageForm (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
+      "    at include (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:701:39)",
+      "    at eval (eval at compile (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:673:12), <anonymous>:13:17)",
+      "    at userManage (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:703:17)",
+      "    at tryHandleCache (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:274:36)",
+      "    at exports.renderFile [as engine] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\ejs\\lib\\ejs.js:491:10)",
+      "    at View.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\view.js:135:8)",
+      "    at tryRender (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:657:10)",
+      "    at Function.render (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\application.js:609:3)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleAddUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:202:18)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleAddUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:222:18)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleAddUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:222:18)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleAddUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:222:18)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleAddUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:222:18)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleAddUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:222:18)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleAddUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:222:18)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at instantiateValidationError (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\utils\\errorClass.js:18:32)",
+      "    at handleAddUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:227:18)"
+    ]
+  },
+  {
+    "name": "ReferenceError",
+    "message": "deleteId is not defined",
+    "stack": [
+      "ReferenceError: deleteId is not defined",
+      "    at handleDeleteUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:172:21)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at handleDeleteUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:169:33)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at handleUpdate (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:151:33)",
+      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
+      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:149:13)",
+      "    at Route.dispatch (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\route.js:119:3)",
+      "    at Layer.handle [as handle_request] (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\layer.js:95:5)",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:284:15",
+      "    at Function.process_params (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:346:12)",
+      "    at next (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:280:10)",
+      "    at Function.handle (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:175:3)",
+      "    at router (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\express\\lib\\router\\index.js:47:12)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:237:36",
+      "    at C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\node_modules\\sequelize\\lib\\sequelize.js:507:24",
+      "    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+      "    at async handleAdd (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:236:13)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at handleDelete (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:197:33)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at handleDeleteUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:169:33)"
+    ]
+  },
+  {
+    "name": "validation",
+    "message": "Invalid request.",
+    "stack": [
+      "validation: Invalid request.",
+      "    at handleDeleteUser (C:\\Users\\alexw\\OneDrive\\Desktop\\BACKUP\\Backup\\FSJS H8\\Phase 1\\finalProject\\intelliTrade_sequelized\\intelliTrade\\controllers\\adminController.js:169:33)"
+    ]
   }
 ]

@@ -52,6 +52,10 @@ class ErrorOrigin {
         return 'userDelete'
     }
 
+    static get userUpdate() {
+        return 'userUpdate'
+    }
+
     static get userCreate() {
         return 'userCreate'
     }

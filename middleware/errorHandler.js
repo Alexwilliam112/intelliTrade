@@ -46,13 +46,13 @@ module.exports = {
                 }
 
                 case ErrorOrigin.userDelete: {
-                    //logic
-                    return;
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/admin/userManage/?deleteId=${err.target.deleteId}&deleteName=${err.target.viewDelete}&error=${encodedError}`)
                 }
 
                 case ErrorOrigin.userCreate: {
-                    //logic
-                    return;
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/admin/userManage?error=${encodedError}`)
                 }
 
                 case ErrorOrigin.historicalBuy: {

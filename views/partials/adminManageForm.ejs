@@ -2,12 +2,31 @@
 	<div class="overlay-content">
 		<h1 style="margin-top: 10px; font-size: 20px;">CREATE NEW USER</h1>
 		<form action="/admin/userManage/add" method="post">
-            <label for="email" style=" margin-top: 15px;">Email:</label>
+            
+			<div class="errorAlignForm" style=" margin-top: 15px;">
+				<label for="email">Email:</label>
+				<p class="errorMessageForm"><%= errors.email %></p>
+			</div>
 			<input type="text" id="email" name="email" style="padding-left: 20px; margin-top: 15px; border-radius:7px;">
-			<label for="username" style=" margin-top: 15px;">Username:</label>
+			
+			<div class="errorAlignForm" style="margin-top: 30px;">
+				<label for="username">Username:</label>
+				<p class="errorMessageForm"><%= errors.username %></p>
+			</div>
 			<input type="text" id="username" name="username" style="padding-left: 20px; margin-top: 15px; border-radius:7px;">
-			<label for="password" style="margin-top: 30px;">Password:</label>
+			
+			<div class="errorAlignForm" style="margin-top: 30px;">
+				<label for="password">Password:</label>
+				<p class="errorMessageForm"><%= errors.password %></p>
+			</div>
 			<input type="password" step="0.01" id="password" name="password" style="padding-left: 20px; margin-top: 5px; border-radius:7px;">
+
+			<label for="role" style="margin-top: 30px;">User Role:</label>
+			<select name="role" id="role">
+				<option value="user">user</option>
+				<option value="broker">broker</option>
+				<option value="admin">admin</option>
+			</select>
 			<div
 				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px;">
 				<button type="submit" class="addButton" style="font-size: 14px; width: 180px">CREATE</button>

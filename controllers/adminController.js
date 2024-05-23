@@ -11,15 +11,47 @@ module.exports = class AdminController {
 
     static async renderUserManage(req, res, next) {
         try {
+            const encodedError = req.query.error
+            const errorObj = encodedError ? JSON.parse(decodeURIComponent(encodedError)) : {}
+            let errors = errorObj.errors
+
+            if (!errors) {
+                errors = {
+                    username: '',
+                    email: '',
+                    password: '',
+                }
+            }
+
+            let overlayType = 'delete'
+            //opens delete overlay, check if no delete requested, reset overlay state to none
             const deleteConfig = {
                 deleteId: req.query.deleteId,
                 deleteName: req.query.deleteName,
-                overlay: true
             }
+
             if (!req.query.deleteId || !req.query.deleteName) {
                 deleteConfig.deleteId = 'none'
                 deleteConfig.deleteName = 'none'
-                deleteConfig.overlay = false
+                overlayType = ''
+            }
+
+            //toggle overlay if error exists
+            switch (errorObj.origin) {
+                case ErrorOrigin.userUpdate: {
+                    overlayType = 'update'
+                    break
+                }
+
+                case ErrorOrigin.userDelete: {
+                    overlayType = 'delete'
+                    break
+                }
+
+                case ErrorOrigin.userCreate: {
+                    overlayType = 'create'
+                    break
+                }
             }
 
             const currentUser = req.session.user
@@ -37,7 +69,7 @@ module.exports = class AdminController {
                 where: filterQuery
             })
             res.render('admins/userManage', {
-                users,
+                users, errors, overlayType,
                 deleteConfig,
                 openDelete: JSON.stringify(deleteConfig.overlay)
             })
@@ -134,7 +166,12 @@ module.exports = class AdminController {
 
             const user = await User.findOne({ where: { username } })
             const isValid = await bcrypt.compare(password, user.password)
-            if (!isValid) return res.redirect(`/admin/userManage/?deleteId=${id}&deleteName=${viewDelete}`)
+            if (!isValid) throw new ValidationError(ErrorOrigin.userDelete,
+                { password: 'Invalid password' },
+                {
+                    deleteId: id,
+                    viewDelete
+                })
             delete user.password
 
             await User.destroy({
@@ -182,8 +219,8 @@ module.exports = class AdminController {
 
     static async handleAddUser(req, res, next) {
         try {
-            const { username, email, password } = req.body
-            await User.create({ username, password, email })
+            const { username, email, password, role } = req.body
+            await User.create({ username, password, email, role })
             res.redirect('/admin/userManage')
 
         } catch (error) {

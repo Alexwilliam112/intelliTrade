@@ -522,6 +522,7 @@ form select {
     font-weight: bold;
     padding: 0px;
     margin: 0px;
+    text-align: left;
 }
 
 .errorAlignForm {
