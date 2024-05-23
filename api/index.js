@@ -4,7 +4,7 @@ const express = require('express')
 const session = require('express-session')
 
 const app = express()
-const router = require('./routers/index')
+const router = require('../routers/index')
 const PORT = 3002
 require('dotenv').config()
 
