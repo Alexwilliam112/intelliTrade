@@ -22,7 +22,12 @@ module.exports = class AdminController {
                 deleteConfig.overlay = false
             }
 
-            let filterQuery = {}
+            const currentUser = req.session.user
+            let filterQuery = {
+                id: {
+                    [Op.ne]: currentUser.id
+                }
+            }
             const { search } = req.query
             if (search) filterQuery.username = {
                 [Op.iLike]: `%${search}%`
