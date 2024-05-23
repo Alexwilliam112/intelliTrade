@@ -36,8 +36,8 @@ module.exports = {
                 }
 
                 case ErrorOrigin.companyDelete: {
-                    //logic
-                    return;
+                    const encodedError = encodeURIComponent(JSON.stringify(err))
+                    return res.redirect(`/admin/companyData/?deleteId=${err.target.deleteId}&deleteName=${err.target.viewDelete}&error=${encodedError}`)
                 }
 
                 case ErrorOrigin.companyCreate: {

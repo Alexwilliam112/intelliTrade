@@ -52,12 +52,24 @@ module.exports = class AdminController {
                 errors = {
                     stockCode: '',
                     dividend: '',
-
+                    password: '',
                 }
             }
 
+            let overlayType = 'delete'
+            //opens delete overlay, check if no delete requested, reset overlay state to none
+            const deleteConfig = {
+                deleteId: req.query.deleteId,
+                deleteName: req.query.deleteName,
+            }
+
+            if (!req.query.deleteId || !req.query.deleteName) {
+                deleteConfig.deleteId = 'none'
+                deleteConfig.deleteName = 'none'
+                overlayType = ''
+            }
+
             //toggle overlay if error exists
-            let overlayType = ''
             switch (errorObj.origin) {
                 case ErrorOrigin.companyUpdate: {
                     overlayType = 'update'
@@ -73,16 +85,6 @@ module.exports = class AdminController {
                     overlayType = 'create'
                     break
                 }
-            }
-
-            //reset overlay state if errors exist
-            const deleteConfig = {
-                deleteId: req.query.deleteId,
-                deleteName: req.query.deleteName,
-            }
-            if (!req.query.deleteId || !req.query.deleteName) {
-                deleteConfig.deleteId = 'none'
-                deleteConfig.deleteName = 'none'
             }
 
             const { search } = req.query
@@ -150,7 +152,12 @@ module.exports = class AdminController {
 
             const user = await User.findOne({ where: { username } })
             const isValid = await bcrypt.compare(password, user.password)
-            if (!isValid) return res.redirect(`/admin/companyData/?deleteId=${deleteId}&deleteName=${viewDelete}`)
+            if (!isValid) throw new ValidationError(ErrorOrigin.companyDelete,
+                { password: 'Invalid password' },
+                {
+                    deleteId,
+                    viewDelete
+                })
             delete user.password
 
             await sequelize.transaction(async (t) => {
@@ -232,8 +239,8 @@ module.exports = class AdminController {
             res.redirect('/admin/companyData')
 
         } catch (error) {
-            if(error.name === 'SequelizeUniqueConstraintError') {
-                return next(new ValidationError(ErrorOrigin.companyCreate, {stockCode: 'Company already listed.'}))
+            if (error.name === 'SequelizeUniqueConstraintError') {
+                return next(new ValidationError(ErrorOrigin.companyCreate, { stockCode: 'Company already listed.' }))
             }
             next(instantiateValidationError(error, ErrorOrigin.companyCreate))
         }
