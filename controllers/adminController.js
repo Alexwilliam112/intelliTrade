@@ -2,10 +2,11 @@
 
 const { sequelize, Stock, CompanyProfile, StockHistory, User } = require('../models/index.js')
 const { Op } = require('sequelize');
-const { fetchHistoricals, fetchCompanyProfiles } = require('../utils/goapiFetch.js')
+const { fetchHistoricals, fetchCompanyProfiles, fetchLatestHistoricals } = require('../utils/goapiFetch.js')
 const bcrypt = require('bcrypt');
 const { instantiateValidationError, ValidationError,
     ErrorOrigin } = require('../utils/errorClass.js')
+const { dbDate } = require('../helpers/dateFormat.js')
 
 module.exports = class AdminController {
 
@@ -292,6 +293,36 @@ module.exports = class AdminController {
                 return next(new ValidationError(ErrorOrigin.companyCreate, { stockCode: 'Company already listed.' }))
             }
             next(instantiateValidationError(error, ErrorOrigin.companyCreate))
+        }
+    }
+
+    static async renewHistoricals(req, res, next) {
+        try {
+            const data = await Stock.findAll({
+                attributes: [
+                    'id',
+                    'stockCode',
+                    [sequelize.literal('(SELECT date FROM "StockHistories" WHERE "StockHistories"."StockId" = "Stock".id ORDER BY date DESC LIMIT 1)'), 'latestDate']
+                ],
+                raw: true
+            })
+
+            const companies = data.map((el) => {
+                const today = new Date()
+                el.latestDate = dbDate(el.latestDate)
+                el.today = dbDate(today)
+                return el
+            })
+
+            for await (const data of companies) {
+                const receivedArr = await fetchLatestHistoricals(data.id, data.stockCode, data.latestDate, data.today)
+                await StockHistory.bulkCreate(receivedArr)
+            }
+            res.redirect('/admin/companyData')
+
+        } catch (error) {
+            error.name = `Critical Error on Historical Data Renewal`
+            next(error)
         }
     }
 }

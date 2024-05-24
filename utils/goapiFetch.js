@@ -4,6 +4,41 @@ const axios = require('axios')
 const { ValidationError, ErrorOrigin } = require('./errorClass')
 module.exports = {
 
+    fetchLatestHistoricals: async (stockId, ticker, from, to) => {
+        try {
+            const reqUrl = `https://api.goapi.io/stock/idx/${ticker}/historical`;
+            const resData = await axios.get(reqUrl, {
+                headers: {
+                    'accept': 'application/json',
+                    'X-API-KEY': process.env.apiKey_historical2
+                },
+                params: {
+                    from,
+                    to,
+                },
+            });
+
+            if (resData.data.data.results.length === 0 || !resData.data.data.results) throw new Error('no data')
+            const receivedData = resData.data.data.results
+            const normalizedData = receivedData.map((el) => {
+                return {
+                    date: el.date,
+                    high: el.high,
+                    low: el.low,
+                    open: el.open,
+                    close: el.close,
+                    volume: el.volume,
+                    StockId: stockId
+                }
+            })
+            return normalizedData
+
+        } catch (error) {
+            error.status = 400
+            throw error
+        }
+    },
+
     fetchHistoricals: async (ticker, stockId) => {
         try {
             async function requestData(ticker, from, to) {
