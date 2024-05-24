@@ -18,7 +18,7 @@ module.exports = {
                 },
             });
 
-            if (resData.data.data.results.length === 0 || !resData.data.data.results) throw new Error('no data')
+            if (!resData.data.data.results) throw new Error('no data')
             const receivedData = resData.data.data.results
             const normalizedData = receivedData.map((el) => {
                 return {

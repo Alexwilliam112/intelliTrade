@@ -6,6 +6,7 @@
 
     <%- include ('../partials/AdminForm.ejs', { stocks, errors }) %>
     <%- include ('../partials/AdminDelete.ejs', { deleteConfig, errors }) %>
+    <%- include ('../partials/alerts.ejs', { notifMsg }) %>
 
         <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24" style="padding-top: 30px;">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -94,7 +95,7 @@
             document.addEventListener('DOMContentLoaded', function () {
                 const overlayTypeContainer = document.getElementById('overlayTypeContainer');
                 const overlayType = overlayTypeContainer.dataset.overlayType;
-
+                
                 switch (overlayType) {
                     case 'update': {
                         document.getElementById("overlayUpdate").style.display = "block";
@@ -108,6 +109,11 @@
 
                     case 'create': {
                         document.getElementById("overlayAdd").style.display = "block";
+                        break;
+                    }
+
+                    case 'alert': {
+                        document.getElementById("alert").style.display = "block";
                         break;
                     }
                 }
@@ -152,6 +158,7 @@
                 document.getElementById("overlayAdd").style.display = "none";
                 document.getElementById("overlayUpdate").style.display = "none";
                 document.getElementById("overlayDelete").style.display = "none";
+                document.getElementById("alert").style.display = "none";
             }
         </script>
 

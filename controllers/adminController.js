@@ -120,6 +120,10 @@ module.exports = class AdminController {
                 }
             }
 
+            let notifMsg = req.query.notifMsg
+            if(!notifMsg) notifMsg = ''
+            if(notifMsg) overlayType = 'alert'
+
             const { search } = req.query
             const filterQuery = {}
             if (search) {
@@ -133,7 +137,7 @@ module.exports = class AdminController {
             res.render("./admins/CompanyData", {
                 deleteConfig, stocks,
                 stockDatas: JSON.stringify(stocks),
-                overlayType, errors
+                overlayType, errors, notifMsg
             })
 
         } catch (error) {
@@ -318,7 +322,8 @@ module.exports = class AdminController {
                 const receivedArr = await fetchLatestHistoricals(data.id, data.stockCode, data.latestDate, data.today)
                 await StockHistory.bulkCreate(receivedArr)
             }
-            res.redirect('/admin/companyData')
+            const msg = 'Successfully synchronized all company historicals to latest data.'
+            res.redirect(`/admin/companyData?notifMsg=${msg}`)
 
         } catch (error) {
             error.name = `Critical Error on Historical Data Renewal`
