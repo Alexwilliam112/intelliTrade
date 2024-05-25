@@ -11,11 +11,11 @@ IntelliTrade is a mini software solution prototype tailored for stock broker com
 # Table of Contents
 1. [Feature Overview](#Features)
 
-2. [Application Snapshots](#snapshots) 
+2. [Application Snapshots](#Application-Snapshots) 
 
-3. [Tech Stack Used](#TechUsed)
+3. [Tech Stack](#Tech-Stack)
 
-4. [Issues and Challenges](#Issues)
+4. [Issues and Challenges](#Issues-and-Challenges)
 
 5. [Installation](#Installation)
 <br>
@@ -34,7 +34,7 @@ The project includes the following features and their corresponding functions.
 <br>
 <br>
 
-# Application Snapshots
+# Application-Snapshots
 
 
 #### `Landing Page of IntelliTrade`
@@ -68,7 +68,7 @@ The project includes the following features and their corresponding functions.
 <br>
 <br>
 
-# Tech Stack Used
+# Tech-Stack
 <br>
 
 IntelliTrade project is constructed based on the principle of server-side rendering, aligning with the current focus of my learning endeavors. In its completion, the project utilizes a tech stack comprising Express.js for backend routing, PostgreSQL as the database management system, and Sequelize ORM for data modeling. I also utilized Axios library to manage requests to third-party APIs and Plotly charting library to create interactive data visualizations.
@@ -86,7 +86,7 @@ IntelliTrade project is constructed based on the principle of server-side render
 <br>
 <br>
 
-# Issues and Challenges
+# Issues-and-Challenges
 <br>
 
 Using Sequelize ORM often feels like navigating a labyrinth of intricacies, where the path to smooth database operations is obscured by pitfalls and challenges. The documentation, while extensive, sometimes lacks clarity, leaving users stranded in a sea of ambiguity when attempting to troubleshoot errors or implement advanced features.
