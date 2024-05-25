@@ -3,7 +3,7 @@
 
 📆 `Project Completion: 24 May 2024`
 
-        IntelliTrade is a mini software solution prototype tailored for stock broker companies, designed to streamline and enhance the trading experience for both brokers and entry-level investment stakeholders in the Indonesia Stock Exchange (IDX). The platform offers an intuitive interface where users can access detailed company profiles, real-time volume, and historical data of listed companies. Users can place buy or sell orders at specified prices with defined expiry dates. Brokers - administrators then process these transactions, and maintaining archive of completed orders for all users. Leveraging automated data fetching capabilities from an IDX API provider, IntelliTrade ensures up-to-date market information at the touch of a button, eliminating manual effort and enhancing decision-making efficiency.
+    IntelliTrade is a mini software solution prototype tailored for stock broker companies, designed to streamline and enhance the trading experience for both brokers and entry-level investment stakeholders in the Indonesia Stock Exchange (IDX). The platform offers an intuitive interface where users can access detailed company profiles, real-time volume, and historical data of listed companies. Users can place buy or sell orders at specified prices with defined expiry dates. Brokers - administrators then process these transactions, and maintaining archive of completed orders for all users. Leveraging automated data fetching capabilities from an IDX API provider, IntelliTrade ensures up-to-date market information at the touch of a button, eliminating manual effort and enhancing decision-making efficiency.
 
 <br>
 <br>
