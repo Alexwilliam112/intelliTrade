@@ -111,7 +111,7 @@
                       </td>
                       <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4">
                         <% if (el.orderStatus !=='Completed' ) { %>
-                          <% if (user.role==='admin' ) { %>
+                          <% if (user.role==='admin' || user.role ==='broker' ) { %>
                             <a href="/dashboard/updateOrder/<%= el.id %>" class="viewButton"
                               style="font-size: 10px; padding-left: 10px; padding-right: 12px;">PROCESS</a>
                             <a href="/dashboard/terminate/<%= el.id %>" class="deleteButton"
